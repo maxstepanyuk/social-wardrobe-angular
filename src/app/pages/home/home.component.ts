@@ -16,6 +16,6 @@ export class HomeComponent {
   constructor(private loginDialog: MatDialog){}
 
   openHomeAuthenticationDialog(){
-    this.loginDialog.open(AuthenticationComponent)
+    this.loginDialog.open(AuthenticationComponent,{width:'48em'})
   }
 }
