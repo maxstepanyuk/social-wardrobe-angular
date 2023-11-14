@@ -8,11 +8,13 @@ import { AppHeaderComponent } from './app-header/app-header.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppHeaderComponent
+    AppHeaderComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
