@@ -1,0 +1,32 @@
+.home {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home .left {   
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: end;
+    margin-right: 2em;
+}
+
+.home .left h2 {
+    font-size: 3em;
+}
+
+.home .left p {
+    font-size: 1em;
+}
+
+.home .right {
+    background-image: url("https://www.thoughtco.com/thmb/C7RiS4QG5TXcBG2d_Sh9i4hFpg0=/3620x2036/smart/filters:no_upscale()/close-up-of-clothes-hanging-in-row-739240657-5a78b11f8e1b6e003715c0ec.jpg"); //TODO: dl img
+    background-position: center;
+    background-size: cover;
+
+    width: 50%;
+    height: 100%;
+}
