@@ -1,1 +1,53 @@
-<p>signup works!</p>
+<div class="login-form">
+
+    <h2>TODO: remake to sinup, check inputs, submit logic, Reactive Form. коли буде пароль введений та сві дання співпадати змінити інонку замочнка з відкритого на закритий</h2>
+
+    <mat-card>
+        <mat-card-content>
+
+            <mat-card-title>
+                <h2>Sinup</h2>
+            </mat-card-title>
+
+            <form>
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="email@example.com" [formControl]="email" type="email" required>
+                    <mat-hint>Use your account email</mat-hint>
+                    <mat-icon matSuffix>email</mat-icon>
+                    <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Create Password</mat-label>
+                    <input matInput [type]="hideNewPass ? 'password' : 'text'" required minlength="8">
+                    <button mat-icon-button matSuffix (click)="hideNewPass = !hideNewPass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideNewPass">
+                        <mat-icon>{{hideNewPass ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <!-- <mat-error *ngIf="newPassInvalid()">{{getNewPassErrorMessage()}}</mat-error> -->
+                    <!-- msg: conditions not met -->
+                    <mat-hint>Letters, numbers, symbols allowed</mat-hint>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Confirm Password</mat-label>
+                    <input matInput type="password" required>
+                    <button mat-icon-button matSuffix disabled="true">
+                        <mat-icon>{{arePasswordsMatch() ? 'lock' : 'lock_open'}}</mat-icon>
+                    </button>
+                    <!-- <mat-error *ngIf="newPassInvalid()">{{getNewPassErrorMessage()}}</mat-error> -->
+                    <!-- msg: passwords dont match -->
+                    <mat-hint>Repeat the same password</mat-hint>
+                </mat-form-field>
+
+                <mat-card-actions>
+                    <button mat-raised-button color="accent">Login</button>
+                </mat-card-actions>
+
+            </form>
+
+            <p>Have an account? <a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Login</a>
+            
+        </mat-card-content>
+    </mat-card>
+</div>

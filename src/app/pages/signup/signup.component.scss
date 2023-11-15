@@ -1,0 +1,33 @@
+.login-form {
+    // // TODO: add bg as a sepeta div or do it much latet!
+    // background-image: url("https://images.squarespace-cdn.com/content/v1/607bb7214afcb51ff8d10bfb/1623212483763-WW3MC71MLSDS2D0T2CN6/Clothing+Bank.jpg");
+    // background-position: center;
+    // background-size: cover;
+    // // filter: contrast(0.8) blur(10px); 
+    
+    width: 100%;
+    min-height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form mat-card mat-card-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-form form {   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.login-form form mat-form-field {
+    margin-bottom: 1em;
+}
