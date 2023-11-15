@@ -12,7 +12,7 @@
             <form>
                 <mat-form-field>
                     <mat-label>Email</mat-label>
-                    <input matInput placeholder="email@example.com" [formControl]="email" required>
+                    <input matInput placeholder="email@example.com" [formControl]="email" type="email" required>
                     <mat-hint>Use your real email</mat-hint>
                     <mat-icon matSuffix>email</mat-icon>
                     <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
@@ -36,7 +36,7 @@
 
             </form>
 
-            <p>New user? <a routerLink="/register" routerLinkActive="active" ariaCurrentWhenActive="page">Register</a>
+            <p>New user? <a routerLink="/sinup" routerLinkActive="active" ariaCurrentWhenActive="page">Sinup</a>
             </p>
             
         </mat-card-content>
