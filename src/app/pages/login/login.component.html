@@ -1,1 +1,36 @@
-<p>login works!</p>
+<div class="login-form">
+
+    <h2>TODO: check inputs, password hide symbols - buttons, css flex, bg img/colour</h2>
+
+    <h2>Login</h2>
+    <form>
+
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="email@example.com" [formControl]="email" required>
+            <mat-hint>Use your account email</mat-hint>
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hidePass ? 'password' : 'text'" required minlength="8">
+            <button mat-icon-button matSuffix (click)="hidePass = !hidePass" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hidePass">
+                <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <!-- <mat-error *ngIf="password">{{getPassErrorMessage()}}</mat-error> -->
+
+            <mat-hint>Use your account password</mat-hint>
+        </mat-form-field>
+
+        <button mat-raised-button color="accent">Login</button>
+    </form>
+
+    <div>
+        <p>New user? </p>
+        <a routerLink="/register" routerLinkActive="active" ariaCurrentWhenActive="page">Register</a>
+    </div>
+
+</div>

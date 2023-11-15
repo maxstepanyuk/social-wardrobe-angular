@@ -1,0 +1,22 @@
+.login-form {
+    // // TODO: add bg as a sepeta div or do it much latet!
+    // background-image: url("https://images.squarespace-cdn.com/content/v1/607bb7214afcb51ff8d10bfb/1623212483763-WW3MC71MLSDS2D0T2CN6/Clothing+Bank.jpg");
+    // background-position: center;
+    // background-size: cover;
+    // // filter: contrast(0.8) blur(10px); 
+    
+    background-color:blanchedalmond;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form {   
+    display: flex;
+    flex-direction: column;
+}
