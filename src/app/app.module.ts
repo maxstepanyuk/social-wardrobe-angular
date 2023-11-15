@@ -11,12 +11,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { HomeComponent } from './pages/home/home.component';
 
 import { MatButtonModule } from '@angular/material/button';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AppHeaderComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
