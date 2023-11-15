@@ -11,7 +11,7 @@ export class LoginComponent {
   email = new FormControl('', [Validators.required, Validators.email]);
   getEmailErrorMessage() {
     if (this.email.hasError('required')) {
-      return 'Enter a valid email';
+      return 'Enter a value';
     }
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
