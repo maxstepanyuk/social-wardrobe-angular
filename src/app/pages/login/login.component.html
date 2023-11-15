@@ -13,7 +13,7 @@
                 <mat-form-field>
                     <mat-label>Email</mat-label>
                     <input matInput placeholder="email@example.com" [formControl]="email" required>
-                    <mat-hint>Use your account email</mat-hint>
+                    <mat-hint>Use your real email</mat-hint>
                     <mat-icon matSuffix>email</mat-icon>
                     <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
                 </mat-form-field>
