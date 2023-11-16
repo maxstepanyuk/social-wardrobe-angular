@@ -1,5 +1,12 @@
 <mat-card class="garment">
+    <!-- <mat-card-content> -->
     <img [src]="garment.img" alt="photo of {{garment.name}}">
-    <h2>{{garment.name}}</h2>
-    <p>{{garment.type}}</p>
+        <!-- <mat-card-header> -->
+            <h3>{{garment.name}}</h3>
+        <!-- </mat-card-header> -->
+        <p>{{garment.type}}</p>
+        <!-- <mat-card-subtitle> -->
+            <p>Last worn {{garment.date.getMonth()}}-{{garment.date.getDate()}}-{{garment.date.getFullYear()}}</p>
+        <!-- </mat-card-subtitle> -->
+    <!-- </mat-card-content> -->
 </mat-card>
