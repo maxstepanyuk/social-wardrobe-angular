@@ -17,6 +17,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { SignupComponent } from './pages/signup/signup.component';
+import { GarmentComponent } from './components/garment/garment.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SignupComponent } from './pages/signup/signup.component';
     AppHeaderComponent,
     HomeComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    GarmentComponent
   ],
   imports: [
     BrowserModule,
