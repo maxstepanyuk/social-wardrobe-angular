@@ -18,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { SignupComponent } from './pages/signup/signup.component';
 import { GarmentComponent } from './components/garment/garment.component';
+import { ClothesComponent } from './pages/clothes/clothes.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { GarmentComponent } from './components/garment/garment.component';
     HomeComponent,
     LoginComponent,
     SignupComponent,
-    GarmentComponent
+    GarmentComponent,
+    ClothesComponent
   ],
   imports: [
     BrowserModule,
