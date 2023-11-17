@@ -19,6 +19,7 @@ import { MatCardModule } from '@angular/material/card';
 import { SignupComponent } from './pages/signup/signup.component';
 import { GarmentComponent } from './components/garment/garment.component';
 import { ClothesComponent } from './pages/clothes/clothes.component';
+import { GarmentDetailsComponent } from './pages/garment-details/garment-details.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ClothesComponent } from './pages/clothes/clothes.component';
     LoginComponent,
     SignupComponent,
     GarmentComponent,
-    ClothesComponent
+    ClothesComponent,
+    GarmentDetailsComponent
   ],
   imports: [
     BrowserModule,
