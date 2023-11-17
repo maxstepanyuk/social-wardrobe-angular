@@ -1,15 +1,22 @@
 .garment {
-    width: fit-content;
-    height: fit-content;
+    width: 12em;
+    height: auto;
+    
     margin-right: 1em;
     margin-bottom: 1em;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     img {
-        height: 12em;
-        max-width: 10em;
+        width: 100%;
+        height: 14em;
+        border-radius: inherit;
+        object-fit: cover;
     }
 
-    h3 {
-        font-weight: bolder;
+    a {
+        width: 100%;
     }
 }

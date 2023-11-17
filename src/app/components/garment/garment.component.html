@@ -1,12 +1,8 @@
 <mat-card class="garment">
-    <!-- <mat-card-content> -->
     <img [src]="garment.img" alt="photo of {{garment.name}}">
-        <!-- <mat-card-header> -->
-            <h3>{{garment.name}}</h3>
-        <!-- </mat-card-header> -->
-        <p>{{garment.type}}</p>
-        <!-- <mat-card-subtitle> -->
-            <p>Last worn {{garment.date.getMonth()}}-{{garment.date.getDate()}}-{{garment.date.getFullYear()}}</p>
-        <!-- </mat-card-subtitle> -->
-    <!-- </mat-card-content> -->
+    <a mat-button color="primary" [routerLink]="['/details/', garment.id]" routerLinkActive="active"
+        ariaCurrentWhenActive="page">
+        {{garment.name}}
+    </a>
+    <p>{{garment.type}} - {{ calculateDaysSinceLastWorn(garment.date) }} days ago</p>
 </mat-card>
