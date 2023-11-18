@@ -1,5 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { GarmentService } from '../../servises/garment.service';
+import { Garment } from '../../components/garment/garment';
 
 @Component({
   selector: 'app-garment-details',
@@ -8,9 +10,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class GarmentDetailsComponent {
   route: ActivatedRoute = inject(ActivatedRoute);
-  garmentId = 0;
+  garmentService = inject(GarmentService);
+  garment: Garment | undefined;  
 
   constructor() {
-    this.garmentId = Number(this.route.snapshot.params['id'])
+    const garmentId = Number(this.route.snapshot.params['id']);
+    this.garment = this.garmentService.getGarmentById(garmentId);
   }
 }
