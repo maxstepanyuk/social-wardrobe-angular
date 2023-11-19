@@ -1,0 +1,70 @@
+.garment-details {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    img {
+        object-fit: cover;
+        width: 50%;
+        height: 100%;
+    }
+
+    .right {
+        width: 50%;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+
+        // justify-content: space-between;
+    }
+
+    .right-top {
+        padding: 2em;
+        height: 50%;
+        
+        h2 {
+            font-size: 3em;
+        }
+        
+        p {
+            font-size: 1em;
+        }
+    }
+    
+    .right-bottom {
+        
+        height:80%;
+    }
+    
+    .outfits {
+
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        width: inherit;
+        height: inherit;
+
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+
+    .temp {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+
+        margin: 10px;
+
+        div {
+            margin: 2px;
+        }
+    }
+
+}
