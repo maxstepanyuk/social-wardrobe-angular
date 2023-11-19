@@ -5,6 +5,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ClothesComponent } from './pages/clothes/clothes.component';
 import { GarmentDetailsComponent } from './pages/garment-details/garment-details.component';
+import { OutfitCreatorComponent } from './pages/outfit-creator/outfit-creator.component';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: "sinup", component: SignupComponent},
   {path: "clothes", component: ClothesComponent},
   {path: "details/:id", component: GarmentDetailsComponent },
+  {path: "creator", component: OutfitCreatorComponent },
   {path: "**", component: HomeComponent},
 ];
 
