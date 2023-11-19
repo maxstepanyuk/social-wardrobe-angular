@@ -20,6 +20,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { GarmentComponent } from './components/garment/garment.component';
 import { ClothesComponent } from './pages/clothes/clothes.component';
 import { GarmentDetailsComponent } from './pages/garment-details/garment-details.component';
+import { OutfitCreatorComponent } from './pages/outfit-creator/outfit-creator.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { GarmentDetailsComponent } from './pages/garment-details/garment-details
     SignupComponent,
     GarmentComponent,
     ClothesComponent,
-    GarmentDetailsComponent
+    GarmentDetailsComponent,
+    OutfitCreatorComponent
   ],
   imports: [
     BrowserModule,
