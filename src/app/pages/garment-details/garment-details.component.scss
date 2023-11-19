@@ -10,34 +10,34 @@
     img {
         object-fit: cover;
     }
+}
 
-    .right {
-        padding: 1em;
-        display: flex;
-        flex-direction: column;
-    }
+.right {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+}
 
-    .right-top,
-    .right-bottom {
-        flex: 1;
-    }
+.right-top,
+.right-bottom {
+    flex: 1;
+}
 
-    .right-bottom {
-        overflow-y: auto;
-    }
+.right-bottom {
+    overflow-y: auto;
+}
 
-    .outfits {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
+.outfits {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 
-        align-items: center;
-        justify-content: center;
-    }
+    align-items: center;
+    justify-content: center;
+}
 
-    .temp {
-        margin: 10px;
-    }
+.temp {
+    margin: 10px;
 }
 
 h2 {
