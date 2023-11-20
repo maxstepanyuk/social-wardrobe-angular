@@ -1,56 +1,40 @@
-<h2>TODO</h2>
-<ul>
-    <li>depandancy injcetion</li>
-    <li>wardrobe - clothes list</li>
-    <li>grag and nrop logic</li>
-</ul>
+<div class="controls">
+    <mat-form-field>
+        <mat-label>Outfit name</mat-label>
+        <input matInput placeholder="">
+        <mat-hint>Name your outfit</mat-hint>
+    </mat-form-field>
+    <button mat-raised-button color="primary">
+        Save outfit
+    </button>
+    <span>TODO grag and nrop logic, sort wardrobe by date (or add this metod to servise), overflow???, </span>
+</div>
 
 <div class="cretor">
-    <div class="outfit section">
+    <div class="section">
         <h2>Your outfit</h2>
-        <!-- TODO overflow -->
-        <div>
-            <!-- TODO if none -->
-            <p class="empty-label" *ngIf="outfit.length === 0">No clothes. Drad and drop from your wardrobe here</p>
+        <mat-card class="cards">
+            <div *ngIf="outfitGarmentList.length === 0" class="empty-label">
+                <p>No clothes. Drad from your wardrobe and drop here</p>
+            </div>
 
-            <mat-card>
-                <!-- TODO ngFor -->
-                <!-- <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem non praesentium sint repellendus odit
-                    impedit itaque harum assumenda. Eligendi ea molestias soluta qui, animi libero incidunt facere fugit
-                    omnis tempora. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem non praesentium sint
-                    repellendus odit impedit itaque harum assumenda. Eligendi ea molestias soluta qui, animi libero
-                    incidunt facere fugit omnis tempora. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem
-                    non praesentium sint repellendus odit impedit itaque harum assumenda. Eligendi ea molestias soluta
-                    qui, animi libero incidunt facere fugit omnis tempora. Lorem ipsum dolor sit, amet consectetur
-                    adipisicing elit. Rem non praesentium sint repellendus odit impedit itaque harum assumenda. Eligendi
-                    ea molestias soluta qui, animi libero incidunt facere fugit omnis tempora. Lorem ipsum dolor sit,
-                    amet consectetur adipisicing elit. Rem non praesentium sint repellendus odit impedit itaque harum
-                    assumenda. Eligendi ea molestias soluta qui, animi libero incidunt facere fugit omnis tempora. </p> -->
-            </mat-card>
-        </div>
+            <div class="garments">
+                <app-garment *ngFor="let garment of outfitGarmentList" [garment]="garment"></app-garment>
+            </div>
+        </mat-card>
     </div>
+
     <div class="section">
         <h2>Your wardrobe</h2>
-        <!-- TODO overflow -->
-        <div>
-            <!-- TODO if none -->
-            <p class="empty-label" *ngIf="outfit.length === 0">No clothes.
-            </p>
-            <a routerLink="" class="empty-label" *ngIf="outfit.length === 0">Add your garments</a>
-            <mat-card class="wardrobe">
-                <!-- TODO ngFor -->
-                <!-- <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem non praesentium sint repellendus odit
-                    impedit itaque harum assumenda. Eligendi ea molestias soluta qui, animi libero incidunt facere fugit
-                    omnis tempora. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem non praesentium sint
-                    repellendus odit impedit itaque harum assumenda. Eligendi ea molestias soluta qui, animi libero
-                    incidunt facere fugit omnis tempora. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem
-                    non praesentium sint repellendus odit impedit itaque harum assumenda. Eligendi ea molestias soluta
-                    qui, animi libero incidunt facere fugit omnis tempora. Lorem ipsum dolor sit, amet consectetur
-                    adipisicing elit. Rem non praesentium sint repellendus odit impedit itaque harum assumenda. Eligendi
-                    ea molestias soluta qui, animi libero incidunt facere fugit omnis tempora. Lorem ipsum dolor sit,
-                    amet consectetur adipisicing elit. Rem non praesentium sint repellendus odit impedit itaque harum
-                    assumenda. Eligendi ea molestias soluta qui, animi libero incidunt facere fugit omnis tempora. </p> -->
-            </mat-card>
-        </div>
+        <mat-card class="cards">
+                <div class="empty-label" *ngIf="wardrobeGarmentList.length === 0">
+                    <p class="empty-label">No clothes.</p>
+                    <a mat-raised-button color="accent" routerLink="">Add your garments</a>
+                </div>
+
+                <div class="garments">
+                    <app-garment *ngFor="let garment of wardrobeGarmentList" [garment]="garment"></app-garment>
+                </div>
+        </mat-card>
     </div>
 </div>

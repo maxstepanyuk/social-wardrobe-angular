@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Garment } from 'src/app/components/garment/garment';
+import { GarmentService } from '../../servises/garment.service';
 
 @Component({
   selector: 'app-outfit-creator',
@@ -7,10 +8,11 @@ import { Garment } from 'src/app/components/garment/garment';
   styleUrls: ['./outfit-creator.component.scss']
 })
 export class OutfitCreatorComponent {
-  outfit: Garment[] = [];
-  wardrobe: Garment[] = [];
+  outfitGarmentList: Garment[] = [];
+  wardrobeGarmentList: Garment[] = [];
+  garmentService: GarmentService = inject(GarmentService)
 
-  constructor (){}
-
-  
+  constructor(){
+    this.wardrobeGarmentList = this.garmentService.getAllGarments();
+  }
 }
