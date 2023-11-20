@@ -4,7 +4,7 @@
         <input matInput placeholder="">
         <mat-hint>Name your outfit</mat-hint>
     </mat-form-field>
-    <button mat-raised-button color="primary">
+    <button mat-raised-button color="primary" [disabled]="outfitGarmentList.length === 0">
         Save outfit
     </button>
     <span>TODO grag and nrop logic, sort wardrobe by date (or add this metod to servise), overflow???, </span>
