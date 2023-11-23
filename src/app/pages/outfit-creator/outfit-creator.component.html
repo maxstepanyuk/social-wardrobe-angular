@@ -8,23 +8,10 @@
         Save outfit
     </button>
     <span>TODO grag and nrop logic, sort wardrobe by date (or add this metod to servise), overflow???, save outfit logic
-        (post only IDs of garments as an array), change left and right colums</span>
+        (post only IDs of garments as an array)</span>
 </div>
 
 <div class="cretor">
-    <div class="section">
-        <h2>Your outfit</h2>
-        <mat-card class="cards">
-            <div *ngIf="outfit.length === 0" class="empty-label">
-                <p>No clothes. Drad from your wardrobe and drop here</p>
-            </div>
-
-            <div class="garments">
-                <app-garment *ngFor="let garment of outfit" [garment]="garment">{{garment}}</app-garment>
-            </div>
-        </mat-card>
-    </div>
-
     <div class="section">
         <h2>Your wardrobe</h2>
         <mat-card class="cards">
@@ -35,6 +22,19 @@
 
             <div class="garments">
                 <app-garment *ngFor="let garment of wardrobe" [garment]="garment">{{garment}}</app-garment>
+            </div>
+        </mat-card>
+    </div>
+
+    <div class="section">
+        <h2>Your outfit</h2>
+        <mat-card class="cards">
+            <div *ngIf="outfit.length === 0" class="empty-label">
+                <p>No clothes. Drad from your wardrobe and drop here</p>
+            </div>
+
+            <div class="garments">
+                <app-garment *ngFor="let garment of outfit" [garment]="garment">{{garment}}</app-garment>
             </div>
         </mat-card>
     </div>
