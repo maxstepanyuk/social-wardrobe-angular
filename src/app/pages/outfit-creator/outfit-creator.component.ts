@@ -5,14 +5,14 @@ import { GarmentService } from '../../servises/garment.service';
 @Component({
   selector: 'app-outfit-creator',
   templateUrl: './outfit-creator.component.html',
-  styleUrls: ['./outfit-creator.component.scss']
+  styleUrls: ['./outfit-creator.component.scss'],
 })
 export class OutfitCreatorComponent {
-  outfitGarmentList: Garment[] = [];
-  wardrobeGarmentList: Garment[] = [];
-  garmentService: GarmentService = inject(GarmentService)
+  outfit: Garment[] = [];
+  wardrobe: Garment[] = [];
+  garmentService: GarmentService = inject(GarmentService);
 
-  constructor(){
-    this.wardrobeGarmentList = this.garmentService.getAllGarments();
+  constructor() {
+    this.wardrobe = this.garmentService.getAllGarments();
   }
 }
