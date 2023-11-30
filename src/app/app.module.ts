@@ -21,6 +21,7 @@ import { GarmentComponent } from './components/garment/garment.component';
 import { ClothesComponent } from './pages/clothes/clothes.component';
 import { GarmentDetailsComponent } from './pages/garment-details/garment-details.component';
 import { OutfitCreatorComponent } from './pages/outfit-creator/outfit-creator.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { OutfitCreatorComponent } from './pages/outfit-creator/outfit-creator.co
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatCardModule
+    MatCardModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
