@@ -4,6 +4,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ClothesComponent } from './pages/clothes/clothes.component';
+import { OutfitsComponent } from './pages/outfits/outfits.component';
 import { GarmentDetailsComponent } from './pages/garment-details/garment-details.component';
 import { OutfitCreatorComponent } from './pages/outfit-creator/outfit-creator.component';
 
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: "clothes", component: ClothesComponent},
   {path: "details/:id", component: GarmentDetailsComponent },
   {path: "creator", component: OutfitCreatorComponent },
+  {path: "outfits", component: OutfitsComponent  },
   {path: "**", component: HomeComponent},
 ];
 
