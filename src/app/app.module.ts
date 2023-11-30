@@ -23,6 +23,7 @@ import { GarmentDetailsComponent } from './pages/garment-details/garment-details
 import { OutfitCreatorComponent } from './pages/outfit-creator/outfit-creator.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { OutfitsComponent } from './pages/outfits/outfits.component';
+import { OutfitComponent } from './components/outfit/outfit.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { OutfitsComponent } from './pages/outfits/outfits.component';
     ClothesComponent,
     GarmentDetailsComponent,
     OutfitCreatorComponent,
-    OutfitsComponent
+    OutfitsComponent,
+    OutfitComponent
   ],
   imports: [
     BrowserModule,
