@@ -22,8 +22,14 @@
                 <a mat-raised-button color="accent" routerLink="">Add your garments</a>
             </div>
 
-            <div cdkDropList #wardrobeList="cdkDropList" [cdkDropListConnectedTo]="[outfitList]"
-                (cdkDropListDropped)="drop($event)" class="garments">
+            <div 
+            cdkDropList 
+            #wardrobeList="cdkDropList" 
+            [cdkDropListData]="wardrobe"
+            [cdkDropListConnectedTo]="[outfitList]"
+            (cdkDropListDropped)="drop($event)" 
+            class="garments"
+            >
                 <app-garment *ngFor="let garment of wardrobe" [garment]="garment" cdkDrag>{{garment}}</app-garment>
             </div>
         </mat-card>
@@ -36,8 +42,14 @@
                 <p>No clothes. Drad from your wardrobe and drop here</p>
             </div>
 
-            <div cdkDropList #outfitList="cdkDropList" [cdkDropListConnectedTo]="[wardrobeList]"
-                (cdkDropListDropped)="drop($event)" class="garments">
+            <div 
+            cdkDropList 
+            #outfitList="cdkDropList" 
+            [cdkDropListData]="outfit"
+            [cdkDropListConnectedTo]="[wardrobeList]"
+            (cdkDropListDropped)="drop($event)" 
+            class="garments"
+            >
                 <app-garment *ngFor="let garment of outfit" [garment]="garment" cdkDrag>{{garment}}</app-garment>
             </div>
         </mat-card>
