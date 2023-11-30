@@ -16,42 +16,32 @@
 <div class="cretor" cdkDropListGroup>
     <div class="section">
         <h2>Your wardrobe</h2>
-        <mat-card class="cards">
+        <mat-card class="cards" cdkDropList #wardrobeList="cdkDropList" [cdkDropListData]="wardrobe"
+            [cdkDropListConnectedTo]="[outfitList]" (cdkDropListDropped)="drop($event)">
+
             <div class="empty-label" *ngIf="wardrobe.length === 0">
                 <p class="empty-label">No clothes.</p>
                 <a mat-raised-button color="accent" routerLink="">Add your garments</a>
             </div>
-
-            <div 
-            cdkDropList 
-            #wardrobeList="cdkDropList" 
-            [cdkDropListData]="wardrobe"
-            [cdkDropListConnectedTo]="[outfitList]"
-            (cdkDropListDropped)="drop($event)" 
-            class="garments"
-            >
+            <div class="garments">
                 <app-garment *ngFor="let garment of wardrobe" [garment]="garment" cdkDrag>{{garment}}</app-garment>
             </div>
+
         </mat-card>
     </div>
 
     <div class="section">
         <h2>Your outfit</h2>
-        <mat-card class="cards">
+        <mat-card class="cards" cdkDropList #outfitList="cdkDropList" [cdkDropListData]="outfit"
+            [cdkDropListConnectedTo]="[wardrobeList]" (cdkDropListDropped)="drop($event)">
+            <div class="garments">
+                <app-garment *ngFor="let garment of outfit" [garment]="garment" cdkDrag>{{garment}}</app-garment>
+            </div>
+
             <div *ngIf="outfit.length === 0" class="empty-label">
                 <p>No clothes. Drad from your wardrobe and drop here</p>
             </div>
 
-            <div 
-            cdkDropList 
-            #outfitList="cdkDropList" 
-            [cdkDropListData]="outfit"
-            [cdkDropListConnectedTo]="[wardrobeList]"
-            (cdkDropListDropped)="drop($event)" 
-            class="garments"
-            >
-                <app-garment *ngFor="let garment of outfit" [garment]="garment" cdkDrag>{{garment}}</app-garment>
-            </div>
         </mat-card>
     </div>
 </div>
