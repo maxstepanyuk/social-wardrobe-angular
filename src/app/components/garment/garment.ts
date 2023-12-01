@@ -5,3 +5,4 @@ export interface Garment {
     type: string,
     date: Date,
 }
+//TODO add userId

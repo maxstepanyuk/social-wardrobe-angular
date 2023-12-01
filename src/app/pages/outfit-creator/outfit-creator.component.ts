@@ -33,3 +33,4 @@ export class OutfitCreatorComponent {
     }
   }
 }
+//TODO get data from outfit if route /:id
