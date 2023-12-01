@@ -8,12 +8,16 @@ export class GarmentService {
 
   constructor() { }
 
-  getAllGarments() : Garment[] {
+  getAllGarments(): Garment[] {
     return this.garmentList;
   }
 
-  getGarmentById(id: number) : Garment | undefined {
+  getGarmentById(id: number): Garment | undefined {
     return this.garmentList.find(garment => garment.id === id)
+  }
+
+  getGarmentsByIds(ids: number[]): Garment[] {
+    return this.garmentList.filter(garment => ids.includes(garment.id));
   }
 
   protected garmentList: Garment[] = [
