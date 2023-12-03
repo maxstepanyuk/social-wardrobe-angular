@@ -20,6 +20,12 @@ export class OutfitService {
     return this.outfitList.filter(outfit => ids.includes(outfit.id));
   }
 
+  getOutfitsWithGarment(garmentId: number): Outfit[] {
+    return this.outfitList.filter(outfit =>
+      outfit.garments.some(garment => garment.id === garmentId)
+    );
+  }
+
   protected outfitList: Outfit[] = [
     {
       id: 1,
