@@ -1,0 +1,41 @@
+.outfit {
+    width: 16em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    a {
+        width: 100%;
+    }
+}
+
+.outfit-img,
+.garments-list {
+    width: 100%;
+    height: 24em;
+}
+
+.outfit-img {
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+    border-radius: inherit;
+}
+
+.garments-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    overflow: scroll;
+
+    img {
+        border-radius: 5px;
+        margin: 2px;
+        width: 5em;
+        height: 8em;
+        object-fit: cover;
+    }
+}
