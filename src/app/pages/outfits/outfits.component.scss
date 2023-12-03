@@ -1,0 +1,15 @@
+h2 {
+    font-size: 2em;
+    text-align: center;
+    margin-top: 1em;
+}
+
+.outfits{
+    padding: 2em;
+    display: flex;
+    gap: 1em;
+    overflow: scroll;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}

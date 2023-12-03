@@ -1,1 +1,4 @@
-<p>outfits works!</p>
+<h2>Your outfits</h2>
+<div class="outfits">
+    <app-outfit *ngFor="let outfitItem of outfitList" [outfit]="outfitItem" ></app-outfit>
+</div>
