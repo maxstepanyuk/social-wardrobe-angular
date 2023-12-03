@@ -1,7 +1,14 @@
+h2 {
+    font-size: 2em;
+    text-align: center;
+    margin-top: 1em;
+}
+
 .garments {
+    padding: 2em;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin-left: 1em;
+    gap: 1em;
 }
