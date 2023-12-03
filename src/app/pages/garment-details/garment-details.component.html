@@ -14,12 +14,8 @@
 
         <mat-card class="right-bottom">
             <div class="outfits">
-                <app-outfit></app-outfit>
-                <app-outfit></app-outfit>
-                <app-outfit></app-outfit>
-                <app-outfit></app-outfit>
-                <app-outfit></app-outfit>
-                <app-outfit></app-outfit>
+                <!-- getWhereGarment -->
+                <app-outfit *ngFor="let outfitItem of outfitList" [outfit]="outfitItem" ></app-outfit>
             </div>
         </mat-card>
     </div>
