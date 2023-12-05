@@ -9,14 +9,14 @@ import { GarmentDetailsComponent } from './pages/garment-details/garment-details
 import { OutfitCreatorComponent } from './pages/outfit-creator/outfit-creator.component';
 
 const routes: Routes = [
-  {path: "", component: HomeComponent},
-  {path: "login", component: LoginComponent},
-  {path: "sinup", component: SignupComponent},
-  {path: "clothes", component: ClothesComponent},
-  {path: "details/:id", component: GarmentDetailsComponent },
-  {path: "creator", component: OutfitCreatorComponent },
-  {path: "outfits", component: OutfitsComponent  },
-  {path: "**", component: HomeComponent},
+  { path: "", component: HomeComponent }, //landing
+  { path: "login", component: LoginComponent },
+  { path: "sinup", component: SignupComponent },
+  { path: "clothes", component: ClothesComponent }, //get all clothes(garments)
+  { path: "details/:id", component: GarmentDetailsComponent }, //garment get, edit(TODO), delete(TODO)
+  { path: "creator", component: OutfitCreatorComponent }, //outfit create
+  { path: "outfits", component: OutfitsComponent }, //get all outfit
+  { path: "**", component: HomeComponent }, //wildcard (TODO 404 + go to home button)
 ];
 
 @NgModule({
