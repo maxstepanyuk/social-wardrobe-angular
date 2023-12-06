@@ -30,6 +30,7 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     OutfitCreatorComponent,
     OutfitsComponent,
     OutfitComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
