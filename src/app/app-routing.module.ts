@@ -11,12 +11,16 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent }, //landing
-  { path: "login", component: LoginComponent },
-  { path: "sinup", component: SignupComponent },
+  { path: "login", component: LoginComponent }, //todo logic
+  { path: "sinup", component: SignupComponent }, //todo logic
   { path: "clothes", component: ClothesComponent }, //get all clothes(garments)
+  //TODO rename `details` to `clothes` 
+  { path: "details", component: GarmentDetailsComponent }, //TODO garment create NEW
   { path: "details/:id", component: GarmentDetailsComponent }, //garment get, edit(TODO), delete(TODO)
-  { path: "creator", component: OutfitCreatorComponent }, //outfit create
+  
   { path: "outfits", component: OutfitsComponent }, //get all outfit
+  { path: "outfit/:id", component: OutfitCreatorComponent }, //TODO outfit get(TODO), edit(TODO), delete(TODO)
+  { path: "creator", component: OutfitCreatorComponent }, //outfit create
   { path: "**", component: NotFoundComponent },
 ];
 

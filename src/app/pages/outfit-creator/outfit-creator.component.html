@@ -1,30 +1,63 @@
 <div class="controls">
+
+    <ng-container *ngIf="newImage">
+        <img [src]="newImage" alt="uploaded image">
+    </ng-container>
+    <ng-container *ngIf="!newImage === undefined">
+        <img [src]="outfit?.img" alt="photo of {{outfit?.name}}">
+    </ng-container>
+
+    <!-- i hate that this is how file upload with custom styles needs to be -->
+    <input type="file" id="file-input" (change)="handleFileInput($event)" accept="image/*" style="display: none;" />
+    <button mat-raised-button color="primary" (click)="fileInputLabel.click()">
+        <label #fileInputLabel for="file-input" class="file-label">
+            Upload new photo
+        </label>
+    </button>
+
     <mat-form-field>
         <mat-label>Outfit name</mat-label>
-        <input matInput placeholder="">
+        <input matInput [(ngModel)]="newName">
         <mat-hint>Name your outfit</mat-hint>
     </mat-form-field>
-    <button mat-raised-button color="primary" [disabled]="outfit.length === 0">
+    
+    <mat-form-field>
+        <mat-label>Type</mat-label>
+        <input matInput type="text" [(ngModel)]="newType">
+        <mat-hint>Suitable for</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="newDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker">
+            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <button mat-raised-button color="accent" (click)="saveOutfit()" [disabled]="outfitGarments.length === 0">
         Save outfit
     </button>
-    <!-- <span>TODO grag and nrop logic <a
-            href="https://v16.material.angular.io/cdk/drag-drop/overview#cdk-drag-drop-connected-sorting-group">cdk-drag-drop-connected-sorting-group</a>,
-        sort wardrobe by date (or add this metod to servise), overflow scroll???, save outfit logic
-        (post only IDs of garments as an array)</span> -->
 </div>
+
+<!-- <span>TODO sort wardrobe by date (or add this metod to servise), save outfit logic
+    (post only IDs of garments as an array)</span> -->
 
 <div class="cretor" cdkDropListGroup>
     <div class="section">
         <h2>Your wardrobe</h2>
-        <mat-card class="cards" cdkDropList #wardrobeList="cdkDropList" [cdkDropListData]="wardrobe"
+        <mat-card class="cards" cdkDropList #wardrobeList="cdkDropList" [cdkDropListData]="wardrobeGarments"
             [cdkDropListConnectedTo]="[outfitList]" (cdkDropListDropped)="drop($event)">
 
-            <div class="empty-label" *ngIf="wardrobe.length === 0">
+            <div class="empty-label" *ngIf="wardrobeGarments.length === 0">
                 <p class="empty-label">No clothes.</p>
-                <a mat-raised-button color="accent" routerLink="">Add your garments</a>
+                <a mat-raised-button color="accent" routerLink="/clothes">Add your clothes</a>
             </div>
             <div class="garments">
-                <app-garment *ngFor="let garment of wardrobe" [garment]="garment" cdkDrag>{{garment}}</app-garment>
+                <app-garment *ngFor="let garment of wardrobeGarments" [garment]="garment"
+                    cdkDrag>{{garment}}</app-garment>
             </div>
 
         </mat-card>
@@ -32,13 +65,14 @@
 
     <div class="section">
         <h2>Your outfit</h2>
-        <mat-card class="cards" cdkDropList #outfitList="cdkDropList" [cdkDropListData]="outfit"
+        <mat-card class="cards" cdkDropList #outfitList="cdkDropList" [cdkDropListData]="outfitGarments"
             [cdkDropListConnectedTo]="[wardrobeList]" (cdkDropListDropped)="drop($event)">
             <div class="garments">
-                <app-garment *ngFor="let garment of outfit" [garment]="garment" cdkDrag>{{garment}}</app-garment>
+                <app-garment *ngFor="let garment of outfitGarments" [garment]="garment"
+                    cdkDrag>{{garment}}</app-garment>
             </div>
 
-            <div *ngIf="outfit.length === 0" class="empty-label">
+            <div *ngIf="outfitGarments.length === 0" class="empty-label">
                 <p>No clothes. Drad from your wardrobe and drop here</p>
             </div>
 

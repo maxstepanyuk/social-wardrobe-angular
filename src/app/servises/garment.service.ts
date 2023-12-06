@@ -20,6 +20,10 @@ export class GarmentService {
     return this.garmentList.filter(garment => ids.includes(garment.id));
   }
 
+  getAllGarmentsExceptIds(ids: number[]): Garment[] {
+    return this.garmentList.filter(garment => !ids.includes(garment.id));
+  }  
+
   protected garmentList: Garment[] = [
     {
       id: 1,

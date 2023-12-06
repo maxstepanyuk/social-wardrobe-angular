@@ -5,6 +5,13 @@
     justify-content: center;
     // padding: 1em;
     margin-top: 1em;
+    gap: 1em;
+
+    img{
+        width: 5em;
+        height: 5em;
+        object-fit: cover;
+    }
 
     mat-form-field,
     button {
