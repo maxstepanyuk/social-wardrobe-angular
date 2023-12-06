@@ -1,15 +1,25 @@
 <mat-toolbar color="primary">
     <nav>
-        <a mat-button routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page">
-            <mat-icon>checkroom</mat-icon>
-            <span>Social Wardrobe</span>
-        </a>
-        <a mat-button routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/login">Login</a>
-        <a mat-button routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/sinup">Sinup</a>
-        <a mat-button routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/clothes">Clothes</a>
-        <a mat-button routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/details/1">Details/1</a>
-        <a mat-button routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/creator">Creator</a>
-        <a mat-button routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/outfits">Outfits</a>
+        <div class="left">
+            <a mat-button routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page">
+                <mat-icon>checkroom</mat-icon>
+                <span>Social Wardrobe</span>
+            </a>
+            <!-- <a mat-button routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/login">Login</a> -->
+            <!-- <a mat-button routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/sinup">Sinup</a> -->
+            <a mat-button routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/clothes">Clothes</a>
+            
+            <!-- <a mat-button routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/details/1">Details/1</a> -->
+            <!-- <a mat-button routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/creator">Creator</a> -->
+            <a mat-button routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/outfits">Outfits</a>
+            <a mat-button routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/feed">Feed*</a>
+        </div>
+        <div class="rigth">
+            <a mat-button routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/profile">
+                <mat-icon>account_circle</mat-icon>
+                <span>Profile*</span>
+            </a>
+        </div>
     </nav>
 </mat-toolbar>
 
