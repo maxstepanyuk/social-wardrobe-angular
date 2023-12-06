@@ -60,6 +60,8 @@ export class GarmentDetailsComponent {
     };
 
     // TODO: Send the updatedGarment object to the server, set the info to the fields or relode a page after saving
+    // if no id - create
+    // if there is id - update
     console.log('Updated garment object:', updatedGarment);
   }
 }
