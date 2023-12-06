@@ -1,4 +1,9 @@
-<h2>Your outfits</h2>
+<div class="top">
+    <h2>Your outfits</h2>
+    <a mat-raised-button routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/creator"
+        color="primary">Add outfits</a>
+</div>
+
 <div class="outfits">
-    <app-outfit *ngFor="let outfitItem of outfitList" [outfit]="outfitItem" ></app-outfit>
+    <app-outfit *ngFor="let outfitItem of outfitList" [outfit]="outfitItem"></app-outfit>
 </div>
