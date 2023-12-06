@@ -26,6 +26,12 @@ import { OutfitsComponent } from './pages/outfits/outfits.component';
 import { OutfitComponent } from './components/outfit/outfit.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +59,11 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatCardModule,
-    DragDropModule
+    DragDropModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

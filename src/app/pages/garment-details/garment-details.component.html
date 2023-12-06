@@ -1,21 +1,71 @@
 <div class="garment-details">
-    <img [src]="garment?.img" alt="photo of {{garment?.name}}">
+
+    <ng-container *ngIf="newImage">
+        <img [src]="newImage" alt="uploaded image">
+    </ng-container>
+    <ng-container *ngIf="!newImage">
+        <img [src]="garment?.img" alt="photo of {{garment?.name}}">
+    </ng-container>
 
     <div class="right">
 
         <div class="right-top">
-            <h2>{{garment?.name}}</h2>
-            <p>{{garment?.type}}</p>
-            <p>Last worn at {{garment?.date?.getDate()}}-{{garment?.date?.getMonth()}}-{{garment?.date?.getFullYear()}}
-            </p>
+            <h2>{{newName}}</h2>
+            <!-- <h2>{{garment?.name}}</h2> -->
+            
+            <mat-form-field class="example-form-field">
+                <mat-label>Name</mat-label>
+                <input matInput type="text" [(ngModel)]="newName">
+            </mat-form-field>
+
+            <!-- <p>{{garment?.type}}</p> -->
+            <p>{{newType}}</p>
+            <mat-form-field>
+                <mat-label>Type</mat-label>
+                <!-- <mat-select formControlName="type">
+                    <mat-option *ngFor="let type of types" [value]="type">{{ type }}</mat-option>
+                </mat-select> -->
+                <input matInput type="text" [(ngModel)]="newType">
+            </mat-form-field>
+
+            
+            
+            <!-- <p>Last worn at {{garment?.date?.getDate()}}-{{garment?.date?.getMonth()}}-{{garment?.date?.getFullYear()}}</p> -->
+            <p>Last worn at {{newDate.getDate()}}-{{newDate.getMonth()}}-{{newDate.getFullYear()}}</p>
+            <mat-form-field>
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="newDate">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker">
+                    <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+
+
+
+            <div class="buttons">
+                <!-- i hate that this is how file upload with custom styles needs to be -->
+                <input type="file" id="file-input" (change)="handleFileInput($event)" accept="image/*"
+                    style="display: none;" />
+                <button mat-raised-button color="primary" (click)="fileInputLabel.click()">
+                    <label #fileInputLabel for="file-input" class="file-label">
+                        Upload new photo
+                    </label>
+                </button>
+
+                <button mat-raised-button color="accent" (click)="saveGarment()">Save*</button>
+                <!-- <button mat-stroked-button color="warn">Delete *</button> -->
+            </div>
+
         </div>
         <!-- moove to right-bottom div or something like that -->
         <h3>Used in these outfits:</h3>
 
         <mat-card class="right-bottom">
             <div class="outfits">
-                <!-- getWhereGarment -->
-                <app-outfit *ngFor="let outfitItem of outfitList" [outfit]="outfitItem" ></app-outfit>
+                <app-outfit *ngFor="let outfitItem of outfitList" [outfit]="outfitItem"></app-outfit>
             </div>
         </mat-card>
     </div>

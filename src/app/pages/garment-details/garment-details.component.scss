@@ -13,6 +13,10 @@
     }
 }
 
+.file-label{
+    cursor: pointer;
+}
+
 .right {
     padding: 1em;
     display: flex;
@@ -22,6 +26,16 @@
 .right-top,
 .right-bottom {
     flex: 1;
+}
+
+.right-top{
+    display: flex;
+    flex-direction: column;
+
+    .buttons{
+        display: flex;
+        gap: 1em;
+    }
 }
 
 .right-bottom {
