@@ -8,6 +8,7 @@ import { OutfitsComponent } from './pages/outfits/outfits.component';
 import { GarmentDetailsComponent } from './pages/garment-details/garment-details.component';
 import { OutfitCreatorComponent } from './pages/outfit-creator/outfit-creator.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent }, //landing
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: "outfits", component: OutfitsComponent }, //get all outfit
   { path: "outfit/:id", component: OutfitCreatorComponent }, //TODO outfit get(TODO), edit(TODO), delete(TODO)
   { path: "creator", component: OutfitCreatorComponent }, //outfit create
+  { path: "profile/:id", component: ProfileComponent }, //TODO id
   { path: "**", component: NotFoundComponent },
 ];
 

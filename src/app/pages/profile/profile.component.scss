@@ -1,0 +1,66 @@
+.profile {
+    margin: 2em 4em;
+}
+
+.user {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    margin-bottom: 2em;
+}
+
+.userimg {
+    width: 12em;
+    height: 16em;
+    object-fit: cover;
+}
+
+.about {
+    width: 24em;
+    h1 {
+        font-size: 2em;
+        width: inherit;
+    }
+    p{
+        width: inherit;
+
+    }
+    .buttons {
+        width: inherit;
+        display: flex;
+        gap: 1em;
+    }
+}
+
+.content{
+    max-width: 96em;
+    margin: auto;
+}
+
+mat-card{
+    padding: 1em;
+    margin: 1em;
+
+    mat-tab{
+        padding: 1em;
+        
+    }
+}
+
+.outfits{
+    padding: 2em;
+    display: flex;
+    gap: 1em;
+    overflow: scroll;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.garments {
+    padding: 2em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}

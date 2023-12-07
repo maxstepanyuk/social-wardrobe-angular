@@ -1,1 +1,41 @@
-<p>profile works!</p>
+<div class="profile">
+
+    <div class="user">
+        <img class="userimg" src="https://picsum.photos/200/300?image=1027" alt="profile picture of username">
+
+        <div class="about">
+            <h1>username</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid, itaque?</p>
+
+            <div class="buttons">
+                <!-- hide if this your profile or not -->
+                <!-- for a test can be done with user id - if odd or even -->
+                <button mat-raised-button color="primary" (click)="followUser()">
+                    {{ following ? 'Unfollow' : 'Follow' }}
+                </button>
+                <button mat-stroked-button color="primary">Edit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TODO https://v16.material.angular.io/components/tabs/examples#tab-group-async -->
+
+    <mat-card class="content">
+        <mat-tab-group  dynamicHeight mat-stretch-tabs="false" mat-align-tabs="center"
+        animationDuration="300ms">
+        <mat-tab label="Outfits">
+                
+                <div class="outfits">
+                    <app-outfit *ngFor="let outfitItem of outfitList" [outfit]="outfitItem"></app-outfit>
+                </div>
+                
+            </mat-tab>
+            <mat-tab label="Clothes">
+                <div class="garments">
+                    <app-garment *ngFor="let garment of garmentList" [garment]="garment"></app-garment>
+                </div>
+        </mat-tab>
+    </mat-tab-group>
+    
+</mat-card>
+</div>
