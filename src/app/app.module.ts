@@ -33,7 +33,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { ProfileComponent } from './pages/profile/profile.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { SearchComponent } from './pages/search/search.component'; 
+import { SearchComponent } from './pages/search/search.component';
+import { UserTableComponent } from './components/user-table/user-table.component'; 
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { SearchComponent } from './pages/search/search.component';
     OutfitComponent,
     NotFoundComponent,
     ProfileComponent,
-    SearchComponent
+    SearchComponent,
+    UserTableComponent
   ],
   imports: [
     BrowserModule,
