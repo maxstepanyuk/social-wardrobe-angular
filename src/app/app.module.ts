@@ -32,7 +32,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ProfileComponent } from './pages/profile/profile.component';
 import {MatTabsModule} from '@angular/material/tabs';
-import {MatSnackBarModule} from '@angular/material/snack-bar'; 
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { SearchComponent } from './pages/search/search.component'; 
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     OutfitsComponent,
     OutfitComponent,
     NotFoundComponent,
-    ProfileComponent
+    ProfileComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
