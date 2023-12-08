@@ -31,10 +31,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ProfileComponent } from './pages/profile/profile.component';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SearchComponent } from './pages/search/search.component';
-import { UserTableComponent } from './components/user-table/user-table.component'; 
+import { UserTableComponent } from './components/user-table/user-table.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,7 @@ import { UserTableComponent } from './components/user-table/user-table.component
     NotFoundComponent,
     ProfileComponent,
     SearchComponent,
-    UserTableComponent
+    UserTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,6 +76,9 @@ import { UserTableComponent } from './components/user-table/user-table.component
     MatNativeDateModule,
     MatTabsModule,
     MatSnackBarModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,31 @@
+h2 {
+    font-size: 2em;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.search {
+    margin: 2em;
+    padding: 2em;
+}
+
+.profile-img {
+    height: 4em;
+    width: 3em;
+    object-fit: cover;
+}
+
+table {
+    width: 100%;
+}
+
+.mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+td,
+th {
+    width: 25%;
+}
