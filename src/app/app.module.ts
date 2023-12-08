@@ -39,6 +39,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
+import { FeedComponent } from './pages/feed/feed.component';
+import { FeedElementComponent } from './components/feed-element/feed-element.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,7 @@ import { ProfileEditComponent } from './pages/profile-edit/profile-edit.componen
     SearchComponent,
     UserTableComponent,
     ProfileEditComponent,
+    FeedComponent,
   ],
   imports: [
     BrowserModule,
