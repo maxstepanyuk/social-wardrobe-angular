@@ -15,4 +15,9 @@ export class ClothesComponent {
   constructor(){
     this.garmentList = this.garmentService.getAllGarments();
   }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    console.log(filterValue);
+  }
 }
