@@ -1,0 +1,44 @@
+.editor {
+    width: 100%;
+    min-height: 100%;
+    margin: auto;
+
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    mat-card{
+        padding: 2em;
+    }    
+}
+
+
+.fields {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.editor form mat-form-field {
+    margin-bottom: 1em;
+}
+
+form {
+    display: flex;
+    gap: 1em;
+}
+
+.img-upload {
+    display: flex;
+    gap: 1em;
+
+    flex-direction: column;
+
+    .userimg {
+        width: 12em;
+        height: 16em;
+        object-fit: cover;
+    }
+}

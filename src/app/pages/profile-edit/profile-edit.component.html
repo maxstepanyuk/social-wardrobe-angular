@@ -1,1 +1,79 @@
-<p>profile-edit works!</p>
+<div class="editor">
+
+    <h2>Edit profile</h2>
+
+    <mat-card>
+
+
+        <form>
+
+            <div class="img-upload">
+
+                <!-- TODO -->
+                <img src="https://picsum.photos/200/300?image=222" alt="uploaded image" class="userimg">
+                <!-- <ng-container *ngIf="newImage" class="userimg">
+                <img [src]="newImage" alt="uploaded image">
+            </ng-container> 
+            <ng-container *ngIf="!newImage === undefined" class="userimg">
+                <img [src]="outfit?.img" alt="photo of {{outfit?.name}}">
+            </ng-container> -->
+
+                <!-- i hate that this is how file upload with custom styles needs to be -->
+                <input type="file" id="file-input" (change)="handleFileInput($event)" accept="image/*"
+                    style="display: none;" />
+                <button mat-raised-button color="primary" (click)="fileInputLabel.click()">
+                    <label #fileInputLabel for="file-input" class="file-label">
+                        Upload new photo
+                    </label>
+                </button>
+            </div>
+
+            <div class="fields">
+
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="email@example.com" [formControl]="email" type="email" required>
+                    <mat-hint>New account email</mat-hint>
+                    <mat-icon matSuffix>email</mat-icon>
+                    <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Usermane</mat-label>
+                    <input matInput placeholder="username" required>
+                    <mat-hint>Create new usermane</mat-hint>
+                    <mat-icon matSuffix>person_add_alt</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Create Password</mat-label>
+                    <input matInput [type]="hideNewPass ? 'password' : 'text'" required minlength="8">
+                    <button mat-icon-button matSuffix (click)="hideNewPass = !hideNewPass"
+                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideNewPass">
+                        <mat-icon>{{hideNewPass ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <!-- <mat-error *ngIf="newPassInvalid()">{{getNewPassErrorMessage()}}</mat-error> -->
+                    <!-- msg: conditions not met -->
+                    <mat-hint>Letters, numbers, symbols allowed</mat-hint>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Confirm Password</mat-label>
+                    <input matInput type="password" required>
+                    <button mat-icon-button matSuffix disabled="true">
+                        <mat-icon>{{arePasswordsMatch() ? 'lock' : 'lock_open'}}</mat-icon>
+                    </button>
+                    <!-- <mat-error *ngIf="newPassInvalid()">{{getNewPassErrorMessage()}}</mat-error> -->
+                    <!-- msg: passwords dont match -->
+                    <mat-hint>Repeat the same password</mat-hint>
+                </mat-form-field>
+
+                <mat-card-actions>
+                    <button mat-raised-button color="accent">Save</button>
+                </mat-card-actions>
+            </div>
+
+        </form>
+    </mat-card>
+
+</div>
