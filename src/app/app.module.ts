@@ -61,6 +61,7 @@ import { FeedElementComponent } from './components/feed-element/feed-element.com
     UserTableComponent,
     ProfileEditComponent,
     FeedComponent,
+    FeedElementComponent,
   ],
   imports: [
     BrowserModule,
