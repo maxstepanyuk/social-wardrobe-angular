@@ -1,7 +1,15 @@
 <div class="top">
     <h2>Your outfits</h2>
-    <a mat-raised-button routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/creator"
-        color="primary">Add outfits</a>
+    
+    <div class="actions">
+        <a mat-raised-button routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/creator"
+            color="primary">Add outfits</a>
+        
+            <mat-form-field>
+            <mat-label>Find outfits</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex: Smart" #input>
+        </mat-form-field>
+    </div>
 </div>
 
 <div class="outfits">

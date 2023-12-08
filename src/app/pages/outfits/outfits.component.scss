@@ -1,18 +1,35 @@
 .top {
-    margin-top: 1em;
-    display: flex;
-    
+
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 1em;
 
     h2 {
+        text-align: center;
+        font-size: 2em;
+        margin-bottom: 1em;
+    }
+
+    .actions {
+        width: 50%;
+        display: flex;
+        gap: 1em;
+        align-items: center;
+        justify-content: center;
+
+        mat-form-field {
+            width: 60%;
+        }
+    }
+
+    h2 {
+        text-align: center;
         font-size: 2em;
     }
 }
 
-
-.outfits{
+.outfits {
     padding: 2em;
     display: flex;
     gap: 1em;
