@@ -19,9 +19,17 @@
                 </mat-form-field>
 
                 <mat-form-field>
+                    <mat-label>Usermane</mat-label>
+                    <input matInput placeholder="username" required>
+                    <mat-hint>Create new usermane</mat-hint>
+                    <mat-icon matSuffix>person_add_alt</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field>
                     <mat-label>Create Password</mat-label>
                     <input matInput [type]="hideNewPass ? 'password' : 'text'" required minlength="8">
-                    <button mat-icon-button matSuffix (click)="hideNewPass = !hideNewPass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideNewPass">
+                    <button mat-icon-button matSuffix (click)="hideNewPass = !hideNewPass"
+                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideNewPass">
                         <mat-icon>{{hideNewPass ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
                     <!-- <mat-error *ngIf="newPassInvalid()">{{getNewPassErrorMessage()}}</mat-error> -->
@@ -47,7 +55,7 @@
             </form>
 
             <p>Have an account? <a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Login</a>
-            
+
         </mat-card-content>
     </mat-card>
 </div>
