@@ -38,6 +38,7 @@ import { UserTableComponent } from './components/user-table/user-table.component
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { MatTableModule } from '@angular/material/table';
     ProfileComponent,
     SearchComponent,
     UserTableComponent,
+    ProfileEditComponent,
   ],
   imports: [
     BrowserModule,

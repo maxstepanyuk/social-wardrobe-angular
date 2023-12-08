@@ -10,6 +10,7 @@ import { OutfitCreatorComponent } from './pages/outfit-creator/outfit-creator.co
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SearchComponent } from './pages/search/search.component';
+import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent }, //landing
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: "outfits", component: OutfitsComponent }, //get all outfit
   { path: "outfit/:id", component: OutfitCreatorComponent }, //TODO outfit get(TODO), edit(TODO), delete(TODO)
   { path: "creator", component: OutfitCreatorComponent }, //outfit create
+  { path: "profile/edit", component: ProfileEditComponent }, //TODO id
   { path: "profile/:id", component: ProfileComponent }, //TODO id
   { path: "search", component: SearchComponent },
   { path: "**", component: NotFoundComponent },
