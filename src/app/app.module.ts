@@ -41,6 +41,7 @@ import { MatTableModule } from '@angular/material/table';
 import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
 import { FeedComponent } from './pages/feed/feed.component';
 import { FeedElementComponent } from './components/feed-element/feed-element.component';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import { FeedElementComponent } from './components/feed-element/feed-element.com
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
+    MatDividerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
