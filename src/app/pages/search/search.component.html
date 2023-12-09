@@ -20,7 +20,7 @@
     <ng-container matColumnDef="img" class="img-column">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Img </th>
       <td mat-cell *matCellDef="let row">
-        <img [src]="row.img" alt="Image of {{row.username}}" class="profile-img">
+        <img mat-card-avatar [src]="row.img" alt="Image of {{row.username}}" class="profile-img">
       </td>
     </ng-container>
 
