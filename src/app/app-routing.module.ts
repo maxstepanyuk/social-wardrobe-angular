@@ -11,6 +11,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SearchComponent } from './pages/search/search.component';
 import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
+import { FeedComponent } from './pages/feed/feed.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent }, //landing
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: "profile/edit", component: ProfileEditComponent }, //TODO id
   { path: "profile/:id", component: ProfileComponent }, //TODO id
   { path: "search", component: SearchComponent },
+  { path: "feed", component: FeedComponent },
   { path: "**", component: NotFoundComponent },
 ];
 
