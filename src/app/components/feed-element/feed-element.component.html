@@ -1,1 +1,25 @@
-<p>feed-element works!</p>
+<mat-card class="feed-element">
+
+    <mat-card-header>
+        <img mat-card-avatar class="profile-img" src="https://picsum.photos/200/300?image=1027" alt="">
+        <a mat-card-title class="username" href="/profile/1">user1</a>
+        <mat-card-subtitle>added a garment</mat-card-subtitle>
+        <!-- <a mat-card-title class="username" href="/profile/1">{{username}}</a>
+        <mat-card-subtitle>{{subtitle}}</mat-card-subtitle> -->
+    </mat-card-header>
+
+    <mat-card-content>
+        <!-- temp -->
+        <!-- <app-garment></app-garment> -->
+        <app-outfit [outfit]="post"></app-outfit>
+
+        <!-- todo ??? -->
+        <!-- <ng-container *ngIf="postType === postTypes.Garment">
+            <app-garment [garment]="post"></app-garment>
+        </ng-container>
+        <ng-container *ngIf="postType === postTypes.Outfit">
+            <app-outfit [outfit]="post"></app-outfit>
+        </ng-container> -->
+    </mat-card-content>
+
+</mat-card>

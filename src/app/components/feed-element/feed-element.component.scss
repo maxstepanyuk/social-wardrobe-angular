@@ -1,0 +1,18 @@
+.feed-element{
+    width: 24em;
+    padding-bottom: 1em;
+}
+
+.username{
+    text-decoration: none;
+    color: black;
+}
+
+mat-card-content{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+
+}
