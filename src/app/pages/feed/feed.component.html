@@ -1,1 +1,9 @@
-<p>feed works!</p>
+<div class="feed">
+    <h2>Feed</h2>
+    <div class="feed-items">
+        <ng-container *ngFor="let outfitItem of outfitList">
+            <app-feed-element [post]="outfitItem"></app-feed-element>
+            <mat-divider></mat-divider>
+        </ng-container>
+    </div>
+</div>

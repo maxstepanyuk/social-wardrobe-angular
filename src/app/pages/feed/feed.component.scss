@@ -1,0 +1,28 @@
+.feed {
+    width: 48em;
+    margin: auto;
+    margin-top: 1em;
+
+
+    h2 {
+        font-size: 2em;
+        text-align: center;
+        margin-bottom: 1em;
+    }
+
+    .feed-items {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2em;
+
+        margin: auto;
+    }
+
+    mat-divider{
+        margin: 1em 0em;
+        width: 100%;
+    }
+
+}

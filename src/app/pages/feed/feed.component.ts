@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Outfit } from 'src/app/components/outfit/outfit';
+import { OutfitService } from '../../servises/outfit.service';
+
 
 @Component({
   selector: 'app-feed',
@@ -6,5 +9,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./feed.component.scss']
 })
 export class FeedComponent {
+  outfitList: Outfit[] = [];
+  outfitService: OutfitService = inject(OutfitService)
 
+  constructor(){
+    this.outfitList = this.outfitService.getAllOutfits();
+  }
 }
