@@ -16,7 +16,7 @@ import { FeedComponent } from './pages/feed/feed.component';
 const routes: Routes = [
   { path: "", component: HomeComponent }, //landing
   { path: "login", component: LoginComponent }, //todo logic
-  { path: "sinup", component: SignupComponent }, //todo logic
+  { path: "signup", component: SignupComponent }, //todo logic
   { path: "clothes", component: ClothesComponent }, //get all clothes(garments)
   //TODO rename `details` to `clothes` 
   { path: "details", component: GarmentDetailsComponent }, //TODO garment create NEW
