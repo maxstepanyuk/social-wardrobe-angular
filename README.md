@@ -9,6 +9,16 @@ Contact me or see what I'm up to - [linktree](https://linktr.ee/purpexe)
 
 # Angular
 
+## Install
+
+install packages
+
+```
+npm install
+```
+
+## Angular CLI
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.7.
 
 - Development server
