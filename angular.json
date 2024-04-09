@@ -70,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "socialWardrobe:build:production"
+              "buildTarget": "socialWardrobe:build:production"
             },
             "development": {
-              "browserTarget": "socialWardrobe:build:development"
+              "buildTarget": "socialWardrobe:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -81,7 +81,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "socialWardrobe:build"
+            "buildTarget": "socialWardrobe:build"
           }
         },
         "test": {
