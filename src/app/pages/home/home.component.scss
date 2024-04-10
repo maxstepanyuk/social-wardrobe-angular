@@ -30,3 +30,13 @@
     width: 50%;
     height: 100%;
 }
+
+.link, .link a{
+    color: rgba(0, 0, 0, 0.2);
+    margin-top: 1em;
+    transition: color 0.3s;
+}
+
+.link a:hover {
+    color: black;
+}
