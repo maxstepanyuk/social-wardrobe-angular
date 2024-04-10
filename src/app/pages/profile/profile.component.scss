@@ -1,24 +1,24 @@
 .profile {
-    margin: 2em 4em;
+    margin: 2rem 4rem;
 }
 
 .user {
     display: flex;
-    gap: 1em;
+    gap: 1rem;
     justify-content: center;
-    margin-bottom: 2em;
+    margin-bottom: 2rem;
 }
 
 .userimg {
-    width: 12em;
-    height: 16em;
+    width: 12rem;
+    height: 16rem;
     object-fit: cover;
 }
 
 .about {
-    width: 24em;
+    width: 24rem;
     h1 {
-        font-size: 2em;
+        font-size: 2rem;
         width: inherit;
     }
     p{
@@ -28,39 +28,39 @@
     .buttons {
         width: inherit;
         display: flex;
-        gap: 1em;
+        gap: 1rem;
     }
 }
 
 .content{
-    max-width: 96em;
+    max-width: 96rem;
     margin: auto;
 }
 
 mat-card{
-    padding: 1em;
-    margin: 1em;
+    padding: 1rem;
+    margin: 1rem;
 
     mat-tab{
-        padding: 1em;
+        padding: 1rem;
         
     }
 }
 
 .outfits{
-    padding: 2em;
+    padding: 2rem;
     display: flex;
-    gap: 1em;
+    gap: 1rem;
     overflow: scroll;
     flex-wrap: wrap;
     justify-content: center;
 }
 
 .garments {
-    padding: 2em;
+    padding: 2rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 1em;
+    gap: 1rem;
 }

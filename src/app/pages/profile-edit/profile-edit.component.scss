@@ -9,7 +9,7 @@
     align-items: center;
 
     mat-card{
-        padding: 2em;
+        padding: 2rem;
     }    
 }
 
@@ -18,27 +18,27 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 2em;
+    margin-bottom: 2rem;
 }
 
 .editor form mat-form-field {
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
 }
 
 form {
     display: flex;
-    gap: 1em;
+    gap: 1rem;
 }
 
 .img-upload {
     display: flex;
-    gap: 1em;
+    gap: 1rem;
 
     flex-direction: column;
 
     .userimg {
-        width: 12em;
-        height: 16em;
+        width: 12rem;
+        height: 16rem;
         object-fit: cover;
     }
 }

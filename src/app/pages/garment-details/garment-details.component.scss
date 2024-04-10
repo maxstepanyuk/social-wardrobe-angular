@@ -18,7 +18,7 @@
 }
 
 .right {
-    padding: 1em;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
 }
@@ -34,7 +34,7 @@
 
     .buttons{
         display: flex;
-        gap: 1em;
+        gap: 1rem;
     }
 }
 
@@ -44,8 +44,8 @@
 
 .outfits {
     display: flex;
-    gap: 1em;
-    padding: 1em;
+    gap: 1rem;
+    padding: 1rem;
     flex-wrap: wrap;
     flex-direction: row;
 
@@ -54,13 +54,13 @@
 }
 
 h2 {
-    font-size: 3em;
+    font-size: 3rem;
 }
 
 p {
-    font-size: 1em;
+    font-size: 1rem;
 }
 
 h3 {
-    font-size: 2em;
+    font-size: 2rem;
 }

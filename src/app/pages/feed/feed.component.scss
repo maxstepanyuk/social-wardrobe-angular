@@ -1,13 +1,13 @@
 .feed {
-    width: 48em;
+    width: 48rem;
     margin: auto;
-    margin-top: 1em;
+    margin-top: 1rem;
 
 
     h2 {
-        font-size: 2em;
+        font-size: 2rem;
         text-align: center;
-        margin-bottom: 1em;
+        margin-bottom: 1rem;
     }
 
     .feed-items {
@@ -15,13 +15,13 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 2em;
+        gap: 2rem;
 
         margin: auto;
     }
 
     mat-divider{
-        margin: 1em 0em;
+        margin: 1rem 0rem;
         width: 100%;
     }
 

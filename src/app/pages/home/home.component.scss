@@ -6,20 +6,20 @@
     align-items: center;
 }
 
-.home .left {   
+.home .left {
     display: flex;
     flex-direction: column;
     margin: auto;
     align-items: flex-end;
-    margin-right: 2em;
+    margin-right: 2rem;
 }
 
 .home .left h2 {
-    font-size: 3em;
+    font-size: 3rem;
 }
 
 .home .left p {
-    font-size: 1em;
+    font-size: 1rem;
 }
 
 .home .right {
@@ -31,9 +31,10 @@
     height: 100%;
 }
 
-.link, .link a{
+.link,
+.link a {
     color: rgba(0, 0, 0, 0.2);
-    margin-top: 1em;
+    margin-top: 1rem;
     transition: color 0.3s;
 }
 

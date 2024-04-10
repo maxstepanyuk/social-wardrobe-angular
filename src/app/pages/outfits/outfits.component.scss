@@ -3,18 +3,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 1em;
+    margin-top: 1rem;
 
     h2 {
         text-align: center;
-        font-size: 2em;
-        margin-bottom: 1em;
+        font-size: 2rem;
+        margin-bottom: 1rem;
     }
 
     .actions {
         width: 50%;
         display: flex;
-        gap: 1em;
+        gap: 1rem;
         align-items: center;
         justify-content: center;
 
@@ -25,14 +25,14 @@
 
     h2 {
         text-align: center;
-        font-size: 2em;
+        font-size: 2rem;
     }
 }
 
 .outfits {
-    padding: 2em;
+    padding: 2rem;
     display: flex;
-    gap: 1em;
+    gap: 1rem;
     overflow: scroll;
     flex-wrap: wrap;
     justify-content: center;

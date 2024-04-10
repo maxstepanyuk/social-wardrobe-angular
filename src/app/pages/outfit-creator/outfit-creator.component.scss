@@ -3,26 +3,26 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    // padding: 1em;
-    margin-top: 1em;
-    gap: 1em;
+    // padding: 1rem;
+    margin-top: 1rem;
+    gap: 1rem;
 
     img{
-        width: 5em;
-        height: 5em;
+        width: 5rem;
+        height: 5rem;
         object-fit: cover;
     }
 
     mat-form-field,
     button {
-        margin-right: 1em;
+        margin-right: 1rem;
     }
 }
 
 .cretor {
     min-height: 50%;
     display: flex;
-    margin-top: 1em;
+    margin-top: 1rem;
 }
 
 .section {
@@ -30,15 +30,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1em;
-    padding-top: 0em;
+    padding: 1rem;
+    padding-top: 0rem;
     min-height: 50%;
 }
 
 .empty-label {
     margin: auto;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .cards {
@@ -52,9 +52,9 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    min-width: 4em;
-    gap: 1em;
-    padding: 1em;
+    min-width: 4rem;
+    gap: 1rem;
+    padding: 1rem;
 }
 
 .cdk-drag-preview {
