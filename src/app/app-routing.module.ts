@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: "login", component: LoginComponent }, //todo logic
   { path: "signup", component: SignupComponent }, //todo logic
   { path: "clothes", component: ClothesComponent }, //get all clothes(garments)
-  //TODO rename `details` to `clothes` 
+  //TODO rename `details` to `clothes` OR `garments`
   { path: "details", component: GarmentDetailsComponent }, //TODO garment create NEW
   { path: "details/:id", component: GarmentDetailsComponent }, //garment get, edit(TODO), delete(TODO)
   { path: "outfits", component: OutfitsComponent }, //get all outfit

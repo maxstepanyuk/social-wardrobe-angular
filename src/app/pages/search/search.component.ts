@@ -48,8 +48,8 @@ const BIO: string = "Lorem ipsum dolor sit amet?"
 })
 
 export class SearchComponent {
-  // displayedColumns: string[] = ['id', 'username', 'bio', 'img'];
-  displayedColumns: string[] = ['img', 'username', 'bio', 'buttons'];
+  displayedColumns: string[] = ['id', 'username', 'bio', 'img']; //TODO hide this in prod
+  // displayedColumns: string[] = ['img', 'username', 'bio', 'buttons'];
   dataSource!: MatTableDataSource<User>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
