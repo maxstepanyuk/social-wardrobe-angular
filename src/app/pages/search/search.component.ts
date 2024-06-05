@@ -48,7 +48,7 @@ const BIO: string = "Lorem ipsum dolor sit amet?"
 })
 
 export class SearchComponent {
-  displayedColumns: string[] = ['id', 'username', 'bio', 'img']; //TODO hide this in prod
+  displayedColumns: string[] = ['id', 'username', 'bio', 'img', 'buttons']; //TODO hide this in prod
   // displayedColumns: string[] = ['img', 'username', 'bio', 'buttons'];
   dataSource!: MatTableDataSource<User>;
 
