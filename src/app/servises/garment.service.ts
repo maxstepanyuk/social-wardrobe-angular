@@ -1,15 +1,31 @@
 import { Injectable } from '@angular/core';
 import { Garment } from './../components/garment/garment'
+import { SupabaseClient } from '@supabase/supabase-js';
+import { SupabaseService } from './supabase.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GarmentService {
 
-  constructor() { }
+  private supabase: SupabaseClient;
+
+  constructor(
+    private supabaseService: SupabaseService
+
+  ) {
+    this.supabase = this.supabaseService.getClient();
+  }
 
   getAllGarments(): Garment[] {
     return this.garmentList;
+    // return const { data, error } = await this.supabase
+    //   .from('countries')
+    //   .select()
+  }
+
+  addGarment(garment: Garment)  {
+
   }
 
   getGarmentById(id: number): Garment | undefined {
