@@ -4,7 +4,7 @@ Created by maksymstepaniuk ([maxstepanyuk](https://github.com/maxstepanyuk) on g
 
 Before using this in your own works, please ask me first.
 
-Contact me or see what I'm up to - [linktree](https://linktr.ee/purpexe)
+Contact me or see what I'm up to - [maksstep.com](https://maksstep.com) or [linktree](https://linktr.ee/purpexe)
 
 
 # Angular
