@@ -1,17 +1,19 @@
 <div class="top">
-    <h2>Your outfits</h2>
-    
-    <div class="actions">
-        <a mat-raised-button routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/creator"
-            color="primary">Add outfits</a>
-        
-            <mat-form-field>
-            <mat-label>Find outfits</mat-label>
-            <input matInput (keyup)="applyFilter($event)" placeholder="Ex: Smart" #input>
-        </mat-form-field>
-    </div>
+  <h2>Your outfits</h2>
+
+  <div class="actions">
+    <a mat-raised-button routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/creator"
+    color="primary">Add outfits</a>
+
+    <mat-form-field>
+      <mat-label>Find outfits</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex: Smart" #input>
+    </mat-form-field>
+  </div>
 </div>
 
 <div class="outfits">
-    <app-outfit *ngFor="let outfitItem of outfitList" [outfit]="outfitItem"></app-outfit>
+  @for (outfitItem of outfitList; track outfitItem) {
+    <app-outfit [outfit]="outfitItem"></app-outfit>
+  }
 </div>

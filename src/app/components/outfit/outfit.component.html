@@ -1,20 +1,22 @@
 <mat-card class="outfit">
-    
-    <ng-container *ngIf="outfit.img">
-        <img class="outfit-img" [src]="outfit.img" alt="photo of {{outfit.name}} outfit">
-    </ng-container>
-    <!-- If outfit.img is not present, display a horizontal list of garment images -->
-    <ng-container *ngIf="!outfit.img">
-        <div class="garments-list">
-            <img *ngFor="let garment of outfit.garments" [src]="garment.img" alt="photo of {{garment.name}}">
-        </div>
-    </ng-container>
 
-    <a mat-button color="primary" [routerLink]="['/outfit/', outfit.id]" routerLinkActive="active"
-        ariaCurrentWhenActive="page">
-        {{outfit.name}}
-    </a>
+  @if (outfit.img) {
+    <img class="outfit-img" [src]="outfit.img" alt="photo of {{outfit.name}} outfit">
+  }
+  <!-- If outfit.img is not present, display a horizontal list of garment images -->
+  @if (!outfit.img) {
+    <div class="garments-list">
+      @for (garment of outfit.garments; track garment) {
+        <img [src]="garment.img" alt="photo of {{garment.name}}">
+      }
+    </div>
+  }
 
-    <p>{{outfit.type}} - {{calculateDaysSinceLastWorn(outfit.date)}} days ago</p>
+  <a mat-button color="primary" [routerLink]="['/outfit/', outfit.id]" routerLinkActive="active"
+    ariaCurrentWhenActive="page">
+    {{outfit.name}}
+  </a>
+
+  <p>{{outfit.type}} - {{calculateDaysSinceLastWorn(outfit.date)}} days ago</p>
 
 </mat-card>

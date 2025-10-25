@@ -1,9 +1,9 @@
 <div class="feed">
-    <h2>Feed</h2>
-    <div class="feed-items">
-        <ng-container *ngFor="let outfitItem of outfitList">
-            <app-feed-element [post]="outfitItem"></app-feed-element>
-            <mat-divider></mat-divider>
-        </ng-container>
-    </div>
+  <h2>Feed</h2>
+  <div class="feed-items">
+    @for (outfitItem of outfitList; track outfitItem) {
+      <app-feed-element [post]="outfitItem"></app-feed-element>
+      <mat-divider></mat-divider>
+    }
+  </div>
 </div>

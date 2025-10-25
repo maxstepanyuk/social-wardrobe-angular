@@ -1,44 +1,46 @@
 <div class="login-form">
 
-    <h2>TODO: check inputs, submit logic, Reactive Form</h2>
+  <h2>TODO: check inputs, submit logic, Reactive Form</h2>
 
-    <mat-card>
-        <mat-card-content>
+  <mat-card>
+    <mat-card-content>
 
-            <mat-card-title>
-                <h2>Login</h2>
-            </mat-card-title>
+      <mat-card-title>
+        <h2>Login</h2>
+      </mat-card-title>
 
-            <form>
-                <mat-form-field>
-                    <mat-label>Email</mat-label>
-                    <input matInput placeholder="email@example.com" [formControl]="email" type="email" required>
-                    <mat-hint>Use your real email</mat-hint>
-                    <mat-icon matSuffix>email</mat-icon>
-                    <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
-                </mat-form-field>
+      <form>
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="email@example.com" [formControl]="email" type="email" required>
+          <mat-hint>Use your real email</mat-hint>
+          <mat-icon matSuffix>email</mat-icon>
+          @if (email.invalid) {
+            <mat-error>{{getEmailErrorMessage()}}</mat-error>
+          }
+        </mat-form-field>
 
-                <mat-form-field>
-                    <mat-label>Password</mat-label>
-                    <input matInput [type]="hidePass ? 'password' : 'text'" required minlength="8">
-                    <button mat-icon-button matSuffix (click)="hidePass = !hidePass" [attr.aria-label]="'Hide password'"
-                        [attr.aria-pressed]="hidePass">
-                        <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button>
-                    <!-- <mat-error *ngIf="password">{{getPassErrorMessage()}}</mat-error> -->
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput [type]="hidePass ? 'password' : 'text'" required minlength="8">
+          <button mat-icon-button matSuffix (click)="hidePass = !hidePass" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hidePass">
+            <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <!-- <mat-error *ngIf="password">{{getPassErrorMessage()}}</mat-error> -->
 
-                    <mat-hint>Use your account password</mat-hint>
-                </mat-form-field>
+          <mat-hint>Use your account password</mat-hint>
+        </mat-form-field>
 
-                <mat-card-actions>
-                    <button mat-raised-button color="accent">Login</button>
-                </mat-card-actions>
+        <mat-card-actions>
+          <button mat-raised-button color="accent">Login</button>
+        </mat-card-actions>
 
-            </form>
+      </form>
 
-            <p>New user? <a routerLink="/signup" routerLinkActive="active" ariaCurrentWhenActive="page">Sign up</a>
-            </p>
-            
-        </mat-card-content>
-    </mat-card>
+      <p>New user? <a routerLink="/signup" routerLinkActive="active" ariaCurrentWhenActive="page">Sign up</a>
+    </p>
+
+  </mat-card-content>
+</mat-card>
 </div>
