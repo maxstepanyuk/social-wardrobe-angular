@@ -4,9 +4,10 @@ import { OutfitService } from '../../servises/outfit.service';
 
 
 @Component({
-  selector: 'app-feed',
-  templateUrl: './feed.component.html',
-  styleUrls: ['./feed.component.scss']
+    selector: 'app-feed',
+    templateUrl: './feed.component.html',
+    styleUrls: ['./feed.component.scss'],
+    standalone: false
 })
 export class FeedComponent {
   outfitList: Outfit[] = [];

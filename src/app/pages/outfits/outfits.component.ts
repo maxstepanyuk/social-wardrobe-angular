@@ -3,9 +3,10 @@ import { Outfit } from 'src/app/components/outfit/outfit';
 import { OutfitService } from '../../servises/outfit.service';
 
 @Component({
-  selector: 'app-outfits',
-  templateUrl: './outfits.component.html',
-  styleUrls: ['./outfits.component.scss']
+    selector: 'app-outfits',
+    templateUrl: './outfits.component.html',
+    styleUrls: ['./outfits.component.scss'],
+    standalone: false
 })
 export class OutfitsComponent {
   outfitList: Outfit[] = [];

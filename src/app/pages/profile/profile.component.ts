@@ -6,9 +6,10 @@ import { Garment } from '../../components/garment/garment';
 import { GarmentService } from '../../servises/garment.service';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+    selector: 'app-profile',
+    templateUrl: './profile.component.html',
+    styleUrls: ['./profile.component.scss'],
+    standalone: false
 })
 export class ProfileComponent {
   garmentList: Garment[] = [];

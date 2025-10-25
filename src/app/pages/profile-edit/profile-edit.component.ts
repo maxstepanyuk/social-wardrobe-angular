@@ -3,9 +3,10 @@ import { User } from 'src/app/components/user-table/user';
 import { FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-profile-edit',
-  templateUrl: './profile-edit.component.html',
-  styleUrls: ['./profile-edit.component.scss']
+    selector: 'app-profile-edit',
+    templateUrl: './profile-edit.component.html',
+    styleUrls: ['./profile-edit.component.scss'],
+    standalone: false
 })
 export class ProfileEditComponent {
 

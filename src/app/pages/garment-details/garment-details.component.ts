@@ -6,9 +6,10 @@ import { OutfitService } from 'src/app/servises/outfit.service';
 import { Outfit } from 'src/app/components/outfit/outfit';
 
 @Component({
-  selector: 'app-garment-details',
-  templateUrl: './garment-details.component.html',
-  styleUrls: ['./garment-details.component.scss']
+    selector: 'app-garment-details',
+    templateUrl: './garment-details.component.html',
+    styleUrls: ['./garment-details.component.scss'],
+    standalone: false
 })
 export class GarmentDetailsComponent {
   route: ActivatedRoute = inject(ActivatedRoute);

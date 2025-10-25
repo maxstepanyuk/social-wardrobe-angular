@@ -9,9 +9,10 @@ enum PostTypes {
 }
 
 @Component({
-  selector: 'app-feed-element',
-  templateUrl: './feed-element.component.html',
-  styleUrls: ['./feed-element.component.scss']
+    selector: 'app-feed-element',
+    templateUrl: './feed-element.component.html',
+    styleUrls: ['./feed-element.component.scss'],
+    standalone: false
 })
 export class FeedElementComponent {
 

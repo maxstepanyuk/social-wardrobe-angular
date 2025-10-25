@@ -3,9 +3,10 @@ import { Garment } from './garment'
 import { DateUtilsService } from '../../servises/date-utils.service';
 
 @Component({
-  selector: 'app-garment',
-  templateUrl: './garment.component.html',
-  styleUrls: ['./garment.component.scss']
+    selector: 'app-garment',
+    templateUrl: './garment.component.html',
+    styleUrls: ['./garment.component.scss'],
+    standalone: false
 })
 export class GarmentComponent {
   @Input() garment!: Garment;

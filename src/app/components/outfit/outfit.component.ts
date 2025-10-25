@@ -3,9 +3,10 @@ import { Outfit } from './outfit';
 import { DateUtilsService } from '../../servises/date-utils.service';
 
 @Component({
-  selector: 'app-outfit',
-  templateUrl: './outfit.component.html',
-  styleUrls: ['./outfit.component.scss']
+    selector: 'app-outfit',
+    templateUrl: './outfit.component.html',
+    styleUrls: ['./outfit.component.scss'],
+    standalone: false
 })
 export class OutfitComponent {
   garmentService = inject(DateUtilsService);
