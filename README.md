@@ -17,6 +17,10 @@ install packages
 npm install
 ```
 
+## Update Guide
+
+[angular.dev/update-guide](https://angular.dev/update-guide)
+
 ## Angular CLI
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.7.
