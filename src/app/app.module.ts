@@ -42,6 +42,7 @@ import { ProfileEditComponent } from './pages/profile-edit/profile-edit.componen
 import { FeedComponent } from './pages/feed/feed.component';
 import { FeedElementComponent } from './components/feed-element/feed-element.component';
 import { MatDividerModule } from '@angular/material/divider';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -88,7 +89,12 @@ import { MatDividerModule } from '@angular/material/divider';
     MatPaginatorModule,
     MatDividerModule,
   ],
-  providers: [],
+  providers: [
+     {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { appearance: 'outline' },
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
