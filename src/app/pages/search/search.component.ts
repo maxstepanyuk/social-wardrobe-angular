@@ -4,7 +4,7 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { User } from 'src/app/components/user-table/user';
+import { User } from 'src/app/models/user';
 
 /** Constants used to fill up our data base. */
 const FRUITS: string[] = [
