@@ -156,8 +156,6 @@ export class SignupComponent implements OnInit {
           this.signupForm.enable();
         },
         error: (error) => {
-          this.isLoading = false;
-          
           this.signupForm.enable();
           this.errorMessage = error.error?.detail || 'An error occurred during signup. Please try again.';
           this.snackBar.open(this.errorMessage, 'Close');
