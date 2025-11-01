@@ -43,6 +43,7 @@ import { FeedComponent } from './pages/feed/feed.component';
 import { FeedElementComponent } from './components/feed-element/feed-element.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
     MatDividerModule,
   ],
   providers: [
-     {
+    provideHttpClient(),
+    {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { appearance: 'outline' },
     },
