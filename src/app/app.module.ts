@@ -32,7 +32,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { MatTabsModule } from '@angular/material/tabs';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule } from '@angular/material/snack-bar';
 import { SearchComponent } from './pages/search/search.component';
 import { UserTableComponent } from './components/user-table/user-table.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -96,6 +96,10 @@ import { provideHttpClient } from '@angular/common/http';
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { appearance: 'outline' },
     },
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+      useValue: { verticalPosition: 'bottom' }
+    }
   ],
   bootstrap: [AppComponent]
 })
