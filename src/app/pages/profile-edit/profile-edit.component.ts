@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { User } from 'src/app/models/user';
+import { UserOld } from 'src/app/models/user';
 import { FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({

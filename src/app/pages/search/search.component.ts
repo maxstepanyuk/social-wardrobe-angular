@@ -4,7 +4,7 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { User } from 'src/app/models/user';
+import { UserOld } from 'src/app/models/user';
 
 /** Constants used to fill up our data base. */
 const FRUITS: string[] = [
@@ -51,7 +51,7 @@ const BIO: string = "Lorem ipsum dolor sit amet?"
 export class SearchComponent {
   displayedColumns: string[] = ['id', 'username', 'bio', 'img', 'buttons']; //TODO hide this in prod
   // displayedColumns: string[] = ['img', 'username', 'bio', 'buttons'];
-  dataSource!: MatTableDataSource<User>;
+  dataSource!: MatTableDataSource<UserOld>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -80,7 +80,7 @@ export class SearchComponent {
 }
 
 /** Builds and returns a new User. */
-function createNewUser(id: number): User {
+function createNewUser(id: number): UserOld {
   const name =
     NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
     NAMES[Math.round(Math.random() * (NAMES.length - 1))];
