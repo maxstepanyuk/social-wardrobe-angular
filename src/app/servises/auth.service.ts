@@ -1,7 +1,8 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { UserCreate, UserResponse } from '../models/user';
+import { UserCreate, UserResponse, UserLoginEmailPass } from '../models/user';
+import { Token } from '../models/token';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -19,4 +20,23 @@ export class AuthService {
   postUser(user: UserCreate): Observable<UserResponse> {
     return this.http.post<UserResponse>(this.apiUrl + "users/", user)
   }
+
+  authWithEmailPass(credentials: UserLoginEmailPass): Observable<Token> {
+    const formData = new URLSearchParams();
+
+    formData.append('grant_type', 'password');
+    formData.append('username', credentials.email);
+    formData.append('password', credentials.password);
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
+
+    return this.http.post<Token>(
+      this.apiUrl + "auth/email",
+      formData.toString(),
+      { headers }
+    )
+  }
+
 }
