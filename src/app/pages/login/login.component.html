@@ -1,7 +1,5 @@
 <div class="login-form">
 
-  <h2>TODO: check inputs, submit logic, Reactive Form</h2>
-
   <mat-card>
     <mat-card-content>
 
@@ -9,38 +7,41 @@
         <h2>Login</h2>
       </mat-card-title>
 
-      <form>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <mat-form-field>
           <mat-label>Email</mat-label>
-          <input matInput placeholder="email@example.com" [formControl]="email" type="email" required>
-          <mat-hint>Use your real email</mat-hint>
+          <input matInput placeholder="email@example.com" formControlName="email" type="email" required>
+          <mat-hint>Your account email</mat-hint>
           <mat-icon matSuffix>email</mat-icon>
-          @if (email.invalid) {
-            <mat-error>{{getEmailErrorMessage()}}</mat-error>
+          @if (email?.invalid && email?.touched) {
+          <mat-error>{{getEmailErrorMessage()}}</mat-error>
           }
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>Password</mat-label>
-          <input matInput [type]="hidePass ? 'password' : 'text'" required minlength="8">
-          <button mat-icon-button matSuffix (click)="hidePass = !hidePass" [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="hidePass">
+          <input matInput [type]="hidePass ? 'password' : 'text'" formControlName="password" required minlength="1">
+          <button type="button" mat-icon-button matSuffix (click)="hidePass = !hidePass"
+            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePass">
             <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
-          <!-- <mat-error *ngIf="password">{{getPassErrorMessage()}}</mat-error> -->
-
-          <mat-hint>Use your account password</mat-hint>
+          @if (password?.invalid && password?.touched) {
+          <mat-error>{{getPasswordErrorMessage()}}</mat-error>
+          }
+          <mat-hint>Your account password</mat-hint>
         </mat-form-field>
 
         <mat-card-actions>
-          <button mat-raised-button color="accent">Login</button>
+          <button mat-raised-button color="accent" type="submit">Login</button>
         </mat-card-actions>
 
       </form>
 
-      <p>New user? <a routerLink="/signup" routerLinkActive="active" ariaCurrentWhenActive="page">Sign up</a>
-    </p>
+      <p>
+        New user?
+        <a routerLink="/signup" routerLinkActive="active" ariaCurrentWhenActive="page">Sign up</a>
+      </p>
 
-  </mat-card-content>
-</mat-card>
+    </mat-card-content>
+  </mat-card>
 </div>
