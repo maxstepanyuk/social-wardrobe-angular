@@ -45,6 +45,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './interceptors/auth.interceptor';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { authInterceptor } from './interceptors/auth.interceptor';
     ProfileEditComponent,
     FeedComponent,
     FeedElementComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
