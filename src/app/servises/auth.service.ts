@@ -13,6 +13,9 @@ export class AuthService {
   http = inject(HttpClient);
   apiUrl: string;
 
+  private readonly ACCESS_TOKEN = 'access_token';
+  private readonly TOKEN_TYPE_KEY = 'token_type';
+
   constructor() {
     this.apiUrl = "http://127.0.0.1:8000/"
   }
@@ -37,6 +40,33 @@ export class AuthService {
       formData.toString(),
       { headers }
     )
+  }
+
+  saveToken(token: Token) {
+    console.log(token)
+    localStorage.setItem(this.ACCESS_TOKEN, token.access_token);
+    localStorage.setItem(this.TOKEN_TYPE_KEY, token.token_type);
+  }
+
+  deleteToken(): void {
+    localStorage.removeItem(this.ACCESS_TOKEN);
+    localStorage.removeItem(this.TOKEN_TYPE_KEY);
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem(this.ACCESS_TOKEN);
+  }
+  getTokenType(): string | null {
+    return localStorage.getItem(this.TOKEN_TYPE_KEY);
+  }
+
+  getAuthorizationHeader(): string | null {
+    const token = this.getToken();
+    const tokenType = this.getTokenType();
+    if (token && tokenType) {
+      return `${tokenType} ${token}`;
+    }
+    return null;
   }
 
 }
