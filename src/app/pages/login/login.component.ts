@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit {
       this.authService.authWithEmailPass(userData)
         .subscribe({
           next: (response: Token) => {
-            // console.log(response)
+            this.authService.saveToken(response);
             this.successMessage = 'Login successful!';
             this.snackBar.open(this.successMessage, 'Close', { duration: 5000 });
             this.loginForm.reset();
