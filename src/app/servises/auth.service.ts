@@ -53,6 +53,10 @@ export class AuthService {
     localStorage.removeItem(this.TOKEN_TYPE_KEY);
   }
 
+  logout(){
+    this.deleteToken();
+  }
+
   getToken(): string | null {
     return localStorage.getItem(this.ACCESS_TOKEN);
   }
@@ -69,4 +73,7 @@ export class AuthService {
     return null;
   }
 
+  // getUserMe(): Observable<UserResponse> {
+  //   return this.http.get<UserResponse>(this.apiUrl + "users/me");
+  // }
 }
