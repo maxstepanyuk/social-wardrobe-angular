@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 // import { Garment } from 'src/app/components/garment/garment';
-import { Garment } from '../../components/garment/garment';
+import { GarmentOld } from '../../components/garment/garment';
 import { GarmentService } from '../../servises/garment.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { GarmentService } from '../../servises/garment.service';
     standalone: false
 })
 export class ClothesComponent {
-  garmentList: Garment[] = [];
+  garmentList: GarmentOld[] = [];
   garmentService: GarmentService = inject(GarmentService)
 
   constructor(){

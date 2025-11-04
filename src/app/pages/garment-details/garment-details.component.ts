@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GarmentService } from '../../servises/garment.service';
-import { Garment } from '../../components/garment/garment';
+import { GarmentOld } from '../../components/garment/garment';
 import { OutfitService } from 'src/app/servises/outfit.service';
 import { Outfit } from 'src/app/components/outfit/outfit';
 
@@ -14,12 +14,12 @@ import { Outfit } from 'src/app/components/outfit/outfit';
 export class GarmentDetailsComponent {
   route: ActivatedRoute = inject(ActivatedRoute);
   garmentService = inject(GarmentService);
-  garment: Garment | undefined;
+  garment: GarmentOld | undefined;
 
   outfitList: Outfit[] = [];
   outfitService: OutfitService = inject(OutfitService)
 
-  newGarment: Garment | undefined;
+  newGarment: GarmentOld | undefined;
   newImage: string = "";
   newName: string = "";
   newDate: Date = new Date;
@@ -52,7 +52,7 @@ export class GarmentDetailsComponent {
   }
 
   saveGarment(): void {
-    const updatedGarment: Garment = {
+    const updatedGarment: GarmentOld = {
       ...this.garment!,
       name: this.newName,
       img: this.newImage,

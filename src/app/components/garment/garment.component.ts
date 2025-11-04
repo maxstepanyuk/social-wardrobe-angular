@@ -1,5 +1,5 @@
 import { Component, Input, inject } from '@angular/core';
-import { Garment } from './garment'
+import { GarmentOld } from './garment'
 import { DateUtilsService } from '../../servises/date-utils.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { DateUtilsService } from '../../servises/date-utils.service';
     standalone: false
 })
 export class GarmentComponent {
-  @Input() garment!: Garment;
+  @Input() garment!: GarmentOld;
   garmentService = inject(DateUtilsService);
 
   constructor(){

@@ -1,4 +1,4 @@
-import { Garment } from "../garment/garment";
+import { GarmentOld } from "../garment/garment";
 
 export interface Outfit {
     id: number,
@@ -7,6 +7,6 @@ export interface Outfit {
     type: string,
     date: Date,
     // garmentsId: number[]; //TODO later??
-    garments: Garment[]; //for now (or forever?)
+    garments: GarmentOld[]; //for now (or forever?)
 }
 //TODO add userId

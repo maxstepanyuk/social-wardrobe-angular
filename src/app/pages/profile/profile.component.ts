@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Outfit } from 'src/app/components/outfit/outfit';
 import { OutfitService } from '../../servises/outfit.service';
-import { Garment } from '../../components/garment/garment';
+import { GarmentOld } from '../../components/garment/garment';
 import { GarmentService } from '../../servises/garment.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { GarmentService } from '../../servises/garment.service';
     standalone: false
 })
 export class ProfileComponent {
-  garmentList: Garment[] = [];
+  garmentList: GarmentOld[] = [];
   garmentService: GarmentService = inject(GarmentService)
   outfitList: Outfit[] = [];
   outfitService: OutfitService = inject(OutfitService)

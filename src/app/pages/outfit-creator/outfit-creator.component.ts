@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Garment } from 'src/app/components/garment/garment';
+import { GarmentOld } from 'src/app/components/garment/garment';
 import { GarmentService } from '../../servises/garment.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { ActivatedRoute } from '@angular/router';
@@ -14,8 +14,8 @@ import { OutfitService } from 'src/app/servises/outfit.service';
 })
 export class OutfitCreatorComponent {
   route: ActivatedRoute = inject(ActivatedRoute);
-  outfitGarments: Garment[] = [];
-  wardrobeGarments: Garment[] = [];
+  outfitGarments: GarmentOld[] = [];
+  wardrobeGarments: GarmentOld[] = [];
   garmentService: GarmentService = inject(GarmentService);
   outfitService: OutfitService = inject(OutfitService);
 
@@ -64,7 +64,7 @@ export class OutfitCreatorComponent {
 
 
 
-  drop(event: CdkDragDrop<Garment[]>): void {
+  drop(event: CdkDragDrop<GarmentOld[]>): void {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
       return;

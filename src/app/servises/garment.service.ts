@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Garment } from './../components/garment/garment'
+import { GarmentOld } from './../components/garment/garment'
 
 @Injectable({
   providedIn: 'root'
@@ -8,23 +8,23 @@ export class GarmentService {
 
   constructor() { }
 
-  getAllGarments(): Garment[] {
+  getAllGarments(): GarmentOld[] {
     return this.garmentList;
   }
 
-  getGarmentById(id: number): Garment | undefined {
+  getGarmentById(id: number): GarmentOld | undefined {
     return this.garmentList.find(garment => garment.id === id)
   }
 
-  getGarmentsByIds(ids: number[]): Garment[] {
+  getGarmentsByIds(ids: number[]): GarmentOld[] {
     return this.garmentList.filter(garment => ids.includes(garment.id));
   }
 
-  getAllGarmentsExceptIds(ids: number[]): Garment[] {
+  getAllGarmentsExceptIds(ids: number[]): GarmentOld[] {
     return this.garmentList.filter(garment => !ids.includes(garment.id));
   }
 
-  protected garmentList: Garment[] = [
+  protected garmentList: GarmentOld[] = [
     {
       id: 1,
       name: "Red Shirt",
