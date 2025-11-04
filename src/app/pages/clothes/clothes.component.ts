@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 // import { Garment } from 'src/app/components/garment/garment';
-import { GarmentOld } from '../../components/garment/garment';
+import { GarmentOld } from '../../models/garment';
 import { GarmentService } from '../../servises/garment.service';
 
 @Component({

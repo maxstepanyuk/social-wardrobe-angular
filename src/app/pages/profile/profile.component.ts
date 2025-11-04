@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Outfit } from 'src/app/components/outfit/outfit';
 import { OutfitService } from '../../servises/outfit.service';
-import { GarmentOld } from '../../components/garment/garment';
+import { GarmentOld } from '../../models/garment';
 import { GarmentService } from '../../servises/garment.service';
 
 @Component({

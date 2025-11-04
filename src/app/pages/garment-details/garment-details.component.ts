@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GarmentService } from '../../servises/garment.service';
-import { GarmentOld } from '../../components/garment/garment';
+import { GarmentOld } from '../../models/garment';
 import { OutfitService } from 'src/app/servises/outfit.service';
 import { Outfit } from 'src/app/components/outfit/outfit';
 

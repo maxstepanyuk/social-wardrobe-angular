@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Outfit } from '../outfit/outfit';
-import { GarmentOld } from '../garment/garment';
+import { GarmentOld } from '../../models/garment';
 
 enum PostTypes {
   Other = 1,

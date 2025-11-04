@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { GarmentOld } from 'src/app/components/garment/garment';
+import { GarmentOld } from 'src/app/models/garment';
 import { GarmentService } from '../../servises/garment.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { ActivatedRoute } from '@angular/router';

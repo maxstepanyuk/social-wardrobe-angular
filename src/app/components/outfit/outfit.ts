@@ -1,4 +1,4 @@
-import { GarmentOld } from "../garment/garment";
+import { GarmentOld } from "../../models/garment";
 
 export interface Outfit {
     id: number,
