@@ -43,7 +43,6 @@ export class AuthService {
   }
 
   saveToken(token: Token) {
-    console.log(token)
     localStorage.setItem(this.ACCESS_TOKEN, token.access_token);
     localStorage.setItem(this.TOKEN_TYPE_KEY, token.token_type);
   }
