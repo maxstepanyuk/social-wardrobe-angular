@@ -1,0 +1,15 @@
+<mat-card class="garment-card">
+    <img [src]="garment.image_link" alt="photo of {{garment.description || garment.name || garment.id}} ">
+
+    <a mat-button color="primary" [routerLink]="['/details/', garment.id]" routerLinkActive="active"
+        ariaCurrentWhenActive="page">
+        @if (garment.name) { {{garment.name}} }
+        @else { id {{garment.id}} }
+    </a>
+
+    <p>type_id {{garment.garment_type_id}}</p>
+
+    <!-- TODO. dates are hard -->
+    <!-- @if (garment.last_worn) {<p>last worn {{garment.last_worn.getFullYear()}}-{{garment.last_worn.getMonth()}}-{{garment.last_worn.getDay()}} - {{}} days ago</p>} @else {<p>never worn</p>} -->
+
+</mat-card>

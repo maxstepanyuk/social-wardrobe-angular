@@ -46,6 +46,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './interceptors/auth.interceptor';
 import { LogoutComponent } from './components/logout/logout.component';
+import { GarmentCardComponent } from './components/garment-card/garment-card.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { LogoutComponent } from './components/logout/logout.component';
     FeedComponent,
     FeedElementComponent,
     LogoutComponent,
+    GarmentCardComponent,
   ],
   imports: [
     BrowserModule,
