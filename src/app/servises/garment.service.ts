@@ -1,19 +1,35 @@
-import { Injectable } from '@angular/core';
-import { GarmentOld } from '../models/garment'
+import { inject, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { GarmentOld, GarmentResponse } from '../models/garment'
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class GarmentService {
 
-  constructor() { }
+  http = inject(HttpClient);
+  apiUrl: string;
+
+  constructor() {
+    this.apiUrl = "http://127.0.0.1:8000/"
+  }
 
   getAllGarments(): GarmentOld[] {
     return this.garmentList;
   }
 
+  getAllGarmentsObservable(): Observable<Array<GarmentResponse>> {
+    return this.http.get<Array<GarmentResponse>>(this.apiUrl + "garments/")
+  }
+
   getGarmentById(id: number): GarmentOld | undefined {
     return this.garmentList.find(garment => garment.id === id)
+  }
+
+  getGarmentByIdObservable(id: number): Observable<GarmentResponse> {
+    return this.http.get<GarmentResponse>(this.apiUrl + "garments/" + id)
   }
 
   getGarmentsByIds(ids: number[]): GarmentOld[] {
