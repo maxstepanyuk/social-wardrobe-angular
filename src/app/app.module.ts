@@ -47,6 +47,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './interceptors/auth.interceptor';
 import { LogoutComponent } from './components/logout/logout.component';
 import { GarmentCardComponent } from './components/garment-card/garment-card.component';
+import { GarmentEditorComponent } from './pages/garment-editor/garment-editor.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { GarmentCardComponent } from './components/garment-card/garment-card.com
     FeedElementComponent,
     LogoutComponent,
     GarmentCardComponent,
+    GarmentEditorComponent,
   ],
   imports: [
     BrowserModule,
