@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { GarmentOld, GarmentResponse } from '../models/garment'
+import { GarmentCreate, GarmentOld, GarmentResponse } from '../models/garment'
 import { Observable } from 'rxjs';
 
 
@@ -30,6 +30,18 @@ export class GarmentService {
 
   getGarmentByIdObservable(id: number): Observable<GarmentResponse> {
     return this.http.get<GarmentResponse>(this.apiUrl + id)
+  }
+
+  createGarmentObservable(garment: GarmentCreate): Observable<GarmentResponse> {
+    return this.http.post<GarmentResponse>(this.apiUrl, garment);
+  }
+
+  updateGarmentObservable(id: number, garment: GarmentCreate): Observable<GarmentResponse> {
+    return this.http.put<GarmentResponse>(this.apiUrl + id, garment);
+  }
+
+  deleteGarmentObservable(id: number): Observable<void> {
+    return this.http.delete<void>(this.apiUrl + id);
   }
 
   getGarmentsByIds(ids: number[]): GarmentOld[] {
