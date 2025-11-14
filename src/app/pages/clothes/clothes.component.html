@@ -13,6 +13,9 @@
 </div>
 
 <div class="garments">
+  @if (garmentList.length <= 0) {
+    <p>You have no garments yet</p>
+  }
   @for (garment of garmentList; track garment) {
     <app-garment-card [garment]="garment"></app-garment-card>
   }
