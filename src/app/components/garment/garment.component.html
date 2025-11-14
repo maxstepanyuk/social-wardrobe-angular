@@ -1,6 +1,6 @@
 <mat-card class="garment">
     <img [src]="garment.img" alt="photo of {{garment.name}}">
-    <a mat-button color="primary" [routerLink]="['/details/', garment.id]" routerLinkActive="active"
+    <a mat-button color="primary" [routerLink]="['/garments/editor/', garment.id]" routerLinkActive="active"
         ariaCurrentWhenActive="page">
         {{garment.name}}
     </a>
