@@ -13,7 +13,7 @@ export class GarmentService {
   apiUrl: string;
 
   constructor() {
-    this.apiUrl = "http://127.0.0.1:8000/"
+    this.apiUrl = "http://127.0.0.1:8000/garments/"
   }
 
   getAllGarments(): GarmentOld[] {
@@ -21,7 +21,7 @@ export class GarmentService {
   }
 
   getAllGarmentsObservable(): Observable<Array<GarmentResponse>> {
-    return this.http.get<Array<GarmentResponse>>(this.apiUrl + "garments/")
+    return this.http.get<Array<GarmentResponse>>(this.apiUrl)
   }
 
   getGarmentById(id: number): GarmentOld | undefined {
@@ -29,7 +29,7 @@ export class GarmentService {
   }
 
   getGarmentByIdObservable(id: number): Observable<GarmentResponse> {
-    return this.http.get<GarmentResponse>(this.apiUrl + "garments/" + id)
+    return this.http.get<GarmentResponse>(this.apiUrl + id)
   }
 
   getGarmentsByIds(ids: number[]): GarmentOld[] {
