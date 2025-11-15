@@ -1,1 +1,147 @@
-<p>garment-editor works!</p>
+<div class="form-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        {{ isEditMode ? 'Edit Garment' : 'Create New Garment' }}
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="garmentForm" (ngSubmit)="onSubmit()">
+
+        <div class="image-section">
+
+          <div class="image-preview">
+            @if (displayedImageLinkOrB64) {
+            <img [src]="displayedImageLinkOrB64" alt="Garment image" class="garment-image">
+            } @else {
+            <div class="image-placeholder">
+              <mat-icon>checkroom</mat-icon>
+              <p>No image</p>
+            </div>
+            }
+          </div>
+
+          @if (originalImage1 || newImageFile) {
+          <div class="image-status">
+            <mat-chip-set>
+              @if (originalImage1 && !newImageFile) {
+              <mat-chip color="primary">
+                <mat-icon>check_circle</mat-icon>
+                Current Image
+              </mat-chip>
+              }
+              @if (newImageFile) {
+              <mat-chip color="accent">
+                <mat-icon>fiber_new</mat-icon>
+                New Image Selected
+              </mat-chip>
+              }
+            </mat-chip-set>
+          </div>
+          }
+
+          <div class="image-actions">
+            <input type="file" id="imageInput" (change)="onFileSelected($event)" accept="image/*"
+              style="display: none;">
+
+            <button mat-raised-button type="button" (click)="triggerFileInput()"
+              [disabled]="isUploadingImage || isLoading">
+              <mat-icon>photo_camera</mat-icon>
+              {{ newImageFile ? 'Change Photo' : 'Choose Photo' }}
+            </button>
+            @if (newImageFile) {
+            <button mat-raised-button type="button" color="warn" (click)="removeNewImage()"
+              [disabled]="!newImageFile || isUploadingImage || isLoading">
+              <mat-icon>close</mat-icon>
+              Remove New
+            </button>
+            }
+          </div>
+
+          @if (newImageFile) {
+          <p class="image-hint">
+            <mat-icon>info</mat-icon>
+            New image will replace the current one when you save
+          </p>
+          }
+
+        </div>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name" placeholder="Enter garment name">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description" placeholder="Enter description" rows="3"></textarea>
+        </mat-form-field>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Hex Color</mat-label>
+            <input matInput formControlName="hex" placeholder="#000000">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Last Worn</mat-label>
+            <input matInput formControlName="last_worn" type="date">
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Gender ID</mat-label>
+            <input matInput formControlName="gender_id" type="number">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Category Master ID</mat-label>
+            <input matInput formControlName="category_master_id" type="number">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Category Sub ID</mat-label>
+            <input matInput formControlName="category_sub_id" type="number">
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Type ID</mat-label>
+            <input matInput formControlName="type_id" type="number">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Color ID</mat-label>
+            <input matInput formControlName="color_id" type="number">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Season ID</mat-label>
+            <input matInput formControlName="season_id" type="number">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Usage ID</mat-label>
+            <input matInput formControlName="usage_id" type="number">
+          </mat-form-field>
+        </div>
+
+        <div class="button-row">
+          <button mat-raised-button type="button" (click)="onCancel()"
+            [disabled]="isLoading || isUploadingImage">Cancel</button>
+
+          <button mat-raised-button color="primary" type="submit" [disabled]="isLoading || isUploadingImage">
+            @if (isLoading || isUploadingImage) { <mat-spinner diameter="20"></mat-spinner> }
+            @if (!isLoading && !isUploadingImage) { {{ isEditMode ? 'Update' : 'Create' }} }
+          </button>
+
+
+
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
