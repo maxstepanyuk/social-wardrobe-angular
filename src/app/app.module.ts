@@ -49,6 +49,9 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { GarmentCardComponent } from './components/garment-card/garment-card.component';
 import { GarmentEditorComponent } from './pages/garment-editor/garment-editor.component';
 
+import { MatChipsModule } from "@angular/material/chips";
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -96,6 +99,8 @@ import { GarmentEditorComponent } from './pages/garment-editor/garment-editor.co
     MatSortModule,
     MatPaginatorModule,
     MatDividerModule,
+    MatChipsModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     provideHttpClient(
