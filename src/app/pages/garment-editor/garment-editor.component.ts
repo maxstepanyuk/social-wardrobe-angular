@@ -188,7 +188,7 @@ export class GarmentEditorComponent implements OnInit {
 
   saveGarment(imageFilename?: string): void {
     this.isLoading = true;
-    const garmentData: GarmentCreate = this.garmentForm.value;
+    let garmentData: GarmentCreate = this.garmentForm.value;
 
     if (imageFilename) {
       garmentData.image_link = imageFilename;
@@ -196,11 +196,24 @@ export class GarmentEditorComponent implements OnInit {
       garmentData.image_link = this.originalImage1;
     }
 
+    garmentData = this.removeEmptyFields(garmentData);
+
     if (this.isEditMode && this.garmentId) {
       this.updateGarment(this.garmentId, garmentData);
     } else {
       this.createGarment(garmentData);
     }
+  }
+
+  //todo move to seperate file
+  removeEmptyFields(obj: any): any {
+    return Object.keys(obj).reduce((acc: any, key: string) => {
+      const value = obj[key];
+      if (value !== null && value !== undefined && value !== '') {
+        acc[key] = value;
+      }
+      return acc;
+    }, {});
   }
 
   createGarment(garment: GarmentCreate): void {
