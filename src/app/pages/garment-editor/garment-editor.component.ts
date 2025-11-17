@@ -254,4 +254,48 @@ export class GarmentEditorComponent implements OnInit {
     return '';
   }
 
+  onDelete(): void {
+    this.isLoading = true;
+    let garmentDeleteSecces = false;
+    let imageDeleteSecces = false;
+
+    if (this.garmentId) {
+      this.garmentService.deleteGarmentObservable(this.garmentId).subscribe({
+        next: (res) => {
+          garmentDeleteSecces = true;
+        },
+        error: (error) => {
+          this.errorMessage = error.error?.detail || 'An error occurred during delete.';
+          this.snackBar.open(this.errorMessage, 'Close');
+
+          this.isLoading = false;
+          return
+
+        }
+      })
+    }
+
+    if (this.originalImage1) {
+      this.imageService.deleteImage(this.originalImage1).subscribe({
+        next: (res) => {
+          imageDeleteSecces = true;
+        },
+        error: (error) => {
+          this.errorMessage = error.error?.detail || 'An error occurred during delete.';
+          this.snackBar.open(this.errorMessage, 'Close');
+          this.isLoading = false;
+        }
+      })
+    } else {
+      imageDeleteSecces = true;
+    }
+
+    if (garmentDeleteSecces && imageDeleteSecces) {
+      this.snackBar.open('Garment deleted successfully', 'Close');
+    }
+
+    this.isLoading = false;
+    this.router.navigate(['/clothes']);
+  }
+
 }
