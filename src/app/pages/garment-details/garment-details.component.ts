@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { GarmentService } from '../../servises/garment.service';
 import { GarmentOld } from '../../models/garment';
 import { OutfitService } from 'src/app/servises/outfit.service';
-import { Outfit } from 'src/app/components/outfit/outfit';
+import { Outfit } from 'src/app/models/outfit';
 
 @Component({
     selector: 'app-garment-details',

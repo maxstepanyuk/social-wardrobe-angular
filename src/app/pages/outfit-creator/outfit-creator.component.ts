@@ -3,7 +3,7 @@ import { GarmentOld } from 'src/app/models/garment';
 import { GarmentService } from '../../servises/garment.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { ActivatedRoute } from '@angular/router';
-import { Outfit } from 'src/app/components/outfit/outfit';
+import { Outfit } from 'src/app/models/outfit';
 import { OutfitService } from 'src/app/servises/outfit.service';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, Input, inject } from '@angular/core';
-import { Outfit } from './outfit';
+import { Outfit } from '../../models/outfit';
 import { DateUtilsService } from '../../servises/date-utils.service';
 
 @Component({
