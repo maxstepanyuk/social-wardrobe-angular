@@ -1,19 +1,43 @@
-import { Injectable } from '@angular/core';
-import { OutfitOld } from '../models/outfit';
+import { inject, Injectable } from '@angular/core';
+import { OutfitCreate, OutfitOld, OutfitResponse } from '../models/outfit';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { GarmentResponse } from '../models/garment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OutfitService {
 
-  constructor() { }
+  http = inject(HttpClient);
+  apiUrl: string;
+
+  constructor() {
+    this.apiUrl = "http://127.0.0.1:8000/outfits/"
+  }
 
   getAllOutfits(): OutfitOld[] {
     return this.outfitList;
   }
 
+  getAllOutfitsObservable(): Observable<Array<OutfitResponse>>{
+    return this.http.get<Array<GarmentResponse>>(this.apiUrl);
+  }
+
   getOutfitById(id: number): OutfitOld | undefined {
     return this.outfitList.find(outfit => outfit.id === id);
+  }
+
+  getOutfitByIdObservable(id: number): Observable<OutfitResponse>{
+    return this.http.get<GarmentResponse>(this.apiUrl + id);
+  }
+
+  createOutfitObservable(outfit: OutfitCreate): Observable<OutfitResponse> {
+    return this.http.post<OutfitResponse>(this.apiUrl, outfit);
+  }
+
+  updateOutfitObservable(id: number, outfit: OutfitCreate): Observable<GarmentResponse> {
+    return this.http.put<GarmentResponse>(this.apiUrl + id, outfit);
   }
 
   getOutfitsByIds(ids: number[]): OutfitOld[] {
