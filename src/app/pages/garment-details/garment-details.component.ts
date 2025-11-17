@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { GarmentService } from '../../servises/garment.service';
 import { GarmentOld } from '../../models/garment';
 import { OutfitService } from 'src/app/servises/outfit.service';
-import { Outfit } from 'src/app/models/outfit';
+import { OutfitOld } from 'src/app/models/outfit';
 
 @Component({
     selector: 'app-garment-details',
@@ -16,7 +16,7 @@ export class GarmentDetailsComponent {
   garmentService = inject(GarmentService);
   garment: GarmentOld | undefined;
 
-  outfitList: Outfit[] = [];
+  outfitList: OutfitOld[] = [];
   outfitService: OutfitService = inject(OutfitService)
 
   newGarment: GarmentOld | undefined;

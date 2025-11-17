@@ -1,6 +1,6 @@
 import { GarmentOld } from "./garment";
 
-export interface Outfit {
+export interface OutfitOld {
     id: number,
     name: string,
     img?: string,

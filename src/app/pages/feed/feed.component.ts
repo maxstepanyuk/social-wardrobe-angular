@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Outfit } from 'src/app/models/outfit';
+import { OutfitOld } from 'src/app/models/outfit';
 import { OutfitService } from '../../servises/outfit.service';
 
 
@@ -10,7 +10,7 @@ import { OutfitService } from '../../servises/outfit.service';
     standalone: false
 })
 export class FeedComponent {
-  outfitList: Outfit[] = [];
+  outfitList: OutfitOld[] = [];
   outfitService: OutfitService = inject(OutfitService)
 
   constructor(){

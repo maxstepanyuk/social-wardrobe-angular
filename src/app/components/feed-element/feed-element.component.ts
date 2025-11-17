@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Outfit } from '../../models/outfit';
+import { OutfitOld } from '../../models/outfit';
 import { GarmentOld } from '../../models/garment';
 
 enum PostTypes {
@@ -18,7 +18,7 @@ export class FeedElementComponent {
 
     
   // @Input() post!: Outfit | Garment;
-  @Input() post!: Outfit;
+  @Input() post!: OutfitOld;
 
 
   // //TODO - DE

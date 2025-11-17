@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Outfit } from '../models/outfit';
+import { OutfitOld } from '../models/outfit';
 
 @Injectable({
   providedIn: 'root'
@@ -8,25 +8,25 @@ export class OutfitService {
 
   constructor() { }
 
-  getAllOutfits(): Outfit[] {
+  getAllOutfits(): OutfitOld[] {
     return this.outfitList;
   }
 
-  getOutfitById(id: number): Outfit | undefined {
+  getOutfitById(id: number): OutfitOld | undefined {
     return this.outfitList.find(outfit => outfit.id === id);
   }
 
-  getOutfitsByIds(ids: number[]): Outfit[] {
+  getOutfitsByIds(ids: number[]): OutfitOld[] {
     return this.outfitList.filter(outfit => ids.includes(outfit.id));
   }
 
-  getOutfitsWithGarment(garmentId: number): Outfit[] {
+  getOutfitsWithGarment(garmentId: number): OutfitOld[] {
     return this.outfitList.filter(outfit =>
       outfit.garments.some(garment => garment.id === garmentId)
     );
   }
 
-  protected outfitList: Outfit[] = [
+  protected outfitList: OutfitOld[] = [
     {
       id: 1,
       name: "Minimal spring casual",

@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Outfit } from 'src/app/models/outfit';
+import { OutfitOld } from 'src/app/models/outfit';
 import { OutfitService } from '../../servises/outfit.service';
 import { GarmentOld } from '../../models/garment';
 import { GarmentService } from '../../servises/garment.service';
@@ -14,7 +14,7 @@ import { GarmentService } from '../../servises/garment.service';
 export class ProfileComponent {
   garmentList: GarmentOld[] = [];
   garmentService: GarmentService = inject(GarmentService)
-  outfitList: Outfit[] = [];
+  outfitList: OutfitOld[] = [];
   outfitService: OutfitService = inject(OutfitService)
   
   following: Boolean;

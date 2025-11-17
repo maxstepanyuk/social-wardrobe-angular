@@ -3,7 +3,7 @@ import { GarmentOld } from 'src/app/models/garment';
 import { GarmentService } from '../../servises/garment.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { ActivatedRoute } from '@angular/router';
-import { Outfit } from 'src/app/models/outfit';
+import { OutfitOld } from 'src/app/models/outfit';
 import { OutfitService } from 'src/app/servises/outfit.service';
 
 @Component({
@@ -19,7 +19,7 @@ export class OutfitCreatorComponent {
   garmentService: GarmentService = inject(GarmentService);
   outfitService: OutfitService = inject(OutfitService);
 
-  outfit: Outfit | undefined;
+  outfit: OutfitOld | undefined;
   newImage: string | undefined;
   newName: string = "";
   newType: string = "";
@@ -29,7 +29,7 @@ export class OutfitCreatorComponent {
   constructor() {
     const outfitId = Number(this.route.snapshot.params['id']);
     // console.log(outfitId);
-    this.outfit = this.outfitService.getOutfitById(outfitId) as Outfit; // Type assertion
+    this.outfit = this.outfitService.getOutfitById(outfitId) as OutfitOld; // Type assertion
     // console.log(this.outfit);
     
     if (this.outfit === undefined) {
@@ -81,7 +81,7 @@ export class OutfitCreatorComponent {
   }
 
   saveOutfit(): void {
-    const updatedGarment: Outfit = {
+    const updatedGarment: OutfitOld = {
       ...this.outfit!,
       name: this.newName,
       img: this.newImage,

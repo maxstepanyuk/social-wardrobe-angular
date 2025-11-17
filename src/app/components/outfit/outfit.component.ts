@@ -1,5 +1,5 @@
 import { Component, Input, inject } from '@angular/core';
-import { Outfit } from '../../models/outfit';
+import { OutfitOld } from '../../models/outfit';
 import { DateUtilsService } from '../../servises/date-utils.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { DateUtilsService } from '../../servises/date-utils.service';
 })
 export class OutfitComponent {
   garmentService = inject(DateUtilsService);
-  @Input() outfit!: Outfit;
+  @Input() outfit!: OutfitOld;
 
   constructor() {
     //create a daysAgo=calculateDaysSinceLastWorn() field??
