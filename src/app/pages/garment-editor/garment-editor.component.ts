@@ -207,7 +207,7 @@ export class GarmentEditorComponent implements OnInit {
     this.garmentService.createGarmentObservable(garment).subscribe({
       next: (response) => {
         // console.log(response)
-        this.snackBar.open('Garment created successfully', 'Close')
+        this.snackBar.open('Garment created successfully', 'Close', { duration: 5000 })
         this.router.navigate(['/clothes']);
         this.isLoading = false;
       },
@@ -237,10 +237,6 @@ export class GarmentEditorComponent implements OnInit {
 
   onCancel(): void {
     this.router.navigate(['/clothes']);
-  }
-
-  showMessage(message: string): void {
-    this.snackBar.open(message, 'Close');
   }
 
   getErrorMessage(field: string): string {
@@ -282,7 +278,7 @@ export class GarmentEditorComponent implements OnInit {
         }
 
         if (garmentDeleteSecces && imageDeleteSecces) {
-          this.snackBar.open('Garment deleted successfully', 'Close');
+          this.snackBar.open('Garment deleted successfully', 'Close', { duration: 5000 });
         }
 
         this.isLoading = false;
