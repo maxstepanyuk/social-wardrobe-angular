@@ -10,3 +10,23 @@ export interface OutfitOld {
     garments: GarmentOld[]; //for now (or forever?)
 }
 //TODO add userId
+
+
+export interface OutfitCreate {
+    name?: string;
+    description?: string;
+    image_link?: string;
+}
+
+
+export interface OutfitResponse {
+    name?: string;
+    description?: string;
+    image_link?: string;
+
+    id: number;
+    user_id: number;
+
+    created_at: Date;
+    updated_at: Date;
+}
