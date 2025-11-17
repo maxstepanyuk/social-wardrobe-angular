@@ -255,47 +255,50 @@ export class GarmentEditorComponent implements OnInit {
   }
 
   onDelete(): void {
+    if (!this.garmentId) return;
+
     this.isLoading = true;
     let garmentDeleteSecces = false;
     let imageDeleteSecces = false;
 
-    if (this.garmentId) {
-      this.garmentService.deleteGarmentObservable(this.garmentId).subscribe({
-        next: (res) => {
-          garmentDeleteSecces = true;
-        },
-        error: (error) => {
-          this.errorMessage = error.error?.detail || 'An error occurred during delete.';
-          this.snackBar.open(this.errorMessage, 'Close');
+    this.garmentService.deleteGarmentObservable(this.garmentId).subscribe({
+      next: (res) => {
+        garmentDeleteSecces = true;
 
-          this.isLoading = false;
-          return
-
-        }
-      })
-    }
-
-    if (this.originalImage1) {
-      this.imageService.deleteImage(this.originalImage1).subscribe({
-        next: (res) => {
+        if (this.originalImage1) {
+          this.imageService.deleteImage(this.originalImage1).subscribe({
+            next: (res) => {
+              console.log(res);
+              imageDeleteSecces = true;
+            },
+            error: (error) => {
+              this.errorMessage = error.error?.detail || 'An error occurred during delete.';
+              this.snackBar.open(this.errorMessage, 'Close');
+              this.isLoading = false;
+            }
+          })
+        } else {
           imageDeleteSecces = true;
-        },
-        error: (error) => {
-          this.errorMessage = error.error?.detail || 'An error occurred during delete.';
-          this.snackBar.open(this.errorMessage, 'Close');
-          this.isLoading = false;
         }
-      })
-    } else {
-      imageDeleteSecces = true;
-    }
 
-    if (garmentDeleteSecces && imageDeleteSecces) {
-      this.snackBar.open('Garment deleted successfully', 'Close');
-    }
+        if (garmentDeleteSecces && imageDeleteSecces) {
+          this.snackBar.open('Garment deleted successfully', 'Close');
+        }
 
-    this.isLoading = false;
-    this.router.navigate(['/clothes']);
+        this.isLoading = false;
+        this.router.navigate(['/clothes']);
+
+      },
+      error: (error) => {
+        this.errorMessage = error.error?.detail || 'An error occurred during delete.';
+        this.snackBar.open(this.errorMessage, 'Close');
+
+        this.isLoading = false;
+      }
+    })
+
+
+
   }
 
 }
