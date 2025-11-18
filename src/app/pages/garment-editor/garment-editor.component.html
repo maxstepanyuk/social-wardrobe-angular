@@ -80,11 +80,13 @@
 
         <div class="form-row">
           <mat-form-field appearance="outline" class="form-field">
-            <mat-label>Hex Color</mat-label>
-            <input matInput formControlName="hex" placeholder="#000000">
+            <!-- todo: temporary ui. ... or permanent. better to use custom because the html one has varied support -->
+            <mat-label>Color</mat-label>
+            <input matInput formControlName="hex" placeholder="#000000" type="color">
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="form-field">
+            <!-- todo: https://material.angular.dev/components/datepicker/overview -->
             <mat-label>Last Worn</mat-label>
             <input matInput formControlName="last_worn" type="date">
           </mat-form-field>
