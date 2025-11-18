@@ -92,40 +92,92 @@
 
         <div class="form-row">
           <mat-form-field appearance="outline" class="form-field">
-            <mat-label>Gender ID</mat-label>
-            <input matInput formControlName="gender_id" type="number">
+            <mat-label>Gender</mat-label>
+            <mat-select formControlName="gender_id">
+              <mat-option [value]="null"></mat-option>
+              @for (gender of genders; track gender.id) {
+              <mat-option [value]="gender.id" [matTooltip]="gender.description || gender.name">
+                {{ gender.name }}
+              </mat-option>
+              }
+            </mat-select>
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="form-field">
-            <mat-label>Category Master ID</mat-label>
-            <input matInput formControlName="category_master_id" type="number">
+            <mat-label>Master Category</mat-label>
+            <mat-select formControlName="category_master_id">
+              <mat-option [value]="null"></mat-option>
+              @for (category of masterCategories; track category.id) {
+              <mat-option [value]="category.id" [matTooltip]="category.description || category.name">
+                {{ category.name }}
+              </mat-option>
+              }
+            </mat-select>
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="form-field">
-            <mat-label>Category Sub ID</mat-label>
-            <input matInput formControlName="category_sub_id" type="number">
+            <mat-label>Sub Category</mat-label>
+            <mat-select formControlName="category_sub_id">
+              <mat-option [value]="null"></mat-option>
+              @for (category of subCategories; track category.id) {
+              <mat-option [value]="category.id" [matTooltip]="category.description || category.name">
+                {{ category.name }}
+              </mat-option>
+              }
+            </mat-select>
           </mat-form-field>
         </div>
 
         <div class="form-row">
           <mat-form-field appearance="outline" class="form-field">
-            <mat-label>Type ID</mat-label>
-            <input matInput formControlName="garment_type_id" type="number">
+            <mat-label>Garment Type</mat-label>
+            <mat-select formControlName="garment_type_id">
+              <mat-option [value]="null"></mat-option>
+              @for (type of garmentTypes; track type.id) {
+              <mat-option [value]="type.id" [matTooltip]="type.description || type.name">
+                {{ type.name }}
+              </mat-option>
+              }
+            </mat-select>
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="form-field">
-            <mat-label>Color ID</mat-label>
-            <input matInput formControlName="color_id" type="number">
+            <mat-label>Color</mat-label>
+            <mat-select formControlName="color_id">
+              <mat-option [value]="null"></mat-option>
+              @for (color of colors; track color.id) {
+              <mat-option [value]="color.id" [matTooltip]="color.description || color.name">
+                <span class="color-option">
+                  <span class="color-swatch" [style.background-color]="color.hex || '#ccc'"></span>
+                  {{ color.name }}
+                </span>
+              </mat-option>
+              }
+            </mat-select>
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="form-field">
-            <mat-label>Season ID</mat-label>
-            <input matInput formControlName="season_id" type="number">
+            <mat-label>Season</mat-label>
+            <mat-select formControlName="season_id">
+              <mat-option [value]="null"></mat-option>
+              @for (season of seasons; track season.id) {
+              <mat-option [value]="season.id" [matTooltip]="season.description || season.name">
+                {{ season.name }}
+              </mat-option>
+              }
+            </mat-select>
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="form-field">
-            <mat-label>Usage ID</mat-label>
-            <input matInput formControlName="usage_id" type="number">
+            <mat-label>Usage</mat-label>
+            <mat-select formControlName="usage_id">
+              <mat-option [value]="null"></mat-option>
+              @for (usage of usages; track usage.id) {
+              <mat-option [value]="usage.id" [matTooltip]="usage.description || usage.name">
+                {{ usage.name }}
+              </mat-option>
+              }
+            </mat-select>
           </mat-form-field>
         </div>
 

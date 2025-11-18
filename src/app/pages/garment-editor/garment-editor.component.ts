@@ -5,6 +5,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { GarmentCreate } from 'src/app/models/garment';
 import { GarmentService } from 'src/app/servises/garment.service';
 import { ImageService } from 'src/app/servises/image.service';
+import { GenderService } from 'src/app/servises/gender.service';
+import { CategoryService } from 'src/app/servises/category.service';
+import { GarmentTypeService } from 'src/app/servises/garment-type.service';
+import { ColorService } from 'src/app/servises/color.service';
+import { SeasonService } from 'src/app/servises/season.service';
+import { UsageService } from 'src/app/servises/usage.service';
+import { forkJoin } from 'rxjs';
+import { GenderResponse } from 'src/app/models/gender';
+import { CategoryMasterResponse, CategorySubResponse } from 'src/app/models/category';
+import { GarmentTypeResponse } from 'src/app/models/garment-type';
+import { ColorResponse } from 'src/app/models/color';
+import { SeasonResponse } from 'src/app/models/season';
+import { UsageResponse } from 'src/app/models/usage';
 
 @Component({
   selector: 'app-garment-editor',
@@ -29,10 +42,24 @@ export class GarmentEditorComponent implements OnInit {
   errorMessage: string = '';
   successMessage: string = '';
 
+  genders: GenderResponse[] = [];
+  masterCategories: CategoryMasterResponse[] = [];
+  subCategories: CategorySubResponse[] = [];
+  garmentTypes: GarmentTypeResponse[] = [];
+  colors: ColorResponse[] = [];
+  seasons: SeasonResponse[] = [];
+  usages: UsageResponse[] = [];
+
   constructor(
     private fb: FormBuilder,
     private garmentService: GarmentService,
     private imageService: ImageService,
+    private genderService: GenderService,
+    private categoryService: CategoryService,
+    private garmentTypeService: GarmentTypeService,
+    private colorService: ColorService,
+    private seasonService: SeasonService,
+    private usageService: UsageService,
     private route: ActivatedRoute,
     private router: Router,
     private snackBar: MatSnackBar,
@@ -56,11 +83,38 @@ export class GarmentEditorComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadDropdownData();
     this.route.params.subscribe(params => {
       if (params['id']) {
         this.isEditMode = true;
         this.garmentId = Number(params['id']);
         this.loadGarment(this.garmentId);
+      }
+    });
+  }
+
+  loadDropdownData(): void {
+    forkJoin({
+      genders: this.genderService.getAllGendersObservable(),
+      masterCategories: this.categoryService.getAllMasterCategoriesObservable(),
+      subCategories: this.categoryService.getAllSubCategoriesObservable(),
+      garmentTypes: this.garmentTypeService.getAllGarmentTypesObservable(),
+      colors: this.colorService.getAllColorsObservable(),
+      seasons: this.seasonService.getAllSeasonsObservable(),
+      usages: this.usageService.getAllUsesObservable()
+    }).subscribe({
+      next: (data) => {
+        this.genders = data.genders;
+        this.masterCategories = data.masterCategories;
+        this.subCategories = data.subCategories;
+        this.garmentTypes = data.garmentTypes;
+        this.colors = data.colors;
+        this.seasons = data.seasons;
+        this.usages = data.usages;
+      },
+      error: (error) => {
+        console.error('Error loading dropdown data:', error);
+        this.snackBar.open('Error loading form options', 'Close');
       }
     });
   }
