@@ -15,7 +15,7 @@ export interface GarmentCreate {
     gender_id?: number;
     category_master_id?: number;
     category_sub_id?: number;
-    type_id?: number;
+    garment_type_id?: number;
     color_id?: number;
     season_id?: number;
     usage_id?: number;
