@@ -51,6 +51,7 @@ import { GarmentEditorComponent } from './pages/garment-editor/garment-editor.co
 
 import { MatChipsModule } from "@angular/material/chips";
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -101,6 +102,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatDividerModule,
     MatChipsModule,
     MatProgressSpinnerModule,
+    MatTooltipModule,
   ],
   providers: [
     provideHttpClient(
