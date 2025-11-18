@@ -35,7 +35,6 @@ export class GarmentEditorComponent implements OnInit {
 
   displayedImageLinkOrB64: string | null = null;  // currently shown
   originalImage1: string | null = null;  // From DB (image_link)
-  originalImage2Filename: string | null = null; // To delete old image
   newImagePreviewB64: string | null = null; // Preview of new file
   newImageFile: File | null = null;     // New file selected
 
@@ -303,17 +302,6 @@ export class GarmentEditorComponent implements OnInit {
 
   onCancel(): void {
     this.router.navigate(['/clothes']);
-  }
-
-  getErrorMessage(field: string): string {
-    const control = this.garmentForm.get(field);
-    if (control?.hasError('required')) {
-      return 'This field is required';
-    }
-    if (control?.hasError('minlength')) {
-      return `Minimum length is ${control.errors?.['minlength'].requiredLength}`;
-    }
-    return '';
   }
 
   onDelete(): void {
