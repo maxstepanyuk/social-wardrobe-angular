@@ -129,14 +129,13 @@ export class GarmentEditorComponent implements OnInit {
         if (garment.image_link) {
           this.originalImage1 = garment.image_link;
           this.displayedImageLinkOrB64 = this.imageService.getImageLink(this.originalImage1);
-          this.originalImage1 = garment.image_link;
         }
 
         this.isLoading = false;
       },
       error: (error) => {
         // console.error(error);
-        this.errorMessage = error.error?.detail || 'An error occurred during signup. Please try again.';
+        this.errorMessage = error.error?.detail || 'An error occurred loading garment.';
         this.snackBar.open(this.errorMessage, 'Close');
         this.isLoading = false;
       }
@@ -280,7 +279,7 @@ export class GarmentEditorComponent implements OnInit {
       },
       error: (error) => {
         // console.error(error);
-        this.errorMessage = error.error?.detail || 'An error occurred during update.';
+        this.errorMessage = error.error?.detail || 'An error occurred during create.';
         this.snackBar.open(this.errorMessage, 'Close');
         this.isLoading = false;
       }
