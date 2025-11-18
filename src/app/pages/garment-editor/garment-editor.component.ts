@@ -48,7 +48,7 @@ export class GarmentEditorComponent implements OnInit {
       gender_id: [null],
       category_master_id: [null],
       category_sub_id: [null],
-      type_id: [null],
+      garment_type_id: [null],
       color_id: [null],
       season_id: [null],
       usage_id: [null]
