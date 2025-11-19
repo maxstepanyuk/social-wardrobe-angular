@@ -48,6 +48,7 @@ import { authInterceptor } from './interceptors/auth.interceptor';
 import { LogoutComponent } from './components/logout/logout.component';
 import { GarmentCardComponent } from './components/garment-card/garment-card.component';
 import { GarmentEditorComponent } from './pages/garment-editor/garment-editor.component';
+import { OutfitCardComponent    } from './components/outfit-card/outfit-card.component';
 
 import { MatChipsModule } from "@angular/material/chips";
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -76,6 +77,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     LogoutComponent,
     GarmentCardComponent,
     GarmentEditorComponent,
+    OutfitCardComponent,
   ],
   imports: [
     BrowserModule,

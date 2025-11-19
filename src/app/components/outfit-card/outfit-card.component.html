@@ -1,0 +1,27 @@
+<mat-card class="outfit">
+
+  @if (outfit.image_link) {
+
+  <img class="outfit-img" [src]="outfit.image_link" alt="photo of {{outfit.name}} outfit">
+
+  } @else {
+
+  <div class="garments-list">
+    
+    @for (garment of garments; track garment) {
+    <img [src]="garment.image_link" alt="photo of {{garment.name}}">
+    }
+    
+  </div>
+
+  }
+
+  <a mat-button color="primary" [routerLink]="['/outfit/', outfit.id]" routerLinkActive="active"
+    ariaCurrentWhenActive="page">
+    {{outfit.name}}
+  </a>
+
+  <!-- todo: days since last worn -->
+  <p> {{outfit.created_at}} </p>
+
+</mat-card>
