@@ -21,7 +21,7 @@ export class OutfitService {
   }
 
   getAllOutfitsObservable(): Observable<Array<OutfitResponse>>{
-    return this.http.get<Array<GarmentResponse>>(this.apiUrl);
+    return this.http.get<Array<OutfitResponse>>(this.apiUrl);
   }
 
   getOutfitById(id: number): OutfitOld | undefined {
@@ -29,15 +29,15 @@ export class OutfitService {
   }
 
   getOutfitByIdObservable(id: number): Observable<OutfitResponse>{
-    return this.http.get<GarmentResponse>(this.apiUrl + id);
+    return this.http.get<OutfitResponse>(this.apiUrl + id);
   }
 
   createOutfitObservable(outfit: OutfitCreate): Observable<OutfitResponse> {
     return this.http.post<OutfitResponse>(this.apiUrl, outfit);
   }
 
-  updateOutfitObservable(id: number, outfit: OutfitCreate): Observable<GarmentResponse> {
-    return this.http.put<GarmentResponse>(this.apiUrl + id, outfit);
+  updateOutfitObservable(id: number, outfit: OutfitCreate): Observable<OutfitResponse> {
+    return this.http.put<OutfitResponse>(this.apiUrl + id, outfit);
   }
 
   getGarmentsFromOutfitByIdObservable(outfirId: number): Observable<Array<GarmentResponse>> {
