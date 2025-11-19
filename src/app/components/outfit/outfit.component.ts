@@ -9,7 +9,7 @@ import { DateUtilsService } from '../../servises/date-utils.service';
     standalone: false
 })
 export class OutfitComponent {
-  garmentService = inject(DateUtilsService);
+  dateUtilsService = inject(DateUtilsService);
   @Input() outfit!: OutfitOld;
 
   constructor() {
@@ -17,6 +17,6 @@ export class OutfitComponent {
   }
 
   calculateDaysSinceLastWorn(lastWornDate: Date): number {
-    return this.garmentService.calculateDaysSinceLastWorn(lastWornDate);
+    return this.dateUtilsService.calculateDaysSinceLastWorn(lastWornDate);
   }
 }
