@@ -18,6 +18,7 @@ import { GarmentTypeResponse } from 'src/app/models/garment-type';
 import { ColorResponse } from 'src/app/models/color';
 import { SeasonResponse } from 'src/app/models/season';
 import { UsageResponse } from 'src/app/models/usage';
+import { UtilsService } from 'src/app/servises/utils.service';
 
 @Component({
   selector: 'app-garment-editor',
@@ -59,6 +60,7 @@ export class GarmentEditorComponent implements OnInit {
     private colorService: ColorService,
     private seasonService: SeasonService,
     private usageService: UsageService,
+    private utilsService: UtilsService,
     private route: ActivatedRoute,
     private router: Router,
     private snackBar: MatSnackBar,
@@ -248,24 +250,13 @@ export class GarmentEditorComponent implements OnInit {
       garmentData.image_link = this.originalImage1;
     }
 
-    garmentData = this.removeEmptyFields(garmentData);
+    garmentData = this.utilsService.removeEmptyFields(garmentData);
 
     if (this.isEditMode && this.garmentId) {
       this.updateGarment(this.garmentId, garmentData);
     } else {
       this.createGarment(garmentData);
     }
-  }
-
-  //todo move to seperate file
-  removeEmptyFields(obj: any): any {
-    return Object.keys(obj).reduce((acc: any, key: string) => {
-      const value = obj[key];
-      if (value !== null && value !== undefined && value !== '') {
-        acc[key] = value;
-      }
-      return acc;
-    }, {});
   }
 
   createGarment(garment: GarmentCreate): void {
