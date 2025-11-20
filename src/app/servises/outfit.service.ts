@@ -32,6 +32,10 @@ export class OutfitService {
     return this.http.get<OutfitResponse>(this.apiUrl + id);
   }
 
+  deleteOutfitByIdObservable(id: number): Observable<OutfitResponse>{
+    return this.http.delete<OutfitResponse>(this.apiUrl + id);
+  }
+
   createOutfitObservable(outfit: OutfitCreate): Observable<OutfitResponse> {
     return this.http.post<OutfitResponse>(this.apiUrl, outfit);
   }
