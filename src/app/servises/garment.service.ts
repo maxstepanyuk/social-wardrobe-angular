@@ -24,6 +24,10 @@ export class GarmentService {
     return this.http.get<Array<GarmentResponse>>(this.apiUrl)
   }
 
+  getAllGarmentsCountObservable(): Observable<number> {
+    return this.http.get<number>(this.apiUrl + "count")
+  }
+
   getGarmentById(id: number): GarmentOld | undefined {
     return this.garmentList.find(garment => garment.id === id)
   }
