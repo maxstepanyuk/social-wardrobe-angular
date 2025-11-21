@@ -52,6 +52,10 @@ export class OutfitService {
     return this.http.get<Array<GarmentResponse>>(this.apiUrl + outfirId + "/garments/unused");
   }
 
+  updateOutfitGarments(outfitId: number, garmentIds: number[]): Observable<string> {
+    return this.http.put<string>(this.apiUrl + outfitId + "/garments", { garment_ids: garmentIds });
+  }
+
   getOutfitsByIds(ids: number[]): OutfitOld[] {
     return this.outfitList.filter(outfit => ids.includes(outfit.id));
   }
