@@ -1,89 +1,149 @@
-<div class="controls">
+<div>
+  <h2>
+    {{ isEditMode ? 'Edit Outfit' : 'Create New Outfit' }}
+  </h2>
 
-  @if (newImage) {
-    <img [src]="newImage" alt="uploaded image">
-  }
-  @if (!newImage === undefined) {
-    <img [src]="outfit?.img" alt="photo of {{outfit?.name}}">
-  }
+  <mat-tab-group>
+    <mat-tab label="Outfit's Metadata">
+      <div class="controls form-container">
+        <mat-card>
+          <mat-card-content>
+            <form [formGroup]="outfitForm" (ngSubmit)="onSubmit()">
 
-  <!-- i hate that this is how file upload with custom styles needs to be -->
-  <input type="file" id="file-input" (change)="handleFileInput($event)" accept="image/*" style="display: none;" />
-  <button mat-raised-button color="primary" (click)="fileInputLabel.click()">
-    <label #fileInputLabel for="file-input" class="file-label">
-      Upload new photo
-    </label>
-  </button>
+              <div class="image-section">
 
-  <mat-form-field>
-    <mat-label>Outfit name</mat-label>
-    <input matInput [(ngModel)]="newName">
-    <mat-hint>Name your outfit</mat-hint>
-  </mat-form-field>
+                <div class="image-preview">
+                  @if (displayedImageLinkOrB64) {
+                  <img [src]="displayedImageLinkOrB64" alt="outfit image" class="outfit-image">
+                  } @else {
+                  <div class="image-placeholder">
+                    <mat-icon>checkroom</mat-icon>
+                    <p>No image</p>
+                  </div>
+                  }
+                </div>
 
-  <mat-form-field>
-    <mat-label>Type</mat-label>
-    <input matInput type="text" [(ngModel)]="newType">
-    <mat-hint>Suitable for</mat-hint>
-  </mat-form-field>
+                @if (originalImage || newImageFile) {
+                <div class="image-status">
+                  <mat-chip-set>
+                    @if (originalImage && !newImageFile) {
+                    <mat-chip color="primary">
+                      <mat-icon>check_circle</mat-icon>
+                      Current Image
+                    </mat-chip>
+                    }
+                    @if (newImageFile) {
+                    <mat-chip color="accent">
+                      <mat-icon>fiber_new</mat-icon>
+                      New Image Selected
+                    </mat-chip>
+                    }
+                  </mat-chip-set>
+                </div>
+                }
 
-  <mat-form-field>
-    <mat-label>Choose a date</mat-label>
-    <input matInput [matDatepicker]="picker" [(ngModel)]="newDate">
-    <mat-hint>MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="picker">
-      <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-    </mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
+                <div class="image-actions">
+                  <input type="file" id="imageInput" (change)="onFileSelected($event)" accept="image/*"
+                    style="display: none;">
 
-  <button mat-raised-button color="accent" (click)="saveOutfit()" [disabled]="outfitGarments.length === 0">
-    Save outfit
-  </button>
-</div>
+                  <button mat-raised-button type="button" (click)="triggerFileInput()"
+                    [disabled]="isUploadingImage || isLoading">
+                    <mat-icon>photo_camera</mat-icon>
+                    {{ newImageFile ? 'Change Photo' : 'Choose Photo' }}
+                  </button>
+                  @if (newImageFile) {
+                  <button mat-raised-button type="button" color="warn" (click)="removeNewImage()"
+                    [disabled]="!newImageFile || isUploadingImage || isLoading">
+                    <mat-icon>close</mat-icon>
+                    Remove New
+                  </button>
+                  }
+                </div>
 
-<!-- <span>TODO sort wardrobe by date (or add this metod to servise), save outfit logic
-(post only IDs of garments as an array)</span> -->
+                @if (newImageFile) {
+                <p class="image-hint">
+                  <mat-icon>info</mat-icon>
+                  New image will replace the current one when you save
+                </p>
+                }
 
-<div class="cretor" cdkDropListGroup>
-  <div class="section">
-    <h2>Your wardrobe</h2>
-    <mat-card class="cards" cdkDropList #wardrobeList="cdkDropList" [cdkDropListData]="wardrobeGarments"
-      [cdkDropListConnectedTo]="[outfitList]" (cdkDropListDropped)="drop($event)">
+              </div>
 
-      @if (wardrobeGarments.length === 0) {
-        <div class="empty-label">
-          <p class="empty-label">No clothes.</p>
-          <a mat-raised-button color="accent" routerLink="/clothes">Add your clothes</a>
-        </div>
-      }
-      <div class="garments">
-        @for (garment of wardrobeGarments; track garment) {
-          <app-garment [garment]="garment"
-          cdkDrag>{{garment}}</app-garment>
-        }
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" placeholder="Enter garment name">
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="description" placeholder="Enter description" rows="3"></textarea>
+              </mat-form-field>
+              <div class="button-row">
+
+                @if (isEditMode) {
+                <button mat-raised-button type="button" color="warn" [disabled]="isLoading || isUploadingImage"
+                  (click)="onDelete()">
+                  Delete
+                </button>
+                }
+
+                <button mat-raised-button type="button" (click)="onCancel()"
+                  [disabled]="isLoading || isUploadingImage">Cancel</button>
+
+                <button mat-raised-button color="primary" type="submit" [disabled]="isLoading || isUploadingImage">
+                  @if (isLoading || isUploadingImage) { <mat-spinner diameter="20"></mat-spinner> }
+                  @if (!isLoading && !isUploadingImage) { {{ isEditMode ? 'Update' : 'Create' }} }
+                </button>
+
+              </div>
+            </form>
+          </mat-card-content>
+        </mat-card>
       </div>
+    </mat-tab>
 
-    </mat-card>
-  </div>
+    <mat-tab label="Outfit's Clothes">
+      <!-- <span>TODO sort wardrobe by date (or add this metod to servise), save outfit logic
+    (post only IDs of garments as an array)</span> -->
+      <div class="cretor" cdkDropListGroup>
+        <div class="section">
+          <h3>Your wardrobe</h3>
+          <mat-card class="cards" cdkDropList #wardrobeList="cdkDropList" [cdkDropListData]="wardrobeGarmentsUnused"
+            [cdkDropListConnectedTo]="[outfitList]" (cdkDropListDropped)="drop($event)">
 
-  <div class="section">
-    <h2>Your outfit</h2>
-    <mat-card class="cards" cdkDropList #outfitList="cdkDropList" [cdkDropListData]="outfitGarments"
-      [cdkDropListConnectedTo]="[wardrobeList]" (cdkDropListDropped)="drop($event)">
-      <div class="garments">
-        @for (garment of outfitGarments; track garment) {
-          <app-garment [garment]="garment"
-          cdkDrag>{{garment}}</app-garment>
-        }
-      </div>
-
-      @if (outfitGarments.length === 0) {
-        <div class="empty-label">
-          <p>No clothes. Drad from your wardrobe and drop here</p>
+            @if (wardrobeGarmentsCount === 0) {
+            <div class="empty-label">
+              <p class="empty-label">No clothes.</p>
+              <a mat-raised-button color="accent" routerLink="/clothes">Add your clothes</a>
+            </div>
+            }
+            <div class="garments">
+              @for (garment of wardrobeGarmentsUnused; track garment) {
+              <app-garment-card [garment]="garment" cdkDrag>{{garment}}</app-garment-card>
+              }
+            </div>
+          </mat-card>
         </div>
-      }
+        <div class="section">
+          <h3>Your outfit</h3>
+          <mat-card class="cards" cdkDropList #outfitList="cdkDropList" [cdkDropListData]="outfitGarments"
+            [cdkDropListConnectedTo]="[wardrobeList]" (cdkDropListDropped)="drop($event)">
+            <div class="garments">
+              @for (garment of outfitGarments; track garment) {
+              <app-garment-card [garment]="garment" cdkDrag>{{garment}}</app-garment-card>
+              }
+            </div>
 
-    </mat-card>
-  </div>
+            @if (outfitGarments.length === 0) {
+            <div class="empty-label">
+              <p>No clothes. Drad from your wardrobe and drop here</p>
+            </div>
+            }
+
+          </mat-card>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
 </div>
