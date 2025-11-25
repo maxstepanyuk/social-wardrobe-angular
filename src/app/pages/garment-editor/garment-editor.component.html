@@ -57,6 +57,15 @@
               Remove New
             </button>
             }
+            
+            @if (displayedImageLinkOrB64) {
+            <button mat-raised-button type="button" color="accent" (click)="classifyImage()"
+              [disabled]="isUploadingImage || isLoading">
+              <mat-icon>whatshot</mat-icon>
+              Classify
+            </button>
+            }
+
           </div>
 
           @if (newImageFile) {

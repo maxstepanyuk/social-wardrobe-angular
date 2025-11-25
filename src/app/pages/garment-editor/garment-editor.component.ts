@@ -342,4 +342,62 @@ export class GarmentEditorComponent implements OnInit {
 
   }
 
+  classifyImage() {
+    this.isUploadingImage = true;
+
+    if (this.newImageFile) {
+      this.executeClassificationWrapper(
+        this.garmentService.classifyGarmentImageFileObservable(this.newImageFile)
+      );
+      return;
+    }
+
+    if (this.originalImage1) {
+      const imageUrl = this.imageService.getImageLink(this.originalImage1);
+      fetch(imageUrl)
+        .then(res => {
+          if (!res.ok) throw new Error('Network response was not ok');
+          return res.blob();
+        })
+        .then(blob => {
+          const file = new File([blob], this.originalImage1!, { type: blob.type });
+          this.executeClassificationWrapper(
+            this.garmentService.classifyGarmentImageFileObservable(file)
+          );
+        })
+        .catch(err => {
+          console.error('Error fetching existing image:', err);
+          this.snackBar.open('Could not load server image for classification', 'Close');
+          this.isUploadingImage = false;
+        });
+      return;
+    }
+
+    if (this.displayedImageLinkOrB64 && this.displayedImageLinkOrB64.startsWith('data:')) {
+      this.executeClassificationWrapper(
+        this.garmentService.classifyGarmentImageBase64Observable(this.displayedImageLinkOrB64)
+      );
+      return;
+    }
+
+    this.isUploadingImage = false;
+    this.snackBar.open('No image to classify', 'Close');
+  }
+
+
+  private executeClassificationWrapper(observable$: any) {
+    observable$.subscribe({
+      next: (response: any) => {
+        this.garmentForm.patchValue(response);
+        this.isUploadingImage = false;
+        this.snackBar.open('Classification complete!', 'Close', { duration: 5000 });
+      },
+      error: (error: any) => {
+        console.error(error);
+        this.errorMessage = 'An error occurred during image classification.';
+        this.snackBar.open(this.errorMessage, 'Close');
+        this.isUploadingImage = false;
+      }
+    });
+  }
 }
