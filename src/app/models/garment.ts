@@ -23,6 +23,16 @@ export interface GarmentCreate {
     hex?: string;
 }
 
+export interface GarmentClassify {
+    gender_id?: number;
+    category_master_id?: number;
+    category_sub_id?: number;
+    garment_type_id?: number;
+    color_id?: number;
+    season_id?: number;
+    usage_id?: number;
+}
+
 export interface GarmentResponse {
     id: number;
     user_id: number;
