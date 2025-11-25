@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { GarmentCreate, GarmentOld, GarmentResponse } from '../models/garment'
+import { GarmentClassify, GarmentCreate, GarmentOld, GarmentResponse } from '../models/garment'
 import { Observable } from 'rxjs';
 
 
@@ -54,6 +54,18 @@ export class GarmentService {
 
   getAllGarmentsExceptIds(ids: number[]): GarmentOld[] {
     return this.garmentList.filter(garment => !ids.includes(garment.id));
+  }
+
+  classifyGarmentImageBase64Observable(image: string): Observable<GarmentClassify> {
+    const formData = new FormData();
+    formData.append('base64_str', image);
+    return this.http.post<GarmentClassify>(this.apiUrl + 'classify', formData);
+  }
+
+  classifyGarmentImageFileObservable(image: File): Observable<GarmentClassify> {
+    const formData = new FormData();
+    formData.append('image_file', image);
+    return this.http.post<GarmentClassify>(this.apiUrl + 'classify', formData);
   }
 
   protected garmentList: GarmentOld[] = [
