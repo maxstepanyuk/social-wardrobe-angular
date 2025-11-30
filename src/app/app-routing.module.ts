@@ -13,6 +13,7 @@ import { SearchComponent } from './pages/search/search.component';
 import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
 import { FeedComponent } from './pages/feed/feed.component';
 import { GarmentEditorComponent } from './pages/garment-editor/garment-editor.component';
+import { OutfitGeneratorRandomComponent } from './pages/outfit-generator-random/outfit-generator-random.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent }, //landing
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: "garments/editor/:id", component: GarmentEditorComponent },
   { path: "outfits", component: OutfitsComponent }, //get all outfit
   { path: "outfit/:id", component: OutfitCreatorComponent }, //TODO outfit get(TODO), edit(TODO), delete(TODO)
+  { path: "outfit/generator/random", component: OutfitGeneratorRandomComponent },
   { path: "creator", component: OutfitCreatorComponent }, //outfit create
   { path: "profile/edit", component: ProfileEditComponent }, //TODO id
   { path: "profile/:id", component: ProfileComponent }, //TODO id
