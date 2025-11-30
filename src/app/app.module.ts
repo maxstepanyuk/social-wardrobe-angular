@@ -53,6 +53,7 @@ import { OutfitCardComponent    } from './components/outfit-card/outfit-card.com
 import { MatChipsModule } from "@angular/material/chips";
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -105,6 +106,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatChipsModule,
     MatProgressSpinnerModule,
     MatTooltipModule,
+    MatCheckboxModule,
   ],
   providers: [
     provideHttpClient(
