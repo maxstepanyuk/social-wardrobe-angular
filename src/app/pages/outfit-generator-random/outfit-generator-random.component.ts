@@ -1,0 +1,159 @@
+import { Component, inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms'; // Added FormArray, FormControl
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ImageService } from 'src/app/servises/image.service';
+import { forkJoin, switchMap } from 'rxjs';
+import { OutfitTemplateService } from 'src/app/servises/outfit-template.service';
+import { CategoryService } from 'src/app/servises/category.service';
+import { GarmentResponse } from '../../models/garment';
+import { CategorySubResponse } from 'src/app/models/category';
+import { OutfitTemplateParameterResponse, OutfitTemplateResponse } from 'src/app/models/outfit-template';
+import { OutfitService } from 'src/app/servises/outfit.service';
+import { OutfitCreate } from 'src/app/models/outfit';
+
+@Component({
+  selector: 'app-outfit-generator-random',
+  standalone: false,
+  templateUrl: './outfit-generator-random.component.html',
+  styleUrl: './outfit-generator-random.component.scss',
+})
+export class OutfitGeneratorRandomComponent implements OnInit {
+  formOutfitGeneratorRandom: FormGroup;
+
+  subCategories: CategorySubResponse[] = [];
+  templates: OutfitTemplateResponse[] = [];
+  templatesParams: OutfitTemplateParameterResponse[] = [];
+
+  garmentsRand: GarmentResponse[] = [];
+
+  imageService = inject(ImageService);
+  outfitTemplateService = inject(OutfitTemplateService);
+  categoryService = inject(CategoryService);
+  outfitService = inject(OutfitService);
+
+  subCategoryIds: number[] = [];
+
+  constructor(
+    private fb: FormBuilder,
+    private snackBar: MatSnackBar,
+  ) {
+    this.formOutfitGeneratorRandom = this.fb.group({
+      name: [null],
+      templateId: [null],
+      categories: this.fb.array([])
+    });
+  }
+
+  get categoriesArray(): FormArray {
+    return this.formOutfitGeneratorRandom.get('categories') as FormArray;
+  }
+
+  ngOnInit(): void {
+    this.loadDropdownData();
+  }
+
+  loadDropdownData(): void {
+    forkJoin({
+      sub: this.categoryService.getAllSubCategoriesObservable(),
+      templ: this.outfitTemplateService.getAllOutfitTemplatesObservable(),
+      templParam: this.outfitTemplateService.getAllOutfitTemplateParametersObservable(),
+    }).subscribe({
+      next: (data) => {
+        this.subCategories = data.sub;
+        this.templates = data.templ;
+        this.templatesParams = data.templParam;
+
+        this.initializeCheckboxes();
+      },
+      error: (error) => {
+        console.error('Error loading dropdown data:', error);
+        this.snackBar.open('Error loading form options', 'Close');
+      }
+    });
+  }
+
+  private initializeCheckboxes(): void {
+    this.categoriesArray.clear();
+    this.subCategories.forEach(() => {
+      this.categoriesArray.push(new FormControl(false));
+    });
+  }
+
+  onTemplateChange(): void {
+    const selectedTemplateId = this.formOutfitGeneratorRandom.get('templateId')?.value;
+
+    if (!selectedTemplateId) {
+      this.categoriesArray.controls.forEach(c => c.setValue(false));
+      return;
+    }
+
+    const activeCategoryIds = this.templatesParams
+      .filter(param => param.outfit_template_id === selectedTemplateId)
+      .map(param => param.category_sub_id);
+
+    // loop through the form array and tick checkmarks if ID matches
+    this.categoriesArray.controls.forEach((control, index) => {
+      const currentCategoryId = this.subCategories[index].id;
+      // set true if the category is in the template, otherwise false
+      control.setValue(activeCategoryIds.includes(currentCategoryId));
+    });
+  }
+
+  randomize() {
+    this.subCategoryIds = this.formOutfitGeneratorRandom.value.categories
+      .map((checked: boolean, index: number) => checked ? this.subCategories[index].id : null)
+      .filter((id: number | null) => id !== null);
+
+    if (this.subCategoryIds.length === 0) {
+      this.snackBar.open('Please select at least one category', 'Close', { duration: 5000 });
+      return;
+    }
+
+    forkJoin({
+      garments: this.outfitService.generateRandomGarmentsForeOutfitObservable(this.subCategoryIds)
+    }).subscribe({
+      next: (data) => {
+        this.garmentsRand = data.garments
+
+        this.garmentsRand.forEach(element => {
+          if (element.image_link) {
+            element.image_link = this.imageService.getImageLink(element.image_link)
+          }
+        });
+      },
+      error: (error) => {
+        console.error('Error generating random outfit:', error);
+        this.snackBar.open('Error generating outfit', 'Close');
+      }
+    });
+  }
+
+  onSubmit() {
+    if (this.garmentsRand.length === 0) {
+      this.snackBar.open('Please randomize to generate garments first.', 'Close', { duration: 5000 });
+      return;
+    }
+
+    const garmentIds = this.garmentsRand.map(g => g.id);
+    const outfitData: OutfitCreate = {
+      name: this.formOutfitGeneratorRandom.get('name')?.value,
+      description: 'Generated by Randomizer'
+    };
+
+    this.outfitService.createOutfitObservable(outfitData)
+      .pipe(
+        switchMap((newOutfit) => {
+          return this.outfitService.updateOutfitGarments(newOutfit.id, garmentIds);
+        })
+      )
+      .subscribe({
+        next: () => {
+          this.snackBar.open('Outfit saved successfully!', 'Close', { duration: 5000 });
+        },
+        error: (error) => {
+          console.error('Error saving outfit:', error);
+          this.snackBar.open('Failed to save outfit.', 'Close');
+        }
+      });
+  }
+}

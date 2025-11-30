@@ -1,0 +1,60 @@
+<h2>Randomizer</h2>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+
+        </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="top">
+        <form [formGroup]="formOutfitGeneratorRandom">
+
+            <div class="left">
+                <mat-form-field appearance="fill">
+                    <mat-label>Template</mat-label>
+                    <mat-select formControlName="templateId" (selectionChange)="onTemplateChange()">
+                        <mat-option [value]="null"></mat-option>
+                        @for (template of templates; track template.id) {
+                        <mat-option [value]="template.id" [matTooltip]="template.description || template.name">{{ template.name }}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <button mat-raised-button color="accent" type="button" (click)="randomize()">
+                    <mat-icon>casino</mat-icon> Randomize
+                </button>
+            </div>
+
+            <div class="boxes middle" formArrayName="categories">
+                <p> Sub Categories</p>
+                <div class="checkbox-grid">
+                    @for (cat of subCategories; track cat.id; let i = $index) {
+                    <div class="checkbox-item">
+                        <mat-checkbox [formControlName]="i" color="primary" >
+                            {{ cat.name }}
+                        </mat-checkbox>
+                    </div>
+                    }
+                </div>
+            </div>
+
+            <div class="actions right">
+                <mat-form-field appearance="fill">
+                    <mat-label>Outfit Name</mat-label>
+                    <input matInput formControlName="name" placeholder="e.g. Summer Vibes">
+                </mat-form-field>
+                <button mat-raised-button color="primary" type="button" (click)="onSubmit()">
+                    <mat-icon>save</mat-icon> Save
+                </button>
+            </div>
+
+        </form>
+    </mat-card-content>
+</mat-card>
+
+<div class="garments">
+    @if (garmentsRand.length <= 0) { <p>No garments suggested</p>
+        }
+        @for (garment of garmentsRand; track garment) {
+        <app-garment-card [garment]="garment"></app-garment-card>
+        }
+</div>
