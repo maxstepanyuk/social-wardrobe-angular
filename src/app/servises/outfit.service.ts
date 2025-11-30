@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { OutfitCreate, OutfitOld, OutfitResponse } from '../models/outfit';
+import { OutfitCreate, OutfitOld, OutfitResponse, CreateRandomOutfitParams } from '../models/outfit';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { GarmentResponse } from '../models/garment';
@@ -54,6 +54,27 @@ export class OutfitService {
 
   updateOutfitGarments(outfitId: number, garmentIds: number[]): Observable<string> {
     return this.http.put<string>(this.apiUrl + outfitId + "/garments", { garment_ids: garmentIds });
+  }
+
+  generateRandomGarmentsForeOutfitObservable(categorySubIds: number[], genderIds: number[] | null = null): Observable<Array<GarmentResponse>> {
+
+    let body: CreateRandomOutfitParams;
+
+    if (genderIds) {
+      body = {
+        category_sub_ids: categorySubIds,
+        gender_ids: genderIds
+      }
+    } else {
+      body = {
+        category_sub_ids: categorySubIds
+      }
+    }
+
+    return this.http.post<Array<GarmentResponse>>(
+      this.apiUrl + "generate/random/garments",
+      body
+    );
   }
 
   getOutfitsByIds(ids: number[]): OutfitOld[] {
