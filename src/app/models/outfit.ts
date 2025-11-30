@@ -30,3 +30,8 @@ export interface OutfitResponse {
     created_at: Date;
     updated_at: Date;
 }
+
+export interface CreateRandomOutfitParams {
+    category_sub_ids: number[];
+    gender_ids?: number[]
+}
