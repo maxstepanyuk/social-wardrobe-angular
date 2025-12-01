@@ -34,4 +34,8 @@ export interface OutfitResponse {
 export interface CreateRandomOutfitParams {
     category_sub_ids: number[];
     gender_ids?: number[]
+    season_ids?: number[]
+    usage_ids?: number[]
+    color_ids?: number[]
+    garment_type_ids?: number[]
 }
