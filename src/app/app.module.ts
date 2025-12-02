@@ -50,6 +50,7 @@ import { GarmentCardComponent } from './components/garment-card/garment-card.com
 import { GarmentEditorComponent } from './pages/garment-editor/garment-editor.component';
 import { OutfitCardComponent    } from './components/outfit-card/outfit-card.component';
 import { OutfitGeneratorRandomComponent } from './pages/outfit-generator-random/outfit-generator-random.component';
+import { OutfitGeneratorParametersComponent } from './pages/outfit-generator-parameters/outfit-generator-parameters.component';
 
 import { MatChipsModule } from "@angular/material/chips";
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -80,7 +81,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     GarmentCardComponent,
     GarmentEditorComponent,
     OutfitCardComponent,
-    OutfitGeneratorRandomComponent
+    OutfitGeneratorRandomComponent,
+    OutfitGeneratorParametersComponent,
   ],
   imports: [
     BrowserModule,
