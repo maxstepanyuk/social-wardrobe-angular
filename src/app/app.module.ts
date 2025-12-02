@@ -82,7 +82,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     GarmentEditorComponent,
     OutfitCardComponent,
     OutfitGeneratorRandomComponent,
-    OutfitGeneratorParametersComponent,
+    OutfitGeneratorParametersComponent
   ],
   imports: [
     BrowserModule,
