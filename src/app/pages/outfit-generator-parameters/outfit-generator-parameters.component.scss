@@ -1,0 +1,118 @@
+mat-card {
+  margin: 1rem;
+}
+
+
+h2 {
+  text-align: center;
+  margin: 1rem;
+  font-size: 2rem;
+}
+
+h3 {
+  text-align: center;
+  margin: 1rem;
+  font-size: 1.5rem;
+}
+
+.top {
+  form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: flex-start;
+    padding: 1rem;
+
+    .left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      mat-form-field {
+        width: 100%;
+      }
+    }
+
+    .middle {
+      flex: 5;
+
+      border-left: 1px solid #e0e0e0;
+      border-right: 1px solid #e0e0e0;
+
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+}
+
+.cretor {
+  min-height: 50%;
+  display: flex;
+  margin-top: 1rem;
+  flex-direction: row;
+
+
+
+  .section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    padding-top: 0rem;
+    min-height: 50%;
+  }
+
+  .cards {
+    width: 100%;
+    height: 100%;
+  }
+
+  .garments {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-width: 4rem;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+
+  .cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 50px;
+  }
+
+  .cdk-drag-placeholder {
+    opacity: 0.5;
+  }
+
+  .cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  .cards.cdk-drop-list-dragging .garments:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  .empty-label {
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
