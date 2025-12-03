@@ -14,6 +14,7 @@ import { ProfileEditComponent } from './pages/profile-edit/profile-edit.componen
 import { FeedComponent } from './pages/feed/feed.component';
 import { GarmentEditorComponent } from './pages/garment-editor/garment-editor.component';
 import { OutfitGeneratorRandomComponent } from './pages/outfit-generator-random/outfit-generator-random.component';
+import { OutfitGeneratorParametersComponent } from './pages/outfit-generator-parameters/outfit-generator-parameters.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent }, //landing
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: "outfits", component: OutfitsComponent }, //get all outfit
   { path: "outfit/:id", component: OutfitCreatorComponent }, //TODO outfit get(TODO), edit(TODO), delete(TODO)
   { path: "outfit/generator/random", component: OutfitGeneratorRandomComponent },
+  { path: "outfit/generator/parameters", component: OutfitGeneratorParametersComponent },
   { path: "creator", component: OutfitCreatorComponent }, //outfit create
   { path: "profile/edit", component: ProfileEditComponent }, //TODO id
   { path: "profile/:id", component: ProfileComponent }, //TODO id
