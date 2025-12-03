@@ -55,3 +55,13 @@ export interface GarmentResponse {
 
     hex?: string;
 }
+
+export interface FilterGarmentsByParams {
+    gender_ids?: number[]
+    category_master_ids?: number[];
+    category_sub_ids?: number[];
+    season_ids?: number[]
+    usage_ids?: number[]
+    color_ids?: number[]
+    garment_type_ids?: number[]
+}
