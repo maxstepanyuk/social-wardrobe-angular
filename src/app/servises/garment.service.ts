@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { GarmentClassify, GarmentCreate, GarmentOld, GarmentResponse } from '../models/garment'
+import { FilterGarmentsByParams, GarmentClassify, GarmentCreate, GarmentOld, GarmentResponse } from '../models/garment'
 import { Observable } from 'rxjs';
 
 
@@ -22,6 +22,10 @@ export class GarmentService {
 
   getAllGarmentsObservable(): Observable<Array<GarmentResponse>> {
     return this.http.get<Array<GarmentResponse>>(this.apiUrl)
+  }
+
+  filterGarmentsObservable(params: FilterGarmentsByParams): Observable<Array<GarmentResponse>> {
+    return this.http.post<Array<GarmentResponse>>(this.apiUrl + "filter", params)
   }
 
   getAllGarmentsCountObservable(): Observable<number> {
