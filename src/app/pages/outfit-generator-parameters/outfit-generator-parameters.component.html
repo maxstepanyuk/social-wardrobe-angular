@@ -1,0 +1,142 @@
+<h2>Filter</h2>
+
+<mat-card>
+  <mat-card-content class="top">
+    <form [formGroup]="filterForm" (ngSubmit)="applyFilters()">
+
+      <div class="left">
+        <button mat-raised-button color="accent" type="submit" [disabled]="isLoading">
+          <mat-icon>filter_alt</mat-icon> Filter
+        </button>
+        <button mat-raised-button type="button" (click)="clearFilters()">
+          <mat-icon>clear_all</mat-icon>
+          Clear
+        </button>
+      </div>
+
+      <div class="middle">
+        <mat-form-field appearance="outline">
+          <mat-label>Gender</mat-label>
+          <mat-select formControlName="gender_ids" multiple>
+            @for (item of genders; track item.id) {
+            <mat-option [value]="item.id" [matTooltip]="item.description || item.name">{{ item.name }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Master Category</mat-label>
+          <mat-select formControlName="category_master_ids" multiple>
+            @for (item of masterCategories; track item.id) {
+            <mat-option [value]="item.id" [matTooltip]="item.description || item.name">{{ item.name }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Sub Category</mat-label>
+          <mat-select formControlName="category_sub_ids" multiple>
+            @for (item of subCategories; track item.id) {
+            <mat-option [value]="item.id" [matTooltip]="item.description || item.name">{{ item.name }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Type</mat-label>
+          <mat-select formControlName="garment_type_ids" multiple>
+            @for (item of garmentTypes; track item.id) {
+            <mat-option [value]="item.id" [matTooltip]="item.description || item.name">{{ item.name }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Season</mat-label>
+          <mat-select formControlName="season_ids" multiple>
+            @for (item of seasons; track item.id) {
+            <mat-option [value]="item.id" [matTooltip]="item.description || item.name">{{ item.name }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Usage</mat-label>
+          <mat-select formControlName="usage_ids" multiple>
+            @for (item of usages; track item.id) {
+            <mat-option [value]="item.id" [matTooltip]="item.description || item.name">{{ item.name }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Color</mat-label>
+          <mat-select formControlName="color_ids" multiple>
+            @for (item of colors; track item.id) {
+            <mat-option [value]="item.id" [matTooltip]="item.description || item.name">
+              {{ item.name }}
+            </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="right">
+        <mat-form-field >
+          <mat-label>Outfit Name</mat-label>
+          <input matInput formControlName="name" placeholder="e.g. Summer Vibes">
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="saveOutfit()" [disabled]="outfitGarments.length === 0">
+          <mat-icon>save</mat-icon> Save
+        </button>
+
+      </div>
+
+    </form>
+  </mat-card-content>
+</mat-card>
+
+<div class="cretor" cdkDropListGroup>
+  <div class="section section-wardrobe">
+    <h3>Filtered</h3>
+    <mat-card class="cards" cdkDropList #wardrobeList="cdkDropList" [cdkDropListData]="sourceGarments"
+      [cdkDropListConnectedTo]="[outfitList]" (cdkDropListDropped)="drop($event)">
+
+      @if (wardrobeGarmentsCount === 0) {
+      <div class="empty-label">
+        <p class="empty-label">No clothes.</p>
+        <a mat-raised-button color="accent" routerLink="/clothes">Add your clothes</a>
+      </div>
+      }
+      @if (sourceGarments.length === 0 && wardrobeGarmentsCount !== 0) {
+      <div class="empty-label">
+        <p>No matching clothes</p>
+      </div>
+      }
+
+      <div class="garments">
+        @for (garment of sourceGarments; track garment) {
+        <app-garment-card [garment]="garment" cdkDrag>{{garment}}</app-garment-card>
+        }
+      </div>
+    </mat-card>
+  </div>
+  <div class="section section-outfit">
+    <h3>Your outfit</h3>
+    <mat-card class="cards" cdkDropList #outfitList="cdkDropList" [cdkDropListData]="outfitGarments"
+      [cdkDropListConnectedTo]="[wardrobeList]" (cdkDropListDropped)="drop($event)">
+      <div class="garments">
+        @for (garment of outfitGarments; track garment) {
+        <app-garment-card [garment]="garment" cdkDrag>{{garment}}</app-garment-card>
+        }
+      </div>
+
+      @if (outfitGarments.length === 0) {
+      <div class="empty-label">
+        <p>No clothes selected. Drag and drop here</p>
+      </div>
+      }
+
+    </mat-card>
+  </div>
+</div>
