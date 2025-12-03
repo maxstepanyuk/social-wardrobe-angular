@@ -16,6 +16,9 @@ export class OutfitService {
     this.apiUrl = "http://127.0.0.1:8000/outfits/"
   }
 
+  /**
+   * @deprecated 
+   */
   getAllOutfits(): OutfitOld[] {
     return this.outfitList;
   }
@@ -24,6 +27,9 @@ export class OutfitService {
     return this.http.get<Array<OutfitResponse>>(this.apiUrl);
   }
 
+  /**
+   * @deprecated 
+   */
   getOutfitById(id: number): OutfitOld | undefined {
     return this.outfitList.find(outfit => outfit.id === id);
   }
@@ -77,10 +83,16 @@ export class OutfitService {
     );
   }
 
+  /**
+   * @deprecated 
+   */
   getOutfitsByIds(ids: number[]): OutfitOld[] {
     return this.outfitList.filter(outfit => ids.includes(outfit.id));
   }
 
+  /**
+   * @deprecated 
+   */
   getOutfitsWithGarment(garmentId: number): OutfitOld[] {
     return this.outfitList.filter(outfit =>
       outfit.garments.some(garment => garment.id === garmentId)

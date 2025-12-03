@@ -1,3 +1,6 @@
+/**
+ * @deprecated 
+ */
 export interface UserOld {
   id: number;
   username: string;

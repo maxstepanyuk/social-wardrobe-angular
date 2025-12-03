@@ -1,3 +1,6 @@
+/**
+ * @deprecated 
+ */
 export interface GarmentOld {
     id: number,
     name: string,

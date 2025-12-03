@@ -16,6 +16,9 @@ export class GarmentService {
     this.apiUrl = "http://127.0.0.1:8000/garments/"
   }
 
+  /**
+ * @deprecated 
+ */
   getAllGarments(): GarmentOld[] {
     return this.garmentList;
   }
@@ -32,6 +35,9 @@ export class GarmentService {
     return this.http.get<number>(this.apiUrl + "count")
   }
 
+  /**
+ * @deprecated 
+ */
   getGarmentById(id: number): GarmentOld | undefined {
     return this.garmentList.find(garment => garment.id === id)
   }
@@ -52,10 +58,16 @@ export class GarmentService {
     return this.http.delete<void>(this.apiUrl + id);
   }
 
+  /**
+   * @deprecated 
+   */
   getGarmentsByIds(ids: number[]): GarmentOld[] {
     return this.garmentList.filter(garment => ids.includes(garment.id));
   }
 
+  /**
+   * @deprecated 
+   */
   getAllGarmentsExceptIds(ids: number[]): GarmentOld[] {
     return this.garmentList.filter(garment => !ids.includes(garment.id));
   }
@@ -72,6 +84,9 @@ export class GarmentService {
     return this.http.post<GarmentClassify>(this.apiUrl + 'classify', formData);
   }
 
+  /**
+   * @deprecated 
+   */
   protected garmentList: GarmentOld[] = [
     {
       id: 1,

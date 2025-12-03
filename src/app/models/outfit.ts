@@ -1,5 +1,8 @@
 import { GarmentOld } from "./garment";
 
+/**
+ * @deprecated 
+ */
 export interface OutfitOld {
     id: number,
     name: string,
