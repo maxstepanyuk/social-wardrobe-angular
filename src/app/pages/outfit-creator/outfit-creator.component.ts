@@ -276,43 +276,34 @@ export class OutfitCreatorComponent implements OnInit {
     if (!this.outfitId) return;
 
     this.isLoading = true;
-    let DeleteSeccess = false;
-    let imageDeleteSecces = false;
 
-    this.outfitService.deleteOutfitByIdObservable(this.outfitId).subscribe({
-      next: (res) => {
-        DeleteSeccess = true;
-
+    // remove all garment relationships
+    this.outfitService.updateOutfitGarments(this.outfitId, []).pipe(
+      // delete the outfit record
+      switchMap(() => this.outfitService.deleteOutfitByIdObservable(this.outfitId!)),
+      // delete the image if it exists
+      switchMap(() => {
         if (this.originalImage) {
-          this.imageService.deleteImage(this.originalImage).subscribe({
-            next: (res) => {
-              imageDeleteSecces = true;
-            },
-            error: (error) => {
-              this.errorMessage = error.error?.detail || 'An error occurred during delete.';
-              this.snackBar.open(this.errorMessage, 'Close');
-              this.isLoading = false;
-            }
-          })
-        } else {
-          imageDeleteSecces = true;
+          return this.imageService.deleteImage(this.originalImage);
         }
-
-        if (DeleteSeccess && imageDeleteSecces) {
+        // dummy Observable so the RxJS chain doesn't break
+        return new Observable(observer => {
+          observer.next(null);
+          observer.complete();
+        });
+      })
+    ).subscribe({
+      next: () => {
           this.snackBar.open('Outfit deleted successfully', 'Close', { duration: 5000 });
-        }
-
         this.isLoading = false;
         this.router.navigate(['/outfits']);
-
       },
       error: (error) => {
         this.errorMessage = error.error?.detail || 'An error occurred during delete.';
         this.snackBar.open(this.errorMessage, 'Close');
-
         this.isLoading = false;
       }
-    })
+    });
   }
 
   onCancel(): void {
