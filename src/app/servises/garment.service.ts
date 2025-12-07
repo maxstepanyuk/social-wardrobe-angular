@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { FilterGarmentsByParams, GarmentClassify, GarmentCreate, GarmentOld, GarmentResponse } from '../models/garment'
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { FilterGarmentsByParams, GarmentClassify, GarmentCreate, GarmentEmbeddingsCheckResponse, GarmentEmbeddingsCreateStatsResponse, GarmentOld, GarmentResponse } from '../models/garment'
 import { Observable } from 'rxjs';
 
 
@@ -82,6 +82,20 @@ export class GarmentService {
     const formData = new FormData();
     formData.append('image_file', image);
     return this.http.post<GarmentClassify>(this.apiUrl + 'classify', formData);
+  }
+
+  createGarmentEmbeddings(forceRewrite: boolean = false): Observable<GarmentEmbeddingsCreateStatsResponse> {
+    let params = new HttpParams().set('force_rewrite', forceRewrite);
+    let body = {}
+    return this.http.post<GarmentEmbeddingsCreateStatsResponse>(
+      this.apiUrl + 'embeddings', body, { params }
+    );
+  }
+
+  checkGarmentEmbeddings(): Observable<GarmentEmbeddingsCheckResponse> {
+    return this.http.get<GarmentEmbeddingsCheckResponse>(
+      this.apiUrl + 'embeddings/check',
+    );
   }
 
   /**
