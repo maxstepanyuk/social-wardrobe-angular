@@ -16,6 +16,12 @@ export class ClothesComponent {
   garmentService: GarmentService = inject(GarmentService)
   imageService = inject(ImageService);
 
+  areFullyEmbedded = false;
+  unprocessed = 0;
+  total = 0;
+  processed = 0;
+  isLoading = false;
+
   constructor(
     private snackBar: MatSnackBar,
   ) {
@@ -33,10 +39,36 @@ export class ClothesComponent {
         // console.error(error);
       }
     })
+    this.garmentService.checkGarmentEmbeddings().subscribe({
+      next: (response) => {
+        this.unprocessed = response.unprocessed;
+        this.total = response.total
+        this.processed = response.processed
+      },
+      error: (error) => {
+        this.snackBar.open(error.error?.detail || 'An error occurred checking garment embeddings.', 'Close');
+      }
+    })
   }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     console.log(filterValue);
   }
+
+  createEmbeddings(force_rewrite = false) {
+    this.isLoading = true;
+    this.garmentService.createGarmentEmbeddings(force_rewrite).subscribe({
+      next: (response) => {
+        this.unprocessed = response.failed // ok? idk
+        this.processed = response.processed
+        this.isLoading = false
+      },
+      error: (error) => {
+        this.snackBar.open(error.error?.detail || 'An error occurred creating garment embeddings.', 'Close');
+        this.isLoading = false
+      }
+    })
+  }
+
 }

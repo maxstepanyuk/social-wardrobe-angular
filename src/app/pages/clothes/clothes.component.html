@@ -1,9 +1,30 @@
 <div class="top">
   <h2>Your clothes</h2>
 
+  @if (isLoading) { <mat-spinner diameter="50"></mat-spinner> }
+
+
   <div class="actions">
     <a mat-raised-button routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/garments/editor"
-    color="primary">Add clothes</a>
+      [disabled]="isLoading" color="primary">
+      Add clothes
+    </a>
+
+    @if (unprocessed > 0 && total > 0) {
+    <button mat-raised-button color="accent" (click)="createEmbeddings()"
+      matTooltip="Embeddings are used for Autocompete and other Recommendations">
+      <mat-icon>whatshot</mat-icon>
+      Create embeddings for {{unprocessed}} garments
+    </button>
+    }
+
+    @if (processed == total) {
+    <button mat-raised-button (click)="createEmbeddings(true)" matTooltip="Can be usefull when garments had changed"
+      [disabled]="isLoading">
+      <mat-icon>whatshot</mat-icon>
+      Update embeddings for all {{total}} garments
+    </button>
+    }
 
 <!-- TODO
     <mat-form-field>
