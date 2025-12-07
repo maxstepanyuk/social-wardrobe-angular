@@ -68,3 +68,17 @@ export interface FilterGarmentsByParams {
     color_ids?: number[]
     garment_type_ids?: number[]
 }
+
+export interface GarmentEmbeddingsCreateStatsResponse {
+    total: number
+    processed: number
+    skipped: number
+    failed: number
+    errors: string[]
+}
+
+export interface GarmentEmbeddingsCheckResponse {
+    total: number
+    processed: number
+    unprocessed: number
+}
