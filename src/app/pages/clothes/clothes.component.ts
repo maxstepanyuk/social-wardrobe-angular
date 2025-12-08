@@ -1,6 +1,6 @@
-import { Component, inject } from '@angular/core';
-// import { Garment } from 'src/app/components/garment/garment';
-import { GarmentOld, GarmentResponse } from '../../models/garment';
+import { Component, inject, OnInit } from '@angular/core';
+import { forkJoin } from 'rxjs';
+import { GarmentResponse } from '../../models/garment';
 import { GarmentService } from '../../servises/garment.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ImageService } from 'src/app/servises/image.service';
@@ -11,10 +11,12 @@ import { ImageService } from 'src/app/servises/image.service';
   styleUrls: ['./clothes.component.scss'],
   standalone: false
 })
-export class ClothesComponent {
+export class ClothesComponent implements OnInit {
+
   garmentList: GarmentResponse[] = [];
-  garmentService: GarmentService = inject(GarmentService)
+  garmentService = inject(GarmentService)
   imageService = inject(ImageService);
+  snackBar = inject(MatSnackBar)
 
   areFullyEmbedded = false;
   unprocessed = 0;
@@ -22,31 +24,38 @@ export class ClothesComponent {
   processed = 0;
   isLoading = false;
 
-  constructor(
-    private snackBar: MatSnackBar,
-  ) {
-    this.garmentService.getAllGarmentsObservable().subscribe({
-      next: (response) => {
-        this.garmentList = response;
-        response.forEach(element => {
+  ngOnInit(): void {
+    this.loadInitialData();
+  }
+
+  loadInitialData() {
+    this.isLoading = true;
+
+    forkJoin({
+      garments: this.garmentService.getAllGarmentsObservable(),
+      stats: this.garmentService.checkGarmentEmbeddings()
+    }).subscribe({
+      next: ({ garments, stats }) => {
+
+        this.garmentList = garments;
+        this.garmentList.forEach(element => {
           if (element.image_link) {
             element.image_link = this.imageService.getImageLink(element.image_link)
           }
         });
+
+        this.unprocessed = stats.unprocessed;
+        this.total = stats.total;
+        this.processed = stats.processed;
+        
+        this.isLoading = false;
       },
       error: (error) => {
-        this.snackBar.open(error.error?.detail || 'An error occurred. Please try again.', 'Close');
-        // console.error(error);
-      }
-    })
-    this.garmentService.checkGarmentEmbeddings().subscribe({
-      next: (response) => {
-        this.unprocessed = response.unprocessed;
-        this.total = response.total
-        this.processed = response.processed
-      },
-      error: (error) => {
-        this.snackBar.open(error.error?.detail || 'An error occurred checking garment embeddings.', 'Close');
+        this.isLoading = false;
+        this.snackBar.open(
+          error.error?.detail || 'An error occurred loading data. Please try again.', 
+          'Close'
+        );
       }
     })
   }
