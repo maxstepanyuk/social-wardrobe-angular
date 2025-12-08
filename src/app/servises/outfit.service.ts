@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { OutfitCreate, OutfitOld, OutfitResponse, CreateRandomOutfitParams } from '../models/outfit';
+import { OutfitCreate, OutfitOld, OutfitResponse, CreateRandomOutfitParams, CreateAutocompleteOutfitParams } from '../models/outfit';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { GarmentResponse } from '../models/garment';
@@ -80,6 +80,13 @@ export class OutfitService {
     return this.http.post<Array<GarmentResponse>>(
       this.apiUrl + "generate/random/garments",
       body
+    );
+  }
+
+  generateRecomendedGarmentsForeOutfitObservable(params: CreateAutocompleteOutfitParams): Observable<Array<GarmentResponse>> {
+    return this.http.post<Array<GarmentResponse>>(
+      this.apiUrl + "generate/autocomplete/garments",
+      params
     );
   }
 
