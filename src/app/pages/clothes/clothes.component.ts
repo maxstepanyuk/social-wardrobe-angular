@@ -71,6 +71,14 @@ export class ClothesComponent implements OnInit {
       next: (response) => {
         this.unprocessed = response.failed // ok? idk
         this.processed = response.processed
+
+        if (response.failed > 0){
+          this.snackBar.open('An error occurred creating garment embeddings.', 'Close');
+        } else {
+          this.snackBar.open('Garment embeddings created.', 'Close');
+        }
+        
+
         this.isLoading = false
       },
       error: (error) => {
