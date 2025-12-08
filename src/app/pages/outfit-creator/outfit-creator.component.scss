@@ -43,6 +43,18 @@ h3 {
     min-height: 50%;
 }
 
+.section-wardrobe {
+    flex: 2;
+}
+
+.section-outfit {
+    flex: 2;
+}
+
+.section-recommendations {
+    flex: 1;
+}
+
 .empty-label {
     margin: auto;
     margin-top: 1rem;
@@ -160,6 +172,16 @@ h3 {
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.recommendations-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1rem;
+}
+
 
 .image-hint {
     display: flex;

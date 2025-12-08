@@ -103,10 +103,33 @@
     </mat-tab>
 
     <mat-tab label="Outfit's Clothes">
+
+      <div class="recommendations-actions">
+        <button mat-raised-button type="button" [color]="enableRecommendations ? 'primary' : 'accent'"
+          (click)="toggleRecommendationsColumn()">
+          <mat-icon>whatshot</mat-icon>
+          {{ enableRecommendations ? 'Hide Recommendations' : 'Show Recommendations' }}
+        </button>
+
+        @if (enableRecommendations) {
+
+        @if (!updateRecommendations) {
+        <button mat-raised-button type="button" color="accent" (click)="getRecommendations()">
+          <mat-icon>whatshot</mat-icon>
+          Get Recommendations
+        </button>
+        }
+
+        <mat-checkbox class="example-margin" [(ngModel)]="moreVarietyRecommendations">More variety</mat-checkbox>
+        }
+      
+      </div>
+
+
       <!-- <span>TODO sort wardrobe by date (or add this metod to servise), save outfit logic
     (post only IDs of garments as an array)</span> -->
       <div class="cretor" cdkDropListGroup>
-        <div class="section">
+        <div class="section section-wardrobe">
           <h3>Your wardrobe</h3>
           <mat-card class="cards" cdkDropList #wardrobeList="cdkDropList" [cdkDropListData]="wardrobeGarmentsUnused"
             [cdkDropListConnectedTo]="[outfitList]" (cdkDropListDropped)="drop($event)">
@@ -124,7 +147,7 @@
             </div>
           </mat-card>
         </div>
-        <div class="section">
+        <div class="section section-outfit">
           <h3>Your outfit</h3>
           <mat-card class="cards" cdkDropList #outfitList="cdkDropList" [cdkDropListData]="outfitGarments"
             [cdkDropListConnectedTo]="[wardrobeList]" (cdkDropListDropped)="drop($event)">
@@ -142,6 +165,27 @@
 
           </mat-card>
         </div>
+
+        @if (enableRecommendations) {
+        <div class="section section-recommendations">
+          <h3>Recommendations</h3>
+          <mat-card class="cards" cdkDropList #outfitList="cdkDropList" [cdkDropListData]="recommendedGarments"
+            [cdkDropListConnectedTo]="[wardrobeList]" (cdkDropListDropped)="drop($event)">
+            <div class="garments">
+              @for (garment of recommendedGarments; track garment) {
+              <app-garment-card [garment]="garment" cdkDrag>{{garment}}</app-garment-card>
+              }
+            </div>
+            @if (recommendedGarments.length === 0) {
+            <div class="empty-label">
+              <p>Add at least one item to your outfit</p>
+            </div>
+            }
+          </mat-card>
+        </div>
+        }
+
+
       </div>
     </mat-tab>
   </mat-tab-group>

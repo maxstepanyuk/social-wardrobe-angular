@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ImageService } from 'src/app/servises/image.service';
 import { GarmentService } from 'src/app/servises/garment.service';
-import { OutfitCreate, OutfitResponse } from 'src/app/models/outfit';
+import { CreateAutocompleteOutfitParams, OutfitCreate, OutfitResponse } from 'src/app/models/outfit';
 import { UtilsService } from 'src/app/servises/utils.service';
 import { forkJoin, map, Observable, switchMap } from 'rxjs';
 
@@ -24,6 +24,11 @@ export class OutfitCreatorComponent implements OnInit {
   wardrobeGarmentsUnused: GarmentResponse[] = [];
 
   wardrobeGarmentsCount: number | null = null;
+
+  recommendedGarments: GarmentResponse[] = [];
+  enableRecommendations: boolean = false;
+  updateRecommendations: boolean = false;
+  moreVarietyRecommendations: boolean = false;
 
   isEditMode = false;
   outfitId: number | null = null;
@@ -371,6 +376,46 @@ export class OutfitCreatorComponent implements OnInit {
     this.outfitService.updateOutfitGarments(this.outfitId, garmentIds).subscribe({
       next: () => {
         this.snackBar.open('Outfit garments updated successfully', 'Close', { duration: 5000 });
+        this.isLoading = false;
+      },
+      error: (error) => {
+        this.errorMessage = error.error?.detail || 'Error updating outfit garments';
+        this.snackBar.open(this.errorMessage, 'Close');
+        this.isLoading = false;
+      }
+    });
+  }
+
+  toggleRecommendationsColumn(): void {
+    this.enableRecommendations = !(this.enableRecommendations); 
+  }
+
+  getRecommendations(){
+
+    const garmentIds = this.outfitGarments.map(g => g.id);
+    const template_id = 7 //this is a template with all categories. TODO make drop down 
+    let vari = 0
+    
+    if(this.moreVarietyRecommendations){
+      vari = 0.05
+    }
+
+    let params: CreateAutocompleteOutfitParams = {
+      garment_ids: garmentIds, //
+      outfit_template_id: template_id,
+      variety_coef: vari
+    }
+
+    this.outfitService.generateRecomendedGarmentsForeOutfitObservable(params).subscribe({
+      next: (garments) => {
+        
+        garments.forEach(garment => {
+          if (garment.image_link) {
+            garment.image_link = this.imageService.getImageLink(garment.image_link);
+          }
+        });
+        this.recommendedGarments = garments;
+        
         this.isLoading = false;
       },
       error: (error) => {
