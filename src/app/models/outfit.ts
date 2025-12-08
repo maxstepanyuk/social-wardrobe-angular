@@ -42,3 +42,10 @@ export interface CreateRandomOutfitParams {
     color_ids?: number[]
     garment_type_ids?: number[]
 }
+
+export interface CreateAutocompleteOutfitParams {
+    garment_ids: number[]
+    outfit_template_id: number
+    gender_ids?: number[] 
+    variety_coef?: number
+}
