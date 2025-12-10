@@ -1,4 +1,4 @@
-# SocialWardrobe
+# OrgDrobe (aka SocialWardrobe)
 
 Created by maksymstepaniuk ([maxstepanyuk](https://github.com/maxstepanyuk) on github). The original repository:  [social-wardrobe-angular](https://github.com/maxstepanyuk/social-wardrobe-angular)
 
