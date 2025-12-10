@@ -28,8 +28,8 @@ const routes: Routes = [
   { path: "outfit/generator/random", component: OutfitGeneratorRandomComponent },
   { path: "outfit/generator/parameters", component: OutfitGeneratorParametersComponent },
   { path: "creator", component: OutfitCreatorComponent }, //outfit create
-  { path: "profile/edit", component: ProfileEditComponent }, //TODO id
-  { path: "profile/:id", component: ProfileComponent }, //TODO id
+  // { path: "profile/edit", component: ProfileEditComponent }, //TODO id
+  // { path: "profile/:id", component: ProfileComponent }, //TODO id
   { path: "search", component: SearchComponent },
   { path: "feed", component: FeedComponent },
   { path: "**", component: NotFoundComponent },
