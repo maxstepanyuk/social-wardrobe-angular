@@ -18,7 +18,11 @@
 
   <a mat-button color="primary" [routerLink]="['/outfit/', outfit.id]" routerLinkActive="active"
     ariaCurrentWhenActive="page">
+    @if(outfit.name){
     {{outfit.name}}
+    } @else {
+    <i>Edit Outfit</i>
+    }
   </a>
 
   <!-- todo: days since last worn -->
