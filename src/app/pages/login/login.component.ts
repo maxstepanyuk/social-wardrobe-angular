@@ -84,7 +84,7 @@ export class LoginComponent implements OnInit {
             this.snackBar.open(this.successMessage, 'Close', { duration: 5000 });
             this.loginForm.reset();
             this.loginForm.enable();
-            this.router.navigate(['/outfits']);
+            this.router.navigate(['/clothes']);
           },
           error: (error) => {
             // console.error('Signup error:', error);
