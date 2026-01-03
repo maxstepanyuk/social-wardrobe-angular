@@ -7,9 +7,16 @@
         @else { id {{garment.id}} }
     </a>
 
-    <p>type_id {{garment.garment_type_id}}</p>
-
     <!-- TODO. dates are hard -->
     <!-- @if (garment.last_worn) {<p>last worn {{garment.last_worn.getFullYear()}}-{{garment.last_worn.getMonth()}}-{{garment.last_worn.getDay()}} - {{}} days ago</p>} @else {<p>never worn</p>} -->
+
+    @if (garment.last_worn) {
+    <p> Last worn: {{garment.last_worn | date}} </p>
+    }
+    @else {
+    <!-- <p> Updated {{garment.last_worn | date}} </p> -->
+    <p> Last worn: never </p>
+    }
+
 
 </mat-card>
