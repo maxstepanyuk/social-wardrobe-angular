@@ -3,8 +3,12 @@
 
     <a mat-button color="primary" [routerLink]="['/garments/editor/', garment.id]" routerLinkActive="active"
         ariaCurrentWhenActive="page">
-        @if (garment.name) { {{garment.name}} }
-        @else { id {{garment.id}} }
+        @if (garment.name) {
+        {{garment.name}}
+        }
+        @else {
+        <i>Edit Garment</i>
+        }
     </a>
 
     <!-- TODO. dates are hard -->
