@@ -17,17 +17,17 @@ import { OutfitGeneratorRandomComponent } from './pages/outfit-generator-random/
 import { OutfitGeneratorParametersComponent } from './pages/outfit-generator-parameters/outfit-generator-parameters.component';
 
 const routes: Routes = [
-  { path: "", component: HomeComponent }, //landing
-  { path: "login", component: LoginComponent }, //todo logic
-  { path: "signup", component: SignupComponent }, //todo logic
-  { path: "clothes", component: ClothesComponent }, //get all clothes(garments)
-  { path: "garments/editor", component: GarmentEditorComponent },
-  { path: "garments/editor/:id", component: GarmentEditorComponent },
-  { path: "outfits", component: OutfitsComponent }, //get all outfit
-  { path: "outfit/:id", component: OutfitCreatorComponent }, //TODO outfit get(TODO), edit(TODO), delete(TODO)
-  { path: "outfit/generator/random", component: OutfitGeneratorRandomComponent },
-  { path: "outfit/generator/parameters", component: OutfitGeneratorParametersComponent },
-  { path: "creator", component: OutfitCreatorComponent }, //outfit create
+  { path: "", component: HomeComponent, title: "OrgDrobe" }, //landing
+  { path: "login", component: LoginComponent, title: "Login - OrgDrobe" }, //todo logic
+  { path: "signup", component: SignupComponent, title: "Signup - OrgDrobe" }, //todo logic
+  { path: "clothes", component: ClothesComponent, title: "Clothes - OrgDrobe" }, //get all clothes(garments)
+  { path: "garments/editor", component: GarmentEditorComponent, title: "Create Garment - OrgDrobe" },
+  { path: "garments/editor/:id", component: GarmentEditorComponent, title: "Edit Garment - OrgDrobe" },
+  { path: "outfits", component: OutfitsComponent, title: "Outfits - OrgDrobe" }, //get all outfit
+  { path: "outfit/:id", component: OutfitCreatorComponent, title: "Edit Outfit - OrgDrobe" }, //TODO outfit get(TODO), edit(TODO), delete(TODO)
+  { path: "outfit/generator/random", component: OutfitGeneratorRandomComponent, title: "Outfit Randomizer - OrgDrobe" },
+  { path: "outfit/generator/parameters", component: OutfitGeneratorParametersComponent , title: "Outfit Generator with Filters - OrgDrobe"},
+  { path: "creator", component: OutfitCreatorComponent, title: "Create Outfit (Editor) - OrgDrobe" }, //outfit create
   // { path: "profile/edit", component: ProfileEditComponent }, //TODO id
   // { path: "profile/:id", component: ProfileComponent }, //TODO id
   { path: "search", component: SearchComponent },
