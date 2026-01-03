@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+/**
+ * @deprecated 
+ */
 @Component({
     selector: 'app-user-table',
     templateUrl: './user-table.component.html',

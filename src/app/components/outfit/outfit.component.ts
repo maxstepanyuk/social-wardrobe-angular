@@ -2,6 +2,9 @@ import { Component, Input, inject } from '@angular/core';
 import { OutfitOld } from '../../models/outfit';
 import { DateUtilsService } from '../../servises/date-utils.service';
 
+/**
+ * @deprecated 
+ */
 @Component({
     selector: 'app-outfit',
     templateUrl: './outfit.component.html',
