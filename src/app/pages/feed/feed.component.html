@@ -1,9 +1,20 @@
 <div class="feed">
   <h2>Feed</h2>
   <div class="feed-items">
-    @for (outfitItem of outfitList; track outfitItem) {
-      <app-feed-element [post]="outfitItem"></app-feed-element>
-      <mat-divider></mat-divider>
+    @for (feedElement of feedElements; track feedElement) {
+
+
+    <mat-card class="feed-element">
+      @if(false){
+      <!-- feedElement.type == outfit -->
+      <!-- dispay outfit in a mat card and rards header -->
+      }
+      @else if (false){
+      <!-- feedElement.type == outfit -->
+      <!-- dispay outfit -->
+      }
+    </mat-card>
+    <mat-divider></mat-divider>
     }
   </div>
 </div>

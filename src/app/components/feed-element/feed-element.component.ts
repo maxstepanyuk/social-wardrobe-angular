@@ -8,6 +8,9 @@ enum PostTypes {
   Garment,
 }
 
+/**
+ * @deprecated 
+ */
 @Component({
     selector: 'app-feed-element',
     templateUrl: './feed-element.component.html',
